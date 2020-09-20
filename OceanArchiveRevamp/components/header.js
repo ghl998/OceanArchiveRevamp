@@ -157,7 +157,8 @@ var Contribute = /** @class */ (function (_super) {
                 React.createElement(react_router_dom_1.NavLink, { to: "/myItems" },
                     React.createElement(reactstrap_1.DropdownItem, null, "ITEM")),
                 React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION"),
-                React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT"))));
+                React.createElement(react_router_dom_1.NavLink, { to: "/myAnnouncements" },
+                React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT")))));
     };
     return Contribute;
 }(React.Component));

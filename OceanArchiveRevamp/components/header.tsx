@@ -173,7 +173,9 @@ class Contribute extends React.Component {
                         <DropdownItem>ITEM</DropdownItem>
                     </NavLink>
                     <DropdownItem>COLLECTION</DropdownItem>
+                    <NavLink to="/myAnnouncements">
                     <DropdownItem>ANNOUNCEMENT</DropdownItem>
+                    </NavLink>
                 </DropdownMenu>
             </ButtonDropdown>
         );
