@@ -15,6 +15,7 @@ import Header from './components/header';
 import Home from './components/home';
 import Map from './components/map';
 import MyItems from './components/myItems';
+import MyAnnouncements from './components/myAnnouncements';
 import ItemCollectionPage from './components/itemCollectionPage';
 import CreateItem from './components/createItem';
 
@@ -35,6 +36,7 @@ class Homepage extends React.Component {
                     <Route path="/" component={Home} exact />
                     <Route path="/map" component={Map} />
                     <Route path="/myItems" component={MyItems} />
+                    <Route path="/myAnnouncements" component={MyAnnouncements} />
                     <Route path="/itemPage" component={ItemCollectionPage} />
                     <Route path="/createItem" component={CreateItem} />
                 </Switch>
