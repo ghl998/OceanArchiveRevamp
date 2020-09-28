@@ -1,27 +1,13 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
-var Constant = require("../constants");
-var react_router_dom_1 = require("react-router-dom");
-var LargeContentBox = /** @class */ (function (_super) {
-    __extends(LargeContentBox, _super);
-    function LargeContentBox(props) {
-        return _super.call(this, props) || this;
+const Constant = require("../constants");
+const react_router_dom_1 = require("react-router-dom");
+class LargeContentBox extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    LargeContentBox.prototype.render = function () {
+    render() {
         return (React.createElement("div", { className: 'largeContentBox', style: { backgroundImage: "url(" + this.props.img + ")", backgroundColor: this.props.bgColour } },
             React.createElement("div", { className: 'largeContentBoxBar', style: { background: this.props.bgColour } },
                 React.createElement("img", { className: 'icon' }),
@@ -54,15 +40,10 @@ var LargeContentBox = /** @class */ (function (_super) {
                         this.props.numItems,
                         " Items")),
                 React.createElement("div", { className: 'tagsSection' }))));
-    };
-    return LargeContentBox;
-}(React.Component));
-var NewAndTrending = /** @class */ (function (_super) {
-    __extends(NewAndTrending, _super);
-    function NewAndTrending() {
-        return _super !== null && _super.apply(this, arguments) || this;
     }
-    NewAndTrending.prototype.render = function () {
+}
+class NewAndTrending extends React.Component {
+    render() {
         return (React.createElement("div", { className: 'newAndTrending' },
             React.createElement("h1", { style: { paddingLeft: '10px', flex: '0', minWidth: '200px' } }, "New & Trending"),
             React.createElement("div", { className: 'newAndTrendingContainer' },
@@ -70,8 +51,7 @@ var NewAndTrending = /** @class */ (function (_super) {
                     React.createElement(LargeContentBox, { bgColour: Constant.ACTIVISM, title: 'Pacific Ocean Garbage Patch', type: 'Other', numCollections: '2', numItems: '1', img: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' })),
                 React.createElement(LargeContentBox, { bgColour: Constant.SCITECH, title: 'The Various Shark Species', type: 'Research Paper', numCollections: '3', numItems: '2', img: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' }),
                 React.createElement(LargeContentBox, { bgColour: Constant.ART, title: 'Under The Ocean: Life with Turtles', type: 'Video', numCollections: '1', numItems: '4', img: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' }))));
-    };
-    return NewAndTrending;
-}(React.Component));
+    }
+}
 exports.default = NewAndTrending;
 //# sourceMappingURL=newAndTrending.js.map

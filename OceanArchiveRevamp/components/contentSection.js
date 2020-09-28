@@ -1,35 +1,20 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
-var Constant = require("../constants");
-var reactstrap_1 = require("reactstrap");
-var smallContentBox_1 = require("./smallContentBox");
-var tabState = 8;
-var TableHeader = /** @class */ (function (_super) {
-    __extends(TableHeader, _super);
-    function TableHeader(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = {
+const Constant = require("../constants");
+const reactstrap_1 = require("reactstrap");
+const smallContentBox_1 = require("./smallContentBox");
+var tabState = 0b1000;
+class TableHeader extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             title: props.title,
             colourCode: props.colourCode,
             bgColour: props.isActive ? props.colourCode : "linear-gradient(" + props.colourCode + ", " + props.colourCode + " 85%, #000000 150%)"
         };
-        return _this;
     }
-    TableHeader.prototype.changeBackground = function (active, secColour) {
+    changeBackground(active, secColour) {
         if (active) {
             if (secColour == null) {
                 this.setState({
@@ -47,28 +32,26 @@ var TableHeader = /** @class */ (function (_super) {
                 bgColour: "linear-gradient(" + this.state.colourCode + ", " + this.state.colourCode + " 85%, #000000 150%)"
             });
         }
-    };
-    TableHeader.prototype.render = function () {
+    }
+    render() {
         return (React.createElement("th", { className: "tabHeader", style: { background: this.state.bgColour }, onClick: this.props.stateUpdate }, this.state.title));
-    };
-    return TableHeader;
-}(React.Component));
-var ContentSection = /** @class */ (function (_super) {
-    __extends(ContentSection, _super);
-    function ContentSection(props) {
-        var _this = _super.call(this, props) || this;
-        _this.updateBackground = function (i) { return function () {
-            var s = 8 >> i;
+    }
+}
+class ContentSection extends React.Component {
+    constructor(props) {
+        super(props);
+        this.updateBackground = i => () => {
+            var s = 0b1000 >> i;
             //Set state of tabs to know what is selected
             var newTabState;
-            if (s != 8) {
+            if (s != 0b1000) {
                 if (s & tabState)
                     tabState = s;
                 else {
-                    newTabState = ((tabState & ~s) | (~tabState & s)) & 7;
-                    if (newTabState == 7)
-                        tabState = 8 >> i;
-                    else if (newTabState != 0)
+                    newTabState = ((tabState & ~s) | (~tabState & s)) & 0b0111;
+                    if (newTabState == 0b0111)
+                        tabState = 0b1000 >> i;
+                    else if (newTabState != 0b0)
                         tabState = newTabState;
                 }
             }
@@ -78,13 +61,13 @@ var ContentSection = /** @class */ (function (_super) {
             //Get secondary colour in case 2 tabs are selected
             var secColour = null;
             switch (tabState) {
-                case 6: //SciTech and Art
+                case 0b0110: //SciTech and Art
                     secColour = Constant.SCITECH_ART;
                     break;
-                case 5: //SciTech and Activism
+                case 0b0101: //SciTech and Activism
                     secColour = Constant.ACTIVISM_SCITECH;
                     break;
-                case 3: //Art and Activism
+                case 0b0011: //Art and Activism
                     secColour = Constant.ART_ACTIVISM;
                     break;
                 default:
@@ -93,37 +76,36 @@ var ContentSection = /** @class */ (function (_super) {
             }
             //Set tab background colours
             for (var x = 0; x < 4; x++) {
-                if (tabState & (8 >> x))
-                    _this.Tabs[x].current.changeBackground(true, secColour);
+                if (tabState & (0b1000 >> x))
+                    this.Tabs[x].current.changeBackground(true, secColour);
                 else
-                    _this.Tabs[x].current.changeBackground(false, null);
+                    this.Tabs[x].current.changeBackground(false, null);
             }
             //Set content section background colour
             if (secColour == null)
-                _this.setState({
-                    bgContent: _this.Tabs[i].current.state.colourCode
+                this.setState({
+                    bgContent: this.Tabs[i].current.state.colourCode
                 });
             else
-                _this.setState({
+                this.setState({
                     bgContent: secColour
                 });
-        }; };
-        _this.handleScroll = function () {
+        };
+        this.handleScroll = () => {
             console.log("Scrolled");
         };
-        _this.Tabs = [
+        this.Tabs = [
             React.createRef(),
             React.createRef(),
             React.createRef(),
             React.createRef()
         ];
-        _this.updateBackground = _this.updateBackground.bind(_this);
-        _this.state = {
+        this.updateBackground = this.updateBackground.bind(this);
+        this.state = {
             bgContent: "#4A74A5"
         };
-        return _this;
     }
-    ContentSection.prototype.render = function () {
+    render() {
         return (React.createElement("div", { id: 'contentSection', className: 'contentSection' },
             React.createElement("table", { id: 'tabs', className: "tabs", style: { maxHeight: this.props.tabsHeight } },
                 React.createElement("tbody", null,
@@ -148,8 +130,7 @@ var ContentSection = /** @class */ (function (_super) {
                     React.createElement(smallContentBox_1.default, { title: 'Deep Ocean Life', type: 'Research Paper', year: '2017', numCollections: '2', numItems: '3', img: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg' }),
                     React.createElement(smallContentBox_1.default, { title: 'Whale Spotting', type: 'Gallery', year: '2017', numCollections: '1', numItems: '6', img: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg' }),
                     React.createElement(smallContentBox_1.default, { title: 'Octopus Learning Habits', type: 'Research Paper', year: '2017', numCollections: '2', numItems: '1', img: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg' })))));
-    };
-    return ContentSection;
-}(React.Component));
+    }
+}
 exports.default = ContentSection;
 //# sourceMappingURL=contentSection.js.map

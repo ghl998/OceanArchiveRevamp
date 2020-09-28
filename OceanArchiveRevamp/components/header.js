@@ -1,54 +1,35 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
-var react_router_dom_1 = require("react-router-dom");
-var reactstrap_1 = require("reactstrap");
-var Logo = /** @class */ (function (_super) {
-    __extends(Logo, _super);
-    function Logo(props) {
-        return _super.call(this, props) || this;
+const react_router_dom_1 = require("react-router-dom");
+const reactstrap_1 = require("reactstrap");
+class Logo extends React.Component {
+    constructor(props) {
+        super(props);
     }
-    Logo.prototype.render = function () {
+    render() {
         return (React.createElement("div", { className: 'logo' }, this.props.name));
-    };
-    return Logo;
-}(React.Component));
-var HeaderButton = /** @class */ (function (_super) {
-    __extends(HeaderButton, _super);
-    function HeaderButton(props) {
-        return _super.call(this, props) || this;
     }
-    HeaderButton.prototype.render = function () {
+}
+class HeaderButton extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement("div", { className: 'headerButton', onClick: this.props.onClick }, this.props.name));
-    };
-    return HeaderButton;
-}(React.Component));
-var LoginModal = /** @class */ (function (_super) {
-    __extends(LoginModal, _super);
-    function LoginModal(props) {
-        var _this = _super.call(this, props) || this;
-        _this.toggle = function () { return _this.setState({
-            isOpen: !_this.state.isOpen
-        }); };
-        _this.state = {
+    }
+}
+class LoginModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggle = () => this.setState({
+            isOpen: !this.state.isOpen
+        });
+        this.state = {
             isOpen: false
         };
-        return _this;
     }
-    LoginModal.prototype.render = function () {
+    render() {
         return (React.createElement("div", null,
             React.createElement(HeaderButton, { name: 'LOGIN', onClick: this.toggle }),
             React.createElement(reactstrap_1.Modal, { isOpen: this.state.isOpen, toggle: this.toggle },
@@ -64,28 +45,25 @@ var LoginModal = /** @class */ (function (_super) {
                     React.createElement(reactstrap_1.Button, { className: 'modalButton', onClick: this.props.loginFunc }, "LOGIN"),
                     React.createElement("div", { className: 'modalCenteredLink' },
                         React.createElement("a", { href: 'https://www.google.com' }, "Forgot password?"))))));
-    };
-    return LoginModal;
-}(React.Component));
-var SignUpModal = /** @class */ (function (_super) {
-    __extends(SignUpModal, _super);
-    function SignUpModal(props) {
-        var _this = _super.call(this, props) || this;
-        _this.toggle = function () { return _this.setState({
-            isOpen: !_this.state.isOpen
-        }); };
-        _this.disableScroll = function () {
+    }
+}
+class SignUpModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggle = () => this.setState({
+            isOpen: !this.state.isOpen
+        });
+        this.disableScroll = () => {
             document.body.style.overflow = 'hidden';
         };
-        _this.enableScroll = function () {
+        this.enableScroll = () => {
             document.body.style.overflow = 'auto';
         };
-        _this.state = {
+        this.state = {
             isOpen: false
         };
-        return _this;
     }
-    SignUpModal.prototype.render = function () {
+    render() {
         return (React.createElement("div", null,
             React.createElement(HeaderButton, { name: 'SIGNUP', onClick: this.toggle }),
             React.createElement(reactstrap_1.Modal, { isOpen: this.state.isOpen, toggle: this.toggle, onOpened: this.disableScroll, onClosed: this.enableScroll },
@@ -135,22 +113,19 @@ var SignUpModal = /** @class */ (function (_super) {
                         React.createElement("p", null,
                             "Already have an account? ",
                             React.createElement("a", { href: 'https://www.google.com' }, "Sign In")))))));
-    };
-    return SignUpModal;
-}(React.Component));
-var Contribute = /** @class */ (function (_super) {
-    __extends(Contribute, _super);
-    function Contribute(props) {
-        var _this = _super.call(this, props) || this;
-        _this.toggle = function () { return _this.setState({
-            isOpen: !_this.state.isOpen
-        }); };
-        _this.state = {
+    }
+}
+class Contribute extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggle = () => this.setState({
+            isOpen: !this.state.isOpen
+        });
+        this.state = {
             isOpen: false
         };
-        return _this;
     }
-    Contribute.prototype.render = function () {
+    render() {
         return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', style: { minWidth: '130px' }, isOpen: this.state.isOpen, toggle: this.toggle, direction: 'down' },
             React.createElement(reactstrap_1.DropdownToggle, { caret: true }, "CONTRIBUTE"),
             React.createElement(reactstrap_1.DropdownMenu, null,
@@ -158,70 +133,60 @@ var Contribute = /** @class */ (function (_super) {
                     React.createElement(reactstrap_1.DropdownItem, null, "ITEM")),
                 React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION"),
                 React.createElement(react_router_dom_1.NavLink, { to: "/myAnnouncements" },
-                React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT")))));
-    };
-    return Contribute;
-}(React.Component));
-var Admin = /** @class */ (function (_super) {
-    __extends(Admin, _super);
-    function Admin(props) {
-        var _this = _super.call(this, props) || this;
-        _this.toggle = function () { return _this.setState({
-            isOpen: !_this.state.isOpen
-        }); };
-        _this.state = {
+                    React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT")))));
+    }
+}
+class Admin extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggle = () => this.setState({
+            isOpen: !this.state.isOpen
+        });
+        this.state = {
             isOpen: false
         };
-        return _this;
     }
-    Admin.prototype.render = function () {
+    render() {
         return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', isOpen: this.state.isOpen, toggle: this.toggle, direction: 'down' },
             React.createElement(reactstrap_1.DropdownToggle, { caret: true }, "ADMIN"),
             React.createElement(reactstrap_1.DropdownMenu, null,
                 React.createElement(reactstrap_1.DropdownItem, null, "ITEM"),
                 React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION"),
                 React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT"))));
-    };
-    return Admin;
-}(React.Component));
-var Logout = /** @class */ (function (_super) {
-    __extends(Logout, _super);
-    function Logout(props) {
-        return _super.call(this, props) || this;
     }
-    Logout.prototype.render = function () {
+}
+class Logout extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement(HeaderButton, { name: 'LOGOUT', onClick: this.props.logoutFunc }));
-    };
-    return Logout;
-}(React.Component));
-var SeachBar = /** @class */ (function (_super) {
-    __extends(SeachBar, _super);
-    function SeachBar(props) {
-        return _super.call(this, props) || this;
     }
-    SeachBar.prototype.render = function () {
+}
+class SeachBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement("form", { method: "post", style: { display: 'flex' } },
             React.createElement("input", { type: "search", className: "searchBar", placeholder: "Search..." }),
             React.createElement("input", { type: "submit", className: 'searchButton', value: 'Search' })));
-    };
-    return SeachBar;
-}(React.Component));
-var Header = /** @class */ (function (_super) {
-    __extends(Header, _super);
-    function Header(props) {
-        var _this = _super.call(this, props) || this;
-        _this.login = function () { return _this.setState({
+    }
+}
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.login = () => this.setState({
             loggedIn: true
-        }); };
-        _this.logout = function () { return _this.setState({
+        });
+        this.logout = () => this.setState({
             loggedIn: false
-        }); };
-        _this.state = {
+        });
+        this.state = {
             loggedIn: false
         };
-        return _this;
     }
-    Header.prototype.render = function () {
+    render() {
         return (React.createElement("div", { className: "header" },
             React.createElement(Logo, { name: 'OCEAN' }),
             React.createElement("div", { style: { flex: '1' } },
@@ -242,8 +207,7 @@ var Header = /** @class */ (function (_super) {
                     React.createElement("div", { style: { flex: '1' } },
                         React.createElement(SeachBar, null)))),
             React.createElement(Logo, { name: 'ARCHIVE' })));
-    };
-    return Header;
-}(React.Component));
+    }
+}
 exports.default = Header;
 //# sourceMappingURL=header.js.map

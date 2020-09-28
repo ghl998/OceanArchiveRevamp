@@ -55,6 +55,9 @@
     <Content Include="logos\Youtube.svg" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="styles\bubble.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="styles\carousel.css">
       <SubType>Code</SubType>
     </Content>
@@ -90,6 +93,7 @@
     <TypeScriptCompile Include="components\map.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="components\myAnnouncements.tsx" />
     <TypeScriptCompile Include="components\myItems.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -97,6 +101,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="components\itemCollectionPage.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="components\onboardingForm.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="components\smallContentBox.tsx">

@@ -1,38 +1,23 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
-var Constant = require("../constants");
-var Blog_svg_1 = require("../logos/Blog.svg");
-var Facebook_svg_1 = require("../logos/Facebook.svg");
-var Instagram_svg_1 = require("../logos/Instagram.svg");
-var Twitter_svg_1 = require("../logos/Twitter.svg");
-var Youtube_svg_1 = require("../logos/Youtube.svg");
-var smallContentBox_1 = require("./smallContentBox");
-var firstTrans = 'flex 0.1s linear';
-var secTrans = 'flex 0.1s linear 0.1s';
-var Tab = /** @class */ (function (_super) {
-    __extends(Tab, _super);
-    function Tab(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = {
-            bgColour: _this.props.bgColour
+const Constant = require("../constants");
+const Blog_svg_1 = require("../logos/Blog.svg");
+const Facebook_svg_1 = require("../logos/Facebook.svg");
+const Instagram_svg_1 = require("../logos/Instagram.svg");
+const Twitter_svg_1 = require("../logos/Twitter.svg");
+const Youtube_svg_1 = require("../logos/Youtube.svg");
+const smallContentBox_1 = require("./smallContentBox");
+const firstTrans = 'flex 0.1s linear';
+const secTrans = 'flex 0.1s linear 0.1s';
+class Tab extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            bgColour: this.props.bgColour
         };
-        return _this;
     }
-    Tab.prototype.changeColour = function (active) {
+    changeColour(active) {
         if (active) {
             this.setState({
                 bgColour: Constant.SECONDARY_COLOUR
@@ -43,20 +28,18 @@ var Tab = /** @class */ (function (_super) {
                 bgColour: Constant.MAIN_COLOUR
             });
         }
-    };
-    Tab.prototype.render = function () {
+    }
+    render() {
         return (React.createElement("div", { className: 'tab', style: { backgroundColor: this.state.bgColour }, onClick: this.props.changeColour }, this.props.title));
-    };
-    return Tab;
-}(React.Component));
-var Description = /** @class */ (function (_super) {
-    __extends(Description, _super);
-    function Description(props) {
-        var _this = _super.call(this, props) || this;
-        _this.expand = function () {
+    }
+}
+class Description extends React.Component {
+    constructor(props) {
+        super(props);
+        this.expand = () => {
             //console.log('Clicked');
-            if (_this.state.isOpen) {
-                _this.setState({
+            if (this.state.isOpen) {
+                this.setState({
                     isOpen: false,
                     flex: '0 1 auto',
                     outerTrans: secTrans,
@@ -64,7 +47,7 @@ var Description = /** @class */ (function (_super) {
                 });
             }
             else {
-                _this.setState({
+                this.setState({
                     isOpen: true,
                     flex: '1 0 auto',
                     outerTrans: firstTrans,
@@ -72,64 +55,56 @@ var Description = /** @class */ (function (_super) {
                 });
             }
         };
-        _this.state = {
+        this.state = {
             isOpen: false,
             flex: '0 1 auto',
             outerTrans: secTrans,
             innerTrans: firstTrans
         };
-        return _this;
     }
-    Description.prototype.render = function () {
-        var _this = this;
+    render() {
         return (React.createElement("div", { className: 'descriptionContainer', style: { transition: this.state.outerTrans, flex: this.state.flex } },
             React.createElement("h2", null, "DESCRIPTION"),
             React.createElement("div", { className: 'description', style: { transition: this.state.innerTrans, flex: this.state.flex } }, "She tried not to judge him. His ratty clothes and unkempt hair made him look homeless. Was he really the next Einstein as she had been told? On the off chance it was true, she continued to try not to judge him. Sometimes it's the first moment of the day that catches you off guard. That's what Wendy was thinking. She opened her window to see fire engines screeching down the street. While this wasn't something completely unheard of, it also wasn't normal. It was a sure sign of what was going to happen that day. She could feel it in her bones and it wasn't the way she wanted the day to begin. Dave found joy in the daily routine of life. He awoke at the same time, ate the same breakfast and drove the same commute. He worked at a job that never seemed to change and he got home at 6 pm sharp every night. It was who he had been for the last ten years and he had no idea that was all about to change.It's always good to bring a slower friend with you on a hike. If you happen to come across bears, the whole group doesn't have to worry. Only the slowest in the group do. That was the lesson they were about to learn that day. Her mom had warned her. She had been warned time and again, but she had refused to believe her. She had done everything right and she knew she would be rewarded for doing so with the promotion. So when the promotion was given to her main rival, it not only stung, it threw her belief system into disarray. It was her first big lesson in life, but not the last. The amber droplet hung from the branch, reaching fullness and ready to drop. It waited. While many of the other droplets were satisfied to form as big as they could and release, this droplet had other plans. It wanted to be part of history. It wanted to be remembered long after all the other droplets had dissolved into history. So it waited for the perfect specimen to fly by to trap and capture that it hoped would eventually be discovered hundreds of years in the future."),
-            React.createElement("div", { className: 'expandToggle', onClick: function () { return _this.expand(); } }, this.state.isOpen ?
+            React.createElement("div", { className: 'expandToggle', onClick: () => this.expand() }, this.state.isOpen ?
                 React.createElement("svg", { width: '40px', height: '20px' },
                     React.createElement("polyline", { points: '5,15 20,5 35,15', strokeLinecap: 'round', style: { fill: 'none', stroke: Constant.SECONDARY_COLOUR, strokeWidth: '5' } }),
                     "Close")
                 : React.createElement("svg", { width: '40px', height: '20px' },
                     React.createElement("polyline", { points: '5,5 20,15 35,5', strokeLinecap: 'round', style: { fill: 'none', stroke: Constant.SECONDARY_COLOUR, strokeWidth: '5' } }),
                     "Open"))));
-    };
-    return Description;
-}(React.Component));
-var Recommendation = /** @class */ (function (_super) {
-    __extends(Recommendation, _super);
-    function Recommendation(props) {
-        return _super.call(this, props) || this;
     }
-    Recommendation.prototype.render = function () {
+}
+class Recommendation extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement("div", { className: 'recommendation' },
             React.createElement("img", { src: this.props.src, alt: this.props.title + " thumbnail" }),
             React.createElement("div", { style: { flex: '1 1 auto' } },
                 React.createElement("div", { style: { display: 'flex', flexDirection: 'column', height: '100px' } },
                     React.createElement("h2", { className: 'listTitle' }, this.props.title),
                     React.createElement("p", { className: 'listDesc' }, this.props.desc)))));
-    };
-    return Recommendation;
-}(React.Component));
-var Tag = /** @class */ (function (_super) {
-    __extends(Tag, _super);
-    function Tag(props) {
-        return _super.call(this, props) || this;
     }
-    Tag.prototype.render = function () {
+}
+class Tag extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement("div", { className: 'tag' },
             "#",
             this.props.name));
-    };
-    return Tag;
-}(React.Component));
-var TagsSection = /** @class */ (function (_super) {
-    __extends(TagsSection, _super);
-    function TagsSection(props) {
-        var _this = _super.call(this, props) || this;
-        _this.expand = function () {
+    }
+}
+class TagsSection extends React.Component {
+    constructor(props) {
+        super(props);
+        this.expand = () => {
             //console.log('Clicked');
-            if (_this.state.tagsIsOpen) {
-                _this.setState({
+            if (this.state.tagsIsOpen) {
+                this.setState({
                     tagsIsOpen: false,
                     flex: '0 1 0px',
                     outerTrans: secTrans,
@@ -137,7 +112,7 @@ var TagsSection = /** @class */ (function (_super) {
                 });
             }
             else {
-                _this.setState({
+                this.setState({
                     tagsIsOpen: true,
                     flex: '1 0 auto',
                     outerTrans: firstTrans,
@@ -145,16 +120,14 @@ var TagsSection = /** @class */ (function (_super) {
                 });
             }
         };
-        _this.state = {
+        this.state = {
             tagsIsOpen: false,
             flex: '0 1 0px',
             outerTrans: secTrans,
             innerTrans: firstTrans
         };
-        return _this;
     }
-    TagsSection.prototype.render = function () {
-        var _this = this;
+    render() {
         return (React.createElement("div", { className: 'tagsContainer', style: { transition: this.state.outerTrans, flex: this.state.flex } },
             React.createElement("div", { className: 'tagsLabel' }, "TAGS"),
             React.createElement("div", { style: { display: 'flex', width: '100%' } },
@@ -189,66 +162,59 @@ var TagsSection = /** @class */ (function (_super) {
                     React.createElement(Tag, { name: 'climate change' }),
                     React.createElement(Tag, { name: 'fish' }),
                     React.createElement(Tag, { name: 'pollution' }))),
-            React.createElement("div", { className: 'tagsContainerController', onClick: function () { return _this.expand(); } }, this.state.tagsIsOpen ?
+            React.createElement("div", { className: 'tagsContainerController', onClick: () => this.expand() }, this.state.tagsIsOpen ?
                 React.createElement("svg", { width: '40px', height: '20px' },
                     React.createElement("polyline", { points: '5,15 20,5 35,15', strokeLinecap: 'round', style: { fill: 'none', stroke: Constant.SECONDARY_COLOUR, strokeWidth: '5' } }),
                     "Close")
                 : React.createElement("svg", { width: '40px', height: '20px' },
                     React.createElement("polyline", { points: '5,5 20,15 35,5', strokeLinecap: 'round', style: { fill: 'none', stroke: Constant.SECONDARY_COLOUR, strokeWidth: '5' } }),
                     "Open"))));
-    };
-    return TagsSection;
-}(React.Component));
-var Info = /** @class */ (function (_super) {
-    __extends(Info, _super);
-    function Info(props) {
-        return _super.call(this, props) || this;
     }
-    Info.prototype.render = function () {
+}
+class Info extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement("div", { className: 'infoBar' },
             React.createElement("div", { className: 'infoLabel' }, this.props.label),
             React.createElement("div", { className: 'infoText' }, this.props.children)));
-    };
-    return Info;
-}(React.Component));
-var ShareButton = /** @class */ (function (_super) {
-    __extends(ShareButton, _super);
-    function ShareButton(props) {
-        return _super.call(this, props) || this;
     }
-    ShareButton.prototype.render = function () {
+}
+class ShareButton extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
         return (React.createElement("div", { className: 'shareButton', alt: this.props.name + ' share button' }, this.props.children));
-    };
-    return ShareButton;
-}(React.Component));
-var ItemCollectionPage = /** @class */ (function (_super) {
-    __extends(ItemCollectionPage, _super);
-    function ItemCollectionPage(props) {
-        var _this = _super.call(this, props) || this;
-        _this.changeTabs = function (tabNum) { return function () {
-            if (tabNum != _this.state.currentActiveTab) {
+    }
+}
+class ItemCollectionPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.changeTabs = tabNum => () => {
+            if (tabNum != this.state.currentActiveTab) {
                 //console.log(tabNum);
                 for (var i = 0; i < 2; i++) {
                     if (i == tabNum) {
-                        _this.Tabs[i].current.changeColour(true);
-                        _this.setState({ currentActiveTab: tabNum });
+                        this.Tabs[i].current.changeColour(true);
+                        this.setState({ currentActiveTab: tabNum });
                     }
                     else {
-                        _this.Tabs[i].current.changeColour(false);
+                        this.Tabs[i].current.changeColour(false);
                     }
                 }
             }
-        }; };
-        _this.Tabs = [
+        };
+        this.Tabs = [
             React.createRef(),
             React.createRef()
         ];
-        _this.state = {
+        this.state = {
             currentActiveTab: 0
         };
-        return _this;
     }
-    ItemCollectionPage.prototype.render = function () {
+    render() {
         return (React.createElement("div", { className: 'itemCollectionPage' },
             React.createElement("div", { className: 'breadcrumbsContainer' }, "Breadcrumbs"),
             React.createElement("div", { style: { display: 'flex', flex: '1 0 auto' } },
@@ -331,8 +297,7 @@ var ItemCollectionPage = /** @class */ (function (_super) {
                         React.createElement(Recommendation, { title: 'Deep Ocean Life', desc: 'Some description He sat staring at the person in the train stopped at the station going in the opposite direction. She sat staring ahead, never noticing that she was being watched. Both trains began to move and he knew that in another timeline or in another universe, they had been happy together.', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg' }),
                         React.createElement(Recommendation, { title: 'Whale Spotting', desc: 'Some description He sat staring at the person in the train stopped at the station going in the opposite direction. She sat staring ahead, never noticing that she was being watched. Both trains began to move and he knew that in another timeline or in another universe, they had been happy together.', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg' }),
                         React.createElement(Recommendation, { title: 'Octopus Learning Habits', desc: 'Some description He sat staring at the person in the train stopped at the station going in the opposite direction. She sat staring ahead, never noticing that she was being watched. Both trains began to move and he knew that in another timeline or in another universe, they had been happy together.', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg' }))))));
-    };
-    return ItemCollectionPage;
-}(React.Component));
+    }
+}
 exports.default = ItemCollectionPage;
 //# sourceMappingURL=itemCollectionPage.js.map

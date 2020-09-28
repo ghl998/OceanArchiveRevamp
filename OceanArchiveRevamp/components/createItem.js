@@ -1,50 +1,36 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Constant = require("../constants");
-var reactstrap_1 = require("reactstrap");
-var react_select_1 = require("react-select");
-var google_map_react_1 = require("google-map-react");
-var Draggable = require('react-draggable');
-var DetailsPage = /** @class */ (function (_super) {
-    __extends(DetailsPage, _super);
-    function DetailsPage(props) {
-        var _this = _super.call(this, props) || this;
-        _this.validate = function () {
+const Constant = require("../constants");
+const reactstrap_1 = require("reactstrap");
+const react_select_1 = require("react-select");
+const google_map_react_1 = require("google-map-react");
+let Draggable = require('react-draggable');
+class DetailsPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.validate = () => {
             console.log('Validate Details');
             var pageValid = true;
-            var errors = _this.state.errors;
-            if (_this.state.values.title.length <= 0)
+            var errors = this.state.errors;
+            if (this.state.values.title.length <= 0)
                 errors.title = true;
             if (errors.title || errors.desc || errors.creator || errors.dateStart || errors.dateFinish || errors.url || errors.lang)
                 pageValid = false;
             return pageValid;
         };
-        _this.validateTitle = function (e) {
+        this.validateTitle = (e) => {
             var error = false;
             if (e.target.value.length <= 0)
                 error = true;
-            var errors = _this.state.errors;
+            var errors = this.state.errors;
             errors.title = error;
-            var values = _this.state.values;
+            var values = this.state.values;
             values.title = e.target.value;
-            _this.setState({ errors: errors, values: values });
+            this.setState({ errors: errors, values: values });
         };
-        _this.state = {
+        this.state = {
             errors: {
                 title: false,
                 desc: false,
@@ -64,15 +50,13 @@ var DetailsPage = /** @class */ (function (_super) {
                 lang: ''
             }
         };
-        return _this;
     }
-    DetailsPage.prototype.render = function () {
-        var _this = this;
+    render() {
         return (React.createElement("div", { className: 'createItemPage' },
             React.createElement("div", { className: 'dragAndDrop' }, "DRAG & DROP OR CLICK TO UPLOAD FILE"),
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'title' }, "Title"),
-                React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: function (e) { return _this.validateTitle(e); } }),
+                React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.title }, "Title Error")),
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'desc' }, "Description"),
@@ -98,40 +82,36 @@ var DetailsPage = /** @class */ (function (_super) {
                 React.createElement(reactstrap_1.Label, { for: 'lang' }, "Language (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'lang', id: 'lang', value: this.state.values.lang, invalid: this.state.errors.lang }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.lang }, "Language Error"))));
-    };
-    return DetailsPage;
-}(React.Component));
-var CategoryAndTagsPage = /** @class */ (function (_super) {
-    __extends(CategoryAndTagsPage, _super);
-    function CategoryAndTagsPage(props) {
-        var _this = _super.call(this, props) || this;
-        _this.setMainFocus = function (index) {
-            if (index != _this.state.activeFocus) {
-                _this.props.setMainFocus(index);
-                _this.setState({
+    }
+}
+class CategoryAndTagsPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.setMainFocus = (index) => {
+            if (index != this.state.activeFocus) {
+                this.props.setMainFocus(index);
+                this.setState({
                     activeFocus: index
                 });
                 //console.log(index, " checked ", this.checkBoxes[index].current.checked);
-                _this.checkBoxes[index].current.checked = false;
+                this.checkBoxes[index].current.checked = false;
             }
         };
-        _this.validate = function () {
+        this.validate = () => {
             console.log('Validate Cats & Tags');
             var pageValid = true;
             return pageValid;
         };
-        _this.state = {
+        this.state = {
             activeFocus: 0
         };
-        _this.checkBoxes = [
+        this.checkBoxes = [
             React.createRef(),
             React.createRef(),
             React.createRef()
         ];
-        return _this;
     }
-    CategoryAndTagsPage.prototype.render = function () {
-        var _this = this;
+    render() {
         return (React.createElement("div", { className: 'createItemPage' },
             "Categories",
             React.createElement("hr", null),
@@ -141,9 +121,9 @@ var CategoryAndTagsPage = /** @class */ (function (_super) {
                 React.createElement(reactstrap_1.ButtonGroup, { className: 'mainFocus' },
                     React.createElement(reactstrap_1.Button, { className: 'left', type: 'button', style: {
                             backgroundColor: this.state.activeFocus == 0 ? Constant.SECONDARY_COLOUR : Constant.MAIN_COLOUR
-                        }, onClick: function () { return _this.setMainFocus(0); } }, "Science & Tech"),
-                    React.createElement(reactstrap_1.Button, { type: 'button', style: { backgroundColor: this.state.activeFocus == 1 ? Constant.SECONDARY_COLOUR : Constant.MAIN_COLOUR }, onClick: function () { return _this.setMainFocus(1); } }, "Art"),
-                    React.createElement(reactstrap_1.Button, { className: 'right', type: 'button', style: { backgroundColor: this.state.activeFocus == 2 ? Constant.SECONDARY_COLOUR : Constant.MAIN_COLOUR }, onClick: function () { return _this.setMainFocus(2); } }, "Activism"))),
+                        }, onClick: () => this.setMainFocus(0) }, "Science & Tech"),
+                    React.createElement(reactstrap_1.Button, { type: 'button', style: { backgroundColor: this.state.activeFocus == 1 ? Constant.SECONDARY_COLOUR : Constant.MAIN_COLOUR }, onClick: () => this.setMainFocus(1) }, "Art"),
+                    React.createElement(reactstrap_1.Button, { className: 'right', type: 'button', style: { backgroundColor: this.state.activeFocus == 2 ? Constant.SECONDARY_COLOUR : Constant.MAIN_COLOUR }, onClick: () => this.setMainFocus(2) }, "Activism"))),
             React.createElement(reactstrap_1.FormGroup, { check: true },
                 React.createElement(reactstrap_1.Label, null, "Other Focus Areas (optional)"),
                 React.createElement(reactstrap_1.Label, { check: true, style: { display: this.state.activeFocus == 0 ? 'none' : 'inline-block' } },
@@ -173,21 +153,18 @@ var CategoryAndTagsPage = /** @class */ (function (_super) {
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'keyword' }, "Keywords (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'select', name: 'keyword' }))));
-    };
-    return CategoryAndTagsPage;
-}(React.Component));
-var RegionAndLegalPage = /** @class */ (function (_super) {
-    __extends(RegionAndLegalPage, _super);
-    function RegionAndLegalPage(props) {
-        var _this = _super.call(this, props) || this;
-        _this.validate = function () {
+    }
+}
+class RegionAndLegalPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.validate = () => {
             console.log('Validate Region & Legal');
             var pageValid = true;
             return pageValid;
         };
-        return _this;
     }
-    RegionAndLegalPage.prototype.render = function () {
+    render() {
         return (React.createElement("div", { className: 'createItemPage' },
             "Regions",
             React.createElement("hr", null),
@@ -213,66 +190,63 @@ var RegionAndLegalPage = /** @class */ (function (_super) {
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'copyr' }, "Copyright Owner (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
-    };
-    return RegionAndLegalPage;
-}(React.Component));
-var CoordinateBox = /** @class */ (function (_super) {
-    __extends(CoordinateBox, _super);
-    function CoordinateBox(props) {
-        var _this = _super.call(this, props) || this;
-        _this.inFocus = function () {
-            _this.setState({
+    }
+}
+class CoordinateBox extends React.Component {
+    constructor(props) {
+        super(props);
+        this.inFocus = () => {
+            this.setState({
                 isFocused: true
             });
-            _this.props.activateWaypoint(_this.state.id);
+            this.props.activateWaypoint(this.state.id);
         };
-        _this.outFocus = function () {
-            _this.setState({
+        this.outFocus = () => {
+            this.setState({
                 isFocused: false
             });
-            _this.props.deactivateWaypoint();
+            this.props.deactivateWaypoint();
         };
-        _this.updateLat = function (e) {
+        this.updateLat = (e) => {
             var f = parseFloat(e.target.value);
-            _this.setState({ lat: f });
-            _this.props.updateLatLong(_this.state.id, f, _this.state.lng);
+            this.setState({ lat: f });
+            this.props.updateLatLong(this.state.id, f, this.state.lng);
         };
-        _this.updateLng = function (e) {
+        this.updateLng = (e) => {
             var f = parseFloat(e.target.value);
-            _this.setState({ lng: f });
-            _this.props.updateLatLong(_this.state.id, _this.state.lat, f);
+            this.setState({ lng: f });
+            this.props.updateLatLong(this.state.id, this.state.lat, f);
         };
-        _this.remove = function () {
-            _this.props.remove(_this.state.id);
+        this.remove = () => {
+            this.props.remove(this.state.id);
         };
-        _this.onStart = function () {
-            _this.props.onStart(_this.state.id);
+        this.onStart = () => {
+            this.props.onStart(this.state.id);
         };
-        _this.onDrag = function (e, ui) {
-            _this.props.onDrag(_this.state.id, ui.y);
+        this.onDrag = (e, ui) => {
+            this.props.onDrag(this.state.id, ui.y);
         };
-        _this.onStop = function (e, ui) {
-            _this.props.onStop(_this.state.id, ui.y);
+        this.onStop = (e, ui) => {
+            this.props.onStop(this.state.id, ui.y);
         };
-        _this.updateYpos = function (newY) {
-            _this.setState({
+        this.updateYpos = (newY) => {
+            this.setState({
                 position: { x: 0, y: newY }
             });
         };
-        _this.centerMap = function () {
-            _this.props.centerMap(_this.state.lat, _this.state.lng);
+        this.centerMap = () => {
+            this.props.centerMap(this.state.lat, this.state.lng);
         };
-        _this.state = {
+        this.state = {
             isFocused: false,
             lat: 0,
             lng: 0,
-            id: _this.props.arrayId,
-            position: { x: 0, y: _this.props.yPos }
+            id: this.props.arrayId,
+            position: { x: 0, y: this.props.yPos }
         };
-        return _this;
         //console.log('props: ', props);
     }
-    CoordinateBox.prototype.render = function () {
+    render() {
         return (React.createElement(Draggable, { axis: 'y', bounds: 'parent', onStart: this.onStart, onDrag: this.onDrag, onStop: this.onStop, position: this.state.position, cancel: '.coordInput' },
             React.createElement("div", { tabIndex: '0', className: this.state.isFocused ? 'coordContainer focused' : 'coordContainer', onFocus: this.inFocus, onBlur: this.outFocus },
                 React.createElement(reactstrap_1.FormGroup, { className: 'coordFormGroup' },
@@ -295,108 +269,106 @@ var CoordinateBox = /** @class */ (function (_super) {
                         React.createElement("svg", { width: '50', height: '50' },
                             React.createElement("line", { x1: '10', y1: '10', x2: '40', y2: '40', style: { stroke: '#ffffff', strokeWidth: '4', strokeLinecap: 'round' } }),
                             React.createElement("line", { x1: '40', y1: '10', x2: '10', y2: '40', style: { stroke: '#ffffff', strokeWidth: '4', strokeLinecap: 'round' } })))))));
-    };
-    return CoordinateBox;
-}(React.Component));
-var HEIGHT = 60;
-var LocationPage = /** @class */ (function (_super) {
-    __extends(LocationPage, _super);
-    function LocationPage(props) {
-        var _this = _super.call(this, props) || this;
-        _this.validate = function () {
+    }
+}
+const HEIGHT = 60;
+class LocationPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.validate = () => {
             console.log('Validate Locations');
             var pageValid = true;
             return pageValid;
         };
-        _this.addCoord = function () {
-            _this.state.coords.push({ 'ref': React.createRef(), 'id': _this.state.nextId, 'lat': 0, 'lng': 0, 'yPos': 0 });
-            _this.setState({
-                coords: _this.state.coords,
-                nextId: _this.state.nextId + 1
+        this.addCoord = () => {
+            this.state.coords.push({ 'ref': React.createRef(), 'id': this.state.nextId, 'lat': 0, 'lng': 0, 'yPos': 0 });
+            this.setState({
+                coords: this.state.coords,
+                nextId: this.state.nextId + 1
             });
-            if (_this.poly != null)
-                _this.poly.setPath(_this.getLatLngs());
+            if (this.poly != null)
+                this.poly.setPath(this.getLatLngs());
         };
-        _this.removeCoord = function (id) {
+        this.removeCoord = (id) => {
             //console.log("remove id: ", id);
-            var i = _this.state.coords.findIndex(function (coord) { return coord.id === id; });
+            var i = this.state.coords.findIndex(coord => coord.id === id);
             //console.log("remove i: ", i);
             if (i >= 0) {
-                _this.state.coords.splice(i, 1);
-                _this.setState({
-                    coords: _this.state.coords,
+                this.state.coords.splice(i, 1);
+                this.setState({
+                    coords: this.state.coords,
                 });
                 //console.log(this.state.coords);
             }
         };
-        _this.updateLatLng = function (id, newLat, newLng) {
-            var i = _this.state.coords.findIndex(function (coord) { return coord.id === id; });
+        this.updateLatLng = (id, newLat, newLng) => {
+            var i = this.state.coords.findIndex(coord => coord.id === id);
             if (i >= 0) {
-                _this.state.coords[i].lat = newLat;
-                _this.state.coords[i].lng = newLng;
-                _this.setState({
-                    coords: _this.state.coords,
+                this.state.coords[i].lat = newLat;
+                this.state.coords[i].lng = newLng;
+                this.setState({
+                    coords: this.state.coords,
                 });
-                if (_this.poly != null)
-                    _this.poly.setPath(_this.getLatLngs());
+                if (this.poly != null)
+                    this.poly.setPath(this.getLatLngs());
             }
         };
-        _this.onStart = function (id) {
+        this.onStart = (id) => {
             //var i = this.state.coords.findIndex(coord => coord.id === id);
             //if (i >= 0)
             //console.log('onStart yPos: ', this.state.coords[i].yPos);
         };
-        _this.onDrag = function (id, y) {
-            var i = _this.state.coords.findIndex(function (coord) { return coord.id === id; });
+        this.onDrag = (id, y) => {
+            var i = this.state.coords.findIndex(coord => coord.id === id);
             if (i >= 0) {
                 //console.log('onDrag y: ', y);
                 var n = Math.floor((y + HEIGHT / 2) / HEIGHT);
                 //console.log('n: ', n);
                 if (n < 0) {
-                    for (var j = 0; j < _this.state.coords.length; j += 1) {
+                    for (var j = 0; j < this.state.coords.length; j += 1) {
                         if (j != i) {
                             var k = j - i;
                             if (k < 0 && k >= n)
-                                _this.state.coords[j].ref.current.updateYpos(HEIGHT);
+                                this.state.coords[j].ref.current.updateYpos(HEIGHT);
                             else
-                                _this.state.coords[j].ref.current.updateYpos(0);
+                                this.state.coords[j].ref.current.updateYpos(0);
                         }
                     }
                 }
                 else if (n > 0) {
-                    for (var j = 0; j < _this.state.coords.length; j += 1) {
+                    for (var j = 0; j < this.state.coords.length; j += 1) {
                         if (j != i) {
                             var k = j - i;
                             if (k >= 0 && k <= n)
-                                _this.state.coords[j].ref.current.updateYpos(-HEIGHT);
+                                this.state.coords[j].ref.current.updateYpos(-HEIGHT);
                             else
-                                _this.state.coords[j].ref.current.updateYpos(0);
+                                this.state.coords[j].ref.current.updateYpos(0);
                         }
                     }
                 }
                 else {
-                    for (var j = 0; j < _this.state.coords.length; j += 1)
+                    for (var j = 0; j < this.state.coords.length; j += 1)
                         if (j != i)
-                            _this.state.coords[j].ref.current.updateYpos(0);
+                            this.state.coords[j].ref.current.updateYpos(0);
                 }
             }
         };
-        _this.onStop = function (id, y) {
-            var i = _this.state.coords.findIndex(function (coord) { return coord.id === id; });
+        this.onStop = (id, y) => {
+            var i = this.state.coords.findIndex(coord => coord.id === id);
             if (i >= 0) {
                 //console.log('onStop y: ', y);
-                for (var j = 0; j < _this.state.coords.length; j += 1)
+                for (var j = 0; j < this.state.coords.length; j += 1)
                     if (j != i)
-                        _this.state.coords[j].ref.current.updateYpos(0);
+                        this.state.coords[j].ref.current.updateYpos(0);
                 var n = Math.floor((y + HEIGHT / 2) / HEIGHT);
-                var coords = _this.state.coords;
-                var movedCoord = _this.state.coords[i];
+                var coords = this.state.coords;
+                var movedCoord = this.state.coords[i];
                 if (n < 0) {
                     for (var j = i; j > (i + n); j -= 1) {
                         coords[j] = coords[j - 1];
                     }
                     coords[i + n] = movedCoord;
-                    _this.setState({
+                    this.setState({
                         coords: coords,
                         currentFocus: i + n
                     });
@@ -406,81 +378,79 @@ var LocationPage = /** @class */ (function (_super) {
                         coords[j] = coords[j + 1];
                     }
                     coords[i + n] = movedCoord;
-                    _this.setState({
+                    this.setState({
                         coords: coords,
                         currentFocus: i + n
                     });
                 }
-                if (_this.poly != null)
-                    _this.poly.setPath(_this.getLatLngs());
+                if (this.poly != null)
+                    this.poly.setPath(this.getLatLngs());
             }
         };
-        _this.focusWaypoint = function (id) {
-            var i = _this.state.coords.findIndex(function (coord) { return coord.id === id; });
+        this.focusWaypoint = (id) => {
+            var i = this.state.coords.findIndex(coord => coord.id === id);
             if (i >= 0)
-                _this.setState({
+                this.setState({
                     currentFocus: i
                 });
         };
-        _this.defocusWaypoint = function () {
-            _this.setState({
+        this.defocusWaypoint = () => {
+            this.setState({
                 currentFocus: -1
             });
         };
-        _this.changeTabs = function (i) {
-            _this.setState({
+        this.changeTabs = (i) => {
+            this.setState({
                 activeTab: i
             });
-            if (_this.poly != null)
-                _this.poly.setMap(null);
-            _this.poly = null;
+            if (this.poly != null)
+                this.poly.setMap(null);
+            this.poly = null;
             if (i == 1) {
-                _this.poly = new google.maps.Polyline({
-                    path: _this.getLatLngs(),
+                this.poly = new google.maps.Polyline({
+                    path: this.getLatLngs(),
                     strokeColor: Constant.MAIN_COLOUR,
                     strokeOpacity: 1.0,
                     strokeWeight: 2
                 });
-                _this.poly.setMap(_this.map);
+                this.poly.setMap(this.map);
             }
             else if (i == 2) {
-                _this.poly = new google.maps.Polygon({
-                    paths: _this.getLatLngs(),
+                this.poly = new google.maps.Polygon({
+                    paths: this.getLatLngs(),
                     strokeColor: Constant.MAIN_COLOUR,
                     strokeOpacity: 1.0,
                     strokeWeight: 2,
                     fillColor: Constant.TERTIARY_COLOUR,
                     fillOpacity: 0.35
                 });
-                _this.poly.setMap(_this.map);
+                this.poly.setMap(this.map);
             }
         };
-        _this.getLatLngs = function () {
+        this.getLatLngs = () => {
             var path = [];
-            for (var i = 0; i < _this.state.coords.length; i += 1)
-                path.push({ 'lat': _this.state.coords[i].lat, 'lng': _this.state.coords[i].lng });
+            for (var i = 0; i < this.state.coords.length; i += 1)
+                path.push({ 'lat': this.state.coords[i].lat, 'lng': this.state.coords[i].lng });
             return path;
         };
-        _this.centerMap = function (lat, lng) {
-            _this.map.panTo({ lat: lat, lng: lng });
+        this.centerMap = (lat, lng) => {
+            this.map.panTo({ lat: lat, lng: lng });
         };
-        _this.Tabs = [
+        this.Tabs = [
             React.createRef(),
             React.createRef(),
             React.createRef()
         ];
-        _this.map = null;
-        _this.poly = null;
-        _this.state = {
+        this.map = null;
+        this.poly = null;
+        this.state = {
             currentFocus: -1,
             coords: [{ 'ref': React.createRef(), 'id': 0, 'lat': 0, 'lng': 0, 'yPos': 0 }],
             nextId: 1,
             activeTab: 0,
         };
-        return _this;
     }
-    LocationPage.prototype.render = function () {
-        var _this = this;
+    render() {
         return (React.createElement("div", { className: 'createItemPage locationsPage' },
             React.createElement("div", { className: 'topBar' },
                 React.createElement("span", null, "ADD LOCATION/S"),
@@ -488,11 +458,8 @@ var LocationPage = /** @class */ (function (_super) {
                 React.createElement("div", { className: 'creationButton' }, "UPLOAD GPS FILE")),
             React.createElement("div", { className: 'mapAndListContainer' },
                 React.createElement("div", { id: 'map', className: 'mapContainer' },
-                    React.createElement(google_map_react_1.default, { ref: 'mapRef', onGoogleApiLoaded: function (_a) {
-                            var map = _a.map, maps = _a.maps;
-                            _this.map = map;
-                        }, yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: 'AIzaSyDqIVtQawOQ0DqWTSP3LG60nVhGJvsdSHk' }, defaultZoom: 5, defaultCenter: { lat: 0, lng: 0 }, options: { fullscreenControl: false } }, this.state.coords.map(function (coord, i) {
-                        return ((i === _this.state.currentFocus) ?
+                    React.createElement(google_map_react_1.default, { ref: 'mapRef', onGoogleApiLoaded: ({ map, maps }) => { this.map = map; }, yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: 'AIzaSyDqIVtQawOQ0DqWTSP3LG60nVhGJvsdSHk' }, defaultZoom: 5, defaultCenter: { lat: 0, lng: 0 }, options: { fullscreenControl: false } }, this.state.coords.map((coord, i) => {
+                        return ((i === this.state.currentFocus) ?
                             React.createElement("svg", { ref: "wayRef" + coord.id, className: 'centerActiveWaypoint', width: '25', height: '35', lat: coord.lat, lng: coord.lng, key: "waypoint" + coord.id + "focus" },
                                 React.createElement("polygon", { points: "0,12.5 12.5,35 25,12.5", style: { fill: Constant.MAIN_COLOUR, strokeWidth: '0' } }),
                                 React.createElement("circle", { cx: '12.5', cy: '12.5', r: '10.5', stroke: Constant.MAIN_COLOUR, strokeWidth: '4', fill: Constant.TERTIARY_COLOUR }))
@@ -503,39 +470,35 @@ var LocationPage = /** @class */ (function (_super) {
                     }))),
                 React.createElement("div", { className: 'coordListContainer' },
                     React.createElement("div", { className: 'coordListTabs' },
-                        React.createElement("div", { tabIndex: '0', className: this.state.activeTab == 0 ? 'coordListTab active' : 'coordListTab', onClick: function () { return _this.changeTabs(0); } }, "POINTS"),
-                        React.createElement("div", { tabIndex: '0', className: this.state.activeTab == 1 ? 'coordListTab center active' : 'coordListTab center', onClick: function () { return _this.changeTabs(1); } }, "PATH"),
-                        React.createElement("div", { tabIndex: '0', className: this.state.activeTab == 2 ? 'coordListTab active' : 'coordListTab', onClick: function () { return _this.changeTabs(2); } }, "AREA")),
+                        React.createElement("div", { tabIndex: '0', className: this.state.activeTab == 0 ? 'coordListTab active' : 'coordListTab', onClick: () => this.changeTabs(0) }, "POINTS"),
+                        React.createElement("div", { tabIndex: '0', className: this.state.activeTab == 1 ? 'coordListTab center active' : 'coordListTab center', onClick: () => this.changeTabs(1) }, "PATH"),
+                        React.createElement("div", { tabIndex: '0', className: this.state.activeTab == 2 ? 'coordListTab active' : 'coordListTab', onClick: () => this.changeTabs(2) }, "AREA")),
                     React.createElement("div", { className: 'coordList' },
-                        React.createElement("div", { className: 'dragContainer' }, this.state.coords.map(function (coord, i) {
-                            return (React.createElement(CoordinateBox, { ref: coord.ref, arrayId: coord.id, remove: _this.removeCoord, updateLatLong: _this.updateLatLng, onStart: _this.onStart, onDrag: _this.onDrag, onStop: _this.onStop, yPos: coord.yPos, key: 'coord' + coord.id, activateWaypoint: _this.focusWaypoint, deactivateWaypoint: _this.defocusWaypoint, centerMap: _this.centerMap }));
+                        React.createElement("div", { className: 'dragContainer' }, this.state.coords.map((coord, i) => {
+                            return (React.createElement(CoordinateBox, { ref: coord.ref, arrayId: coord.id, remove: this.removeCoord, updateLatLong: this.updateLatLng, onStart: this.onStart, onDrag: this.onDrag, onStop: this.onStop, yPos: coord.yPos, key: 'coord' + coord.id, activateWaypoint: this.focusWaypoint, deactivateWaypoint: this.defocusWaypoint, centerMap: this.centerMap }));
                         })),
                         React.createElement("div", { className: 'addCoordButton', onClick: this.addCoord },
                             React.createElement("svg", { width: '50', height: '50' },
                                 React.createElement("line", { x1: '25', y1: '10', x2: '25', y2: '40', style: { stroke: '#ffffff', strokeWidth: '3', strokeLinecap: 'round' } }),
                                 React.createElement("line", { x1: '10', y1: '25', x2: '40', y2: '25', style: { stroke: '#ffffff', strokeWidth: '3', strokeLinecap: 'round' } }))),
                         React.createElement("div", { className: 'fillerBox' }))))));
-    };
-    return LocationPage;
-}(React.Component));
-var FormProgressBar = /** @class */ (function (_super) {
-    __extends(FormProgressBar, _super);
-    function FormProgressBar(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = {
+    }
+}
+class FormProgressBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             currentPage: 0
         };
-        return _this;
     }
-    FormProgressBar.prototype.render = function () {
-        var _this = this;
-        return (React.createElement("div", { className: 'formProgressBar' }, this.props.progressData.map(function (data, i) {
-            return (React.createElement("div", { className: 'progressItem', key: 'indicator' + i, onClick: function () { return _this.props.goToIndex(i); } },
-                i < (_this.props.progressData.length - 1) ?
-                    React.createElement("hr", { className: i < _this.props.activeIndex ? 'progressConnectorLine active' : 'progressConnectorLine' })
+    render() {
+        return (React.createElement("div", { className: 'formProgressBar' }, this.props.progressData.map((data, i) => {
+            return (React.createElement("div", { className: 'progressItem', key: 'indicator' + i, onClick: () => this.props.goToIndex(i) },
+                i < (this.props.progressData.length - 1) ?
+                    React.createElement("hr", { className: i < this.props.activeIndex ? 'progressConnectorLine active' : 'progressConnectorLine' })
                     :
                         React.createElement("div", null),
-                React.createElement("div", { className: i <= _this.props.activeIndex ? 'progressIndicator active' : 'progressIndicator' }, data.submittable ?
+                React.createElement("div", { className: i <= this.props.activeIndex ? 'progressIndicator active' : 'progressIndicator' }, data.submittable ?
                     React.createElement("div", null)
                     :
                         React.createElement("svg", { width: '50', height: '50' },
@@ -543,87 +506,85 @@ var FormProgressBar = /** @class */ (function (_super) {
                             React.createElement("circle", { cx: '25', cy: '42.5', r: '3', style: { fill: Constant.ERROR_COLOUR, stroke: Constant.ERROR_COLOUR, strokeWidth: '1' } }))),
                 React.createElement("div", null, data.title)));
         })));
-    };
-    return FormProgressBar;
-}(React.Component));
-var CreateItem = /** @class */ (function (_super) {
-    __extends(CreateItem, _super);
-    function CreateItem(props) {
-        var _this = _super.call(this, props) || this;
-        _this.focusAreas = ['sci', 'art', 'act'];
-        _this.setMainFocus = function (index) {
+    }
+}
+class CreateItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.focusAreas = ['sci', 'art', 'act'];
+        this.setMainFocus = (index) => {
             //console.log("mainFocus Before: ", this.mainFocus);
-            _this.mainFocus = _this.focusAreas[index];
+            this.mainFocus = this.focusAreas[index];
             //console.log("mainFocus After: ", this.mainFocus);
         };
-        _this.formNumbers = [1, 2, 3, 4];
-        _this.pageRefs = [
+        this.formNumbers = [1, 2, 3, 4];
+        this.pageRefs = [
             React.createRef(),
             React.createRef(),
             React.createRef(),
             React.createRef()
         ];
-        _this.formPages = _this.formNumbers.map(function (i) {
+        this.formPages = this.formNumbers.map((i) => {
             switch (i) {
                 //Details
                 case 1:
                     return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page1' },
                         React.createElement("div", { className: 'centerCarouselItem' },
-                            React.createElement(DetailsPage, { ref: _this.pageRefs[0] }))));
+                            React.createElement(DetailsPage, { ref: this.pageRefs[0] }))));
                 //Category & Tags
                 case 2:
                     return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page2' },
                         React.createElement("div", { className: 'centerCarouselItem' },
-                            React.createElement(CategoryAndTagsPage, { ref: _this.pageRefs[1], setMainFocus: _this.setMainFocus }))));
+                            React.createElement(CategoryAndTagsPage, { ref: this.pageRefs[1], setMainFocus: this.setMainFocus }))));
                 //Regions & Legal
                 case 3:
                     return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page3' },
                         React.createElement("div", { className: 'centerCarouselItem' },
-                            React.createElement(RegionAndLegalPage, { ref: _this.pageRefs[2] }))));
+                            React.createElement(RegionAndLegalPage, { ref: this.pageRefs[2] }))));
                 //Location/s
                 case 4:
                     return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page4' },
                         React.createElement("div", { className: 'centerCarouselItem' },
-                            React.createElement(LocationPage, { ref: _this.pageRefs[3] }))));
+                            React.createElement(LocationPage, { ref: this.pageRefs[3] }))));
             }
         });
-        _this.validatePages = function (toPage) {
-            var progressData = _this.state.progressData;
+        this.validatePages = (toPage) => {
+            var progressData = this.state.progressData;
             var start, end;
-            if (_this.state.activeIndex > toPage) {
+            if (this.state.activeIndex > toPage) {
                 start = toPage;
-                end = _this.state.activeIndex;
+                end = this.state.activeIndex;
             }
             else {
                 end = toPage;
-                start = _this.state.activeIndex;
+                start = this.state.activeIndex;
             }
             for (var i = start; i <= end; i += 1) {
-                progressData[i].submittable = _this.pageRefs[i].current.validate();
+                progressData[i].submittable = this.pageRefs[i].current.validate();
             }
-            _this.setState({
+            this.setState({
                 progressData: progressData
             });
         };
-        _this.next = function () {
-            if (_this.state.animating)
+        this.next = () => {
+            if (this.state.animating)
                 return;
-            var nextIndex = ((_this.state.activeIndex + 1) > (_this.formNumbers.length - 1)) ? (_this.formNumbers.length - 1) : (_this.state.activeIndex + 1);
-            _this.validatePages(_this.state.activeIndex);
-            _this.setState({ activeIndex: nextIndex });
+            var nextIndex = ((this.state.activeIndex + 1) > (this.formNumbers.length - 1)) ? (this.formNumbers.length - 1) : (this.state.activeIndex + 1);
+            this.validatePages(this.state.activeIndex);
+            this.setState({ activeIndex: nextIndex });
         };
-        _this.prev = function () {
-            if (_this.state.animating)
+        this.prev = () => {
+            if (this.state.animating)
                 return;
-            var nextIndex = (_this.state.activeIndex - 1) < 0 ? 0 : (_this.state.activeIndex - 1);
-            _this.validatePages(_this.state.activeIndex);
-            _this.setState({ activeIndex: nextIndex });
+            var nextIndex = (this.state.activeIndex - 1) < 0 ? 0 : (this.state.activeIndex - 1);
+            this.validatePages(this.state.activeIndex);
+            this.setState({ activeIndex: nextIndex });
         };
-        _this.goToIndex = function (newIndex) {
-            _this.setState({ activeIndex: newIndex });
-            _this.validatePages(newIndex);
+        this.goToIndex = (newIndex) => {
+            this.setState({ activeIndex: newIndex });
+            this.validatePages(newIndex);
         };
-        _this.state = {
+        this.state = {
             activeIndex: 0,
             animating: false,
             progressData: [
@@ -633,10 +594,9 @@ var CreateItem = /** @class */ (function (_super) {
                 { title: "Location/s", submittable: false }
             ]
         };
-        _this.mainFocus = 'sci';
-        return _this;
+        this.mainFocus = 'sci';
     }
-    CreateItem.prototype.render = function () {
+    render() {
         this.mainFocus = this.focusAreas[0];
         return (React.createElement(reactstrap_1.Form, { className: 'creationContainer' },
             React.createElement("div", { className: 'creationHeader' },
@@ -648,8 +608,7 @@ var CreateItem = /** @class */ (function (_super) {
                 React.createElement("div", { className: 'fillerBox' }),
                 React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SAVE DRAFT"),
                 React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "NEXT"))));
-    };
-    return CreateItem;
-}(React.Component));
+    }
+}
 exports.default = CreateItem;
 //# sourceMappingURL=createItem.js.map
