@@ -22,19 +22,29 @@ document.body.style.fontFamily = 'Roboto';
 document.body.style.color = '#ffffff';
 document.body.style.padding = '0px';
 document.body.style.margin = '0px';
-var onBoarded = false;
 class Homepage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onBoard = (isOnBoarded) => {
+            this.setState({
+                onBoarded: isOnBoarded
+            });
+        };
+        this.state = {
+            onBoarded: false
+        };
+    }
     render() {
         return (React.createElement("div", { className: "rootPage" },
-            onBoarded ? React.createElement(header_1.default, null) : React.createElement("div", null),
+            this.state.onBoarded ? React.createElement(header_1.default, null) : React.createElement("div", null),
             React.createElement(react_router_dom_1.Switch, null,
                 React.createElement(react_router_dom_1.Route, { path: "/", exact: true, render: () => {
-                        return (onBoarded ?
+                        return (this.state.onBoarded ?
                             React.createElement(react_router_dom_1.Redirect, { to: "/home" }) :
                             React.createElement(react_router_dom_1.Redirect, { to: "/onBoard" }));
                     } }),
-                React.createElement(react_router_dom_1.Route, { path: "/onBoard", component: onboardingForm_1.Bubble }),
-                React.createElement(react_router_dom_1.Route, { path: "/home", component: home_1.default, exact: true }),
+                React.createElement(react_router_dom_1.Route, { path: "/onBoard", render: () => (React.createElement(onboardingForm_1.default, { onBoard: (x) => this.onBoard(x) })) }),
+                React.createElement(react_router_dom_1.Route, { path: "/home", component: home_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/map", component: map_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/myItems", component: myItems_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/myAnnouncements", component: myAnnouncements_1.default }),

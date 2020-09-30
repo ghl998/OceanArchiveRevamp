@@ -18,7 +18,7 @@ import MyItems from './components/myItems';
 import MyAnnouncements from './components/myAnnouncements';
 import ItemCollectionPage from './components/itemCollectionPage';
 import CreateItem from './components/createItem';
-import { Bubble } from './components/onboardingForm';
+import OnBoardingForm from './components/onboardingForm';
 
 import * as Constant from './constants';
 
@@ -28,25 +28,37 @@ document.body.style.color = '#ffffff';
 document.body.style.padding = '0px';
 document.body.style.margin = '0px';
 
-var onBoarded = false;
-
 class Homepage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            onBoarded: false
+        }
+    }
+
+    onBoard = (isOnBoarded) => {
+        this.setState({
+            onBoarded: isOnBoarded
+        });
+    }
+
     render() {
         return (
             <div className="rootPage">
-                {onBoarded ? < Header /> : <div />}
+                {this.state.onBoarded ? < Header /> : <div />}
                 <Switch>
                     <Route path="/" exact
                         render={() => {
                             return (
-                                onBoarded ?
+                                this.state.onBoarded ?
                                     <Redirect to="/home" /> :
                                     <Redirect to="/onBoard" />
                                 )
                         }}
                     />
-                    <Route path="/onBoard" component={Bubble} />
-                    <Route path="/home" component={Home} exact />
+                    <Route path="/onBoard" render={() => (
+                        <OnBoardingForm onBoard={(x) => this.onBoard(x)} />)} />
+                    <Route path="/home" component={Home} />
                     <Route path="/map" component={Map} />
                     <Route path="/myItems" component={MyItems} />
                     <Route path="/myAnnouncements" component={MyAnnouncements} />

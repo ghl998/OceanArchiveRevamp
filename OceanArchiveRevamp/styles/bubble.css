@@ -1,10 +1,11 @@
-﻿#bubbleWrapper {
-    height: 100vh;/*calc(100vh / 1.5);*/
-    width: 100%;/*calc(100vw / 1.5);*/
-    /*
-    max-width: 1000px;
-    max-height: 1000px;
-    */
+﻿/*
+    Code from AcrossTheCloud github link: https://github.com/AcrossTheCloud/TBA21-client/blob/6452c67c7102f787399a4001884cbc102e6f4ad8/src/styles/components/search/bubble.scss
+    Modified to work as css file
+*/
+
+#bubbleWrapper {
+    height: 100%;
+    width: 100%;
     position: relative;
     margin: 0px;
     filter: grayscale(1);

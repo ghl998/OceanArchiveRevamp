@@ -1514,3 +1514,94 @@ input.coordInput {
     .progressConnectorLine.active {
         background-color: #4A74A5;
     }
+
+
+/*
+    Onboarding
+*/
+.onboardHeader {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.onBoardFooter {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex: 0;
+    flex-direction: row;
+    align-items: center;
+}
+
+.onboardMain {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.onboardSub {
+    font-size: 14px;
+    color: #CCCCCC;
+}
+
+.onboardContainer {
+    display: flex;
+    max-width: 100vw;
+    height: calc(100vh - 200px);
+}
+
+.onboardInner {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    transition: max-width linear 1s;
+    overflow-x: hidden;
+}
+
+.onboardInner.hidden {
+    max-width: 0px;
+    flex: 0 1 auto;
+}
+
+.onboardButton {
+    flex: 0;
+    margin-bottom: 100px;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 100px;
+    max-height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.onboardButton.right {
+    margin-right: 100px;
+}
+
+.onboardButton.Yes {
+    background-color: #4A74A5;
+    border-radius: 5px;
+}
+
+.onboardButton.Skip {
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+}
+
+.submitButton {
+    flex: 1;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #3FB39A;
+    color: #000000;
+    border-radius: 5px;
+    margin: 0px 50px;
+}

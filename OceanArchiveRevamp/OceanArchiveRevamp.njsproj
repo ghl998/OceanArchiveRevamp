@@ -103,6 +103,9 @@
     <TypeScriptCompile Include="components\itemCollectionPage.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="components\bubble.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="components\onboardingForm.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
