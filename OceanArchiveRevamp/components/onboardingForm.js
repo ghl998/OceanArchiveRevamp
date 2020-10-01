@@ -3,6 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 const bubble_1 = require("./bubble");
 const react_router_dom_1 = require("react-router-dom");
+const Constant = require("../constants");
+class Tag extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggleSelect = () => {
+            this.setState({
+                selected: !this.state.selected
+            });
+        };
+        this.state = {
+            selected: false
+        };
+    }
+    render() {
+        return (React.createElement("div", { className: this.state.selected ? 'tag large noselect active' : 'tag large noselect', onClick: this.toggleSelect }, this.props.label));
+    }
+}
 class OnBoardingForm extends React.Component {
     constructor(props) {
         super(props);
@@ -34,16 +51,17 @@ class OnBoardingForm extends React.Component {
                 React.createElement("span", { className: 'onboardSub' }, this.headers[this.state.activeIndex].sub)),
             React.createElement("div", { className: 'onboardContainer' },
                 React.createElement("div", { className: this.state.activeIndex == 0 ? 'onboardInner' : 'onboardInner hidden' },
-                    React.createElement("div", { className: 'onboardButton right Yes', onClick: this.next }, "YES"),
+                    React.createElement("div", { className: 'onboardButton right Yes noselect', onClick: this.next }, "YES"),
                     React.createElement(react_router_dom_1.NavLink, { to: '/', onClick: () => this.props.onBoard(true) },
-                        React.createElement("div", { className: 'onboardButton Skip' }, "SKIP"))),
+                        React.createElement("div", { className: 'onboardButton Skip noselect' }, "SKIP"))),
                 React.createElement("div", { className: this.state.activeIndex == 1 ? 'onboardInner' : 'onboardInner hidden', onClick: this.next },
                     React.createElement(bubble_1.Bubble, null)),
-                React.createElement("div", { className: this.state.activeIndex == 2 ? 'onboardInner' : 'onboardInner hidden' })),
+                React.createElement("div", { className: this.state.activeIndex == 2 ? 'onboardInner' : 'onboardInner hidden', style: { alignItems: 'flex-start' } },
+                    React.createElement("div", { className: 'onboardTags' }, Constant.mainTags.map((tag, i) => React.createElement(Tag, { key: 'tag' + i, label: tag.label }))))),
             React.createElement("div", { className: 'onBoardFooter' },
                 React.createElement("div", { className: 'fillerBox' }),
                 React.createElement(react_router_dom_1.NavLink, { to: '/', onClick: () => this.props.onBoard(true) },
-                    React.createElement("div", { className: this.state.activeIndex == 2 ? 'submitButton' : 'submitButton hidden' }, "FINISH")))));
+                    React.createElement("div", { className: this.state.activeIndex == 2 ? 'submitButton noselect' : 'submitButton noselect hidden' }, "FINISH")))));
     }
 }
 exports.default = OnBoardingForm;

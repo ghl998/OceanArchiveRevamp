@@ -16,6 +16,51 @@ export const GREY_D8 = '#D8D8D8';
 export const BLACK = '#000000';
 export const ERROR_COLOUR = '#FF3A3A';
 
+export const mainTags = [
+    { value: 'act', label: 'Activism' },
+    { value: 'aas', label: 'Adaption at sea' },
+    { value: 'aest', label: 'Aesthetics' },
+    { value: 'ant', label: 'Anthropocene' },
+    { value: 'aqc', label: 'Aquaculture' },
+    { value: 'atmo', label: 'Atmospheric phenomena' },
+    { value: 'cap', label: 'Capitalism' },
+    { value: 'clic', label: 'Climate change' },
+    { value: 'cac', label: 'Costal areas & cities' },
+    { value: 'com', label: 'Commons' },
+    { value: 'edu', label: 'Education' },
+    { value: 'epi', label: 'Epistemologies' },
+    { value: 'food', label: 'Food' },
+    { value: 'gen', label: 'Gender' },
+    { value: 'gPol', label: 'Geopolitics' },
+    { value: 'gov', label: 'Governance' },
+    { value: 'hist', label: 'History' },
+    { value: 'humn', label: 'Humanity' },
+    { value: 'haSe', label: 'Humans at sea' },
+    { value: 'idty', label: 'Identity' },
+    { value: 'ind', label: 'Industry' },
+    { value: 'infs', label: 'Infrastructure' },
+    { value: 'islW', label: 'Island worlds' },
+    { value: 'jus', label: 'Justice' },
+    { value: 'lab', label: 'Labor' },
+    { value: 'mEco', label: 'Marine Ecosystems' },
+    { value: 'mGeo', label: 'Marine geology' },
+    { value: 'mWil', label: 'Marine wildlife' },
+    { value: 'mobi', label: 'Mobilities' },
+    { value: 'oCir', label: 'Ocean circulation' },
+    { value: 'oHea', label: 'Ocean health' },
+    { value: 'oPol', label: 'Ocean pollution' },
+    { value: 'rTol', label: 'Research tools' },
+    { value: 'rExt', label: 'Resource extraction' },
+    { value: 'rure', label: 'Rules + regulation' },
+    { value: 'sPrp', label: 'Seawater properties' },
+    { value: 'soci', label: 'Social' },
+    { value: 'sFut', label: 'Speculative futures' },
+    { value: 'uTec', label: 'Underwater technology' },
+    { value: 'vwc', label: 'Vertical water column' },
+    { value: 'vuln', label: 'Vulnerability' },
+    { value: 'wast', label: 'Waste' }
+];
+
 //Constants from current Ocean Archive GitHub
 //https://github.com/AcrossTheCloud/TBA21-client/blob/master/src/components/metadata/ItemEditor.tsx
 export const oceans = [

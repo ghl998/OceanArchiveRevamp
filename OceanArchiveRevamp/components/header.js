@@ -16,7 +16,7 @@ class HeaderButton extends React.Component {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'headerButton', onClick: this.props.onClick }, this.props.name));
+        return (React.createElement("div", { className: 'headerButton noselect', onClick: this.props.onClick }, this.props.name));
     }
 }
 class LoginModal extends React.Component {

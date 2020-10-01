@@ -35,6 +35,14 @@ h2 {
     min-height: 10px;
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 a:link {
     color: #3FB39A;
     text-decoration: none;
@@ -136,6 +144,10 @@ hr {
     text-align: center;
     line-height: 60px;
     flex: 0 0 auto;
+}
+
+.headerButton:hover {
+    background-color: #4A74A5;
 }
 
 .searchButton {
@@ -1604,4 +1616,21 @@ input.coordInput {
     color: #000000;
     border-radius: 5px;
     margin: 0px 50px;
+}
+
+.onboardTags {
+    display: flex;
+    max-width: 75vw;
+    flex: 1;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tag.active {
+    background-color: #4A74A5;
+}
+
+.tag.large {
+    font-size: 16px;
 }

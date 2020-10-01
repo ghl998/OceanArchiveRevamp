@@ -38,7 +38,7 @@ class TableHeader extends React.Component {
 
     render() {
         return (
-            <th className="tabHeader" style={{ background: this.state.bgColour }} onClick={this.props.stateUpdate} >
+            <th className="tabHeader noselect" style={{ background: this.state.bgColour }} onClick={this.props.stateUpdate} >
                 {this.state.title}
             </th>
         );

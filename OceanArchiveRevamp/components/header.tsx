@@ -26,7 +26,7 @@ class HeaderButton extends React.Component {
 
     render() {
         return (
-            <div className='headerButton' onClick={this.props.onClick}>
+            <div className='headerButton noselect' onClick={this.props.onClick}>
                 {this.props.name}
             </div >
         );

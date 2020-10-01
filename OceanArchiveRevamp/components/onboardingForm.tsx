@@ -5,6 +5,29 @@ var React = require('react');
 import { Bubble } from './bubble';
 import { NavLink } from 'react-router-dom';
 
+import * as Constant from '../constants';
+
+class Tag extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: false
+        };
+    }
+
+    toggleSelect = () => {
+        this.setState({
+            selected: !this.state.selected
+        });
+    }
+
+    render() {
+        return (
+            <div className={this.state.selected ? 'tag large noselect active' : 'tag large noselect'} onClick={this.toggleSelect}>{this.props.label}</div>
+        );
+    }
+}
+
 export default class OnBoardingForm extends React.Component {
     constructor(props) {
         super(props);
@@ -42,21 +65,28 @@ export default class OnBoardingForm extends React.Component {
                 </div>
                 <div className='onboardContainer'>
                     <div className={this.state.activeIndex == 0 ? 'onboardInner' : 'onboardInner hidden'}>
-                        <div className='onboardButton right Yes' onClick={this.next}>YES</div>
+                        <div className='onboardButton right Yes noselect' onClick={this.next}>YES</div>
                         <NavLink to='/' onClick={() => this.props.onBoard(true)}>
-                            <div className='onboardButton Skip'>SKIP</div>
+                            <div className='onboardButton Skip noselect'>SKIP</div>
                         </NavLink>
                     </div>
                     <div className={this.state.activeIndex == 1 ? 'onboardInner' : 'onboardInner hidden'} onClick={this.next}>
                         <Bubble />
                     </div>
-                    <div className={this.state.activeIndex == 2 ? 'onboardInner' : 'onboardInner hidden'}>
+                    <div className={this.state.activeIndex == 2 ? 'onboardInner' : 'onboardInner hidden'} style={{ alignItems: 'flex-start'}}>
+                        <div className='onboardTags'>
+                            {
+                                Constant.mainTags.map((tag, i) =>
+                                    <Tag key={'tag' + i} label={tag.label} />
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className='onBoardFooter'>
                     <div className='fillerBox' />
                     <NavLink to='/' onClick={() => this.props.onBoard(true)}>
-                        <div className={this.state.activeIndex == 2 ? 'submitButton' : 'submitButton hidden'}>FINISH</div>
+                        <div className={this.state.activeIndex == 2 ? 'submitButton noselect' : 'submitButton noselect hidden'}>FINISH</div>
                     </NavLink>
                 </div>
             </div>

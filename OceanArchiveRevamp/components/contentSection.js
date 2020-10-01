@@ -34,7 +34,7 @@ class TableHeader extends React.Component {
         }
     }
     render() {
-        return (React.createElement("th", { className: "tabHeader", style: { background: this.state.bgColour }, onClick: this.props.stateUpdate }, this.state.title));
+        return (React.createElement("th", { className: "tabHeader noselect", style: { background: this.state.bgColour }, onClick: this.props.stateUpdate }, this.state.title));
     }
 }
 class ContentSection extends React.Component {

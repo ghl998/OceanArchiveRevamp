@@ -7,9 +7,9 @@ class GoToLocation extends React.Component {
     render() {
         return (React.createElement("div", null,
             React.createElement("form", { style: { display: 'flex', height: '50px' } },
-                React.createElement("div", { className: 'goToLocLabels' }, "Lat"),
+                React.createElement("div", { className: 'goToLocLabels noselect' }, "Lat"),
                 React.createElement("input", { type: 'search', className: 'goToLocSearch' }),
-                React.createElement("div", { className: 'goToLocLabels' }, "Long"),
+                React.createElement("div", { className: 'goToLocLabels noselect' }, "Long"),
                 React.createElement("input", { type: 'search', className: 'goToLocSearch' }),
                 React.createElement("input", { type: 'submit', className: 'goToLocButton' }))));
     }

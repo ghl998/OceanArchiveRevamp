@@ -13,9 +13,9 @@ class GoToLocation extends React.Component {
         return (
             <div>
                 <form style={{ display: 'flex', height: '50px' }}>
-                    <div className='goToLocLabels'>Lat</div>
+                    <div className='goToLocLabels noselect'>Lat</div>
                     <input type='search' className='goToLocSearch' />
-                    <div className='goToLocLabels'>Long</div>
+                    <div className='goToLocLabels noselect'>Long</div>
                     <input type='search' className='goToLocSearch' />
                     <input type='submit' className='goToLocButton' />
                 </form>
