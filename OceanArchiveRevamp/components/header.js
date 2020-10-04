@@ -131,7 +131,8 @@ class Contribute extends React.Component {
             React.createElement(reactstrap_1.DropdownMenu, null,
                 React.createElement(react_router_dom_1.NavLink, { to: "/myItems" },
                     React.createElement(reactstrap_1.DropdownItem, null, "ITEM")),
-                React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION"),
+                React.createElement(react_router_dom_1.NavLink, { to: "/myCollections" },
+                    React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION")),
                 React.createElement(react_router_dom_1.NavLink, { to: "/myAnnouncements" },
                     React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT")))));
     }
