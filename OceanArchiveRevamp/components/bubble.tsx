@@ -17,6 +17,7 @@ interface State {
 
 interface Props {
     callback?: Function;
+    ref?: any;
 }
 
 interface Point {

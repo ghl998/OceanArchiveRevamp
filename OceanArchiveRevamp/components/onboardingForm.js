@@ -30,18 +30,37 @@ class OnBoardingForm extends React.Component {
         ];
         this.next = () => {
             var n = this.state.activeIndex >= 2 ? 2 : this.state.activeIndex + 1;
+            if (this.state.activeIndex < 2) {
+                var pagePositions = this.state.pagePositions;
+                for (var i = 0; i < this.state.pagePositions.length; i = i + 1) {
+                    pagePositions[i] = pagePositions[i] - 100;
+                }
+            }
             this.setState({
-                activeIndex: n
+                activeIndex: n,
+                pagePositions: pagePositions
             });
         };
         this.prev = () => {
             var n = this.state.activeIndex <= 0 ? 0 : this.state.activeIndex - 1;
+            if (this.state.activeIndex > 0) {
+                var pagePositions = this.state.pagePositions;
+                for (var i = 0; i < this.state.pagePositions.length; i = i + 1) {
+                    pagePositions[i] = pagePositions[i] + 100;
+                }
+            }
             this.setState({
-                activeIndex: n
+                activeIndex: n,
+                pagePositions: pagePositions
             });
         };
+        this.bubbleCallback = (e) => {
+            return (console.log(e));
+        };
+        this.bubbleRef = React.createRef();
         this.state = {
-            activeIndex: 0
+            activeIndex: 0,
+            pagePositions: [0, 0, 0]
         };
     }
     render() {
@@ -50,13 +69,13 @@ class OnBoardingForm extends React.Component {
                 React.createElement("span", { className: 'onboardMain' }, this.headers[this.state.activeIndex].main),
                 React.createElement("span", { className: 'onboardSub' }, this.headers[this.state.activeIndex].sub)),
             React.createElement("div", { className: 'onboardContainer' },
-                React.createElement("div", { className: this.state.activeIndex == 0 ? 'onboardInner' : 'onboardInner hidden' },
+                React.createElement("div", { className: 'onboardInner', style: { transform: 'translateX(' + this.state.pagePositions[0] + 'vw)' } },
                     React.createElement("div", { className: 'onboardButton right Yes noselect', onClick: this.next }, "YES"),
                     React.createElement(react_router_dom_1.NavLink, { to: '/', onClick: () => this.props.onBoard(true) },
                         React.createElement("div", { className: 'onboardButton Skip noselect' }, "SKIP"))),
-                React.createElement("div", { className: this.state.activeIndex == 1 ? 'onboardInner' : 'onboardInner hidden', onClick: this.next },
-                    React.createElement(bubble_1.Bubble, null)),
-                React.createElement("div", { className: this.state.activeIndex == 2 ? 'onboardInner' : 'onboardInner hidden', style: { alignItems: 'flex-start' } },
+                React.createElement("div", { className: 'onboardInner', style: { transform: 'translateX(' + this.state.pagePositions[1] + 'vw)' }, onClick: this.next },
+                    React.createElement(bubble_1.Bubble, { callback: this.bubbleCallback, ref: this.bubbleRef })),
+                React.createElement("div", { className: 'onboardInner', style: { alignItems: 'flex-start', transform: 'translateX(' + this.state.pagePositions[2] + 'vw)' } },
                     React.createElement("div", { className: 'onboardTags' }, Constant.mainTags.map((tag, i) => React.createElement(Tag, { key: 'tag' + i, label: tag.label }))))),
             React.createElement("div", { className: 'onBoardFooter' },
                 React.createElement("div", { className: 'fillerBox' }),

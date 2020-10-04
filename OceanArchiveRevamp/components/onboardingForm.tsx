@@ -4,6 +4,7 @@ var React = require('react');
 
 import { Bubble } from './bubble';
 import { NavLink } from 'react-router-dom';
+import { Carousel, CarouselItem } from 'reactstrap';
 
 import * as Constant from '../constants';
 
@@ -31,8 +32,10 @@ class Tag extends React.Component {
 export default class OnBoardingForm extends React.Component {
     constructor(props) {
         super(props);
+        this.bubbleRef = React.createRef();
         this.state = {
-            activeIndex: 0
+            activeIndex: 0,
+            pagePositions: [0, 0, 0]
         };
     }
 
@@ -44,16 +47,34 @@ export default class OnBoardingForm extends React.Component {
 
     next = () => {
         var n = this.state.activeIndex >= 2 ? 2 : this.state.activeIndex + 1;
+        if (this.state.activeIndex < 2) {
+            var pagePositions = this.state.pagePositions;
+            for (var i = 0; i < this.state.pagePositions.length; i = i + 1) {
+                pagePositions[i] = pagePositions[i] - 100;
+            }
+        }
         this.setState({
-            activeIndex: n
+            activeIndex: n,
+            pagePositions: pagePositions
         });
     }
 
     prev = () => {
         var n = this.state.activeIndex <= 0 ? 0 : this.state.activeIndex - 1;
+        if (this.state.activeIndex > 0) {
+            var pagePositions = this.state.pagePositions;
+            for (var i = 0; i < this.state.pagePositions.length; i = i + 1) {
+                pagePositions[i] = pagePositions[i] + 100;
+            }
+        }
         this.setState({
-            activeIndex: n
+            activeIndex: n,
+            pagePositions: pagePositions
         });
+    }
+
+    bubbleCallback = (e) => {
+        return (console.log(e));
     }
 
     render() {
@@ -64,16 +85,16 @@ export default class OnBoardingForm extends React.Component {
                     <span className='onboardSub'>{this.headers[this.state.activeIndex].sub}</span>
                 </div>
                 <div className='onboardContainer'>
-                    <div className={this.state.activeIndex == 0 ? 'onboardInner' : 'onboardInner hidden'}>
+                    <div className='onboardInner' style={{ transform: 'translateX(' + this.state.pagePositions[0] + 'vw)' }}>
                         <div className='onboardButton right Yes noselect' onClick={this.next}>YES</div>
                         <NavLink to='/' onClick={() => this.props.onBoard(true)}>
                             <div className='onboardButton Skip noselect'>SKIP</div>
                         </NavLink>
                     </div>
-                    <div className={this.state.activeIndex == 1 ? 'onboardInner' : 'onboardInner hidden'} onClick={this.next}>
-                        <Bubble />
+                    <div className='onboardInner' style={{ transform: 'translateX(' + this.state.pagePositions[1] + 'vw)' }} onClick={this.next}>
+                        <Bubble callback={this.bubbleCallback} ref={this.bubbleRef} />
                     </div>
-                    <div className={this.state.activeIndex == 2 ? 'onboardInner' : 'onboardInner hidden'} style={{ alignItems: 'flex-start'}}>
+                    <div className='onboardInner' style={{ alignItems: 'flex-start', transform: 'translateX(' + this.state.pagePositions[2] + 'vw)' }}>
                         <div className='onboardTags'>
                             {
                                 Constant.mainTags.map((tag, i) =>
