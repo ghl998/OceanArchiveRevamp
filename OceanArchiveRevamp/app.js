@@ -12,8 +12,8 @@ const header_1 = require("./components/header");
 const home_1 = require("./components/home");
 const map_1 = require("./components/map");
 const myItems_1 = require("./components/myItems");
-const myAnnouncements_1 = require("./components/myAnnouncements");
 const myCollections_1 = require("./components/myCollections");
+const myAnnouncements_1 = require("./components/myAnnouncements");
 const itemCollectionPage_1 = require("./components/itemCollectionPage");
 const createItem_1 = require("./components/createItem");
 const onboardingForm_1 = require("./components/onboardingForm");
@@ -48,8 +48,8 @@ class Homepage extends React.Component {
                 React.createElement(react_router_dom_1.Route, { path: "/home", component: home_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/map", component: map_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/myItems", component: myItems_1.default }),
-                React.createElement(react_router_dom_1.Route, { path: "/myAnnouncements", component: myAnnouncements_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/myCollections", component: myCollections_1.default }),
+                React.createElement(react_router_dom_1.Route, { path: "/myAnnouncements", component: myAnnouncements_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/itemPage", component: itemCollectionPage_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/createItem", component: createItem_1.default }))));
     }

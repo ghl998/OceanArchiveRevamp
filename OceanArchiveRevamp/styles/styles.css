@@ -298,11 +298,15 @@ hr {
 /*Social*/
 .socialButton {
     flex: 2 1 auto;
-    height: 45px;
+    height: 46px;
     min-width: 180px;
     border: 1px solid #ffffff;
     border-radius: 5px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto;
 }
 
 .google {
@@ -311,13 +315,22 @@ hr {
 }
 
 .facebook {
-    background-color: #4267B2;
+    background-color: #1877f2; /*#4267B2;*/
     color: #ffffff;
+}
+
+.facebook > svg {
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .twitter {
     background-color: #1DA1F2;
     color: #ffffff;
+}
+
+.twitter > svg {
+    margin-right: 5px;
 }
 
 /*Forms*/

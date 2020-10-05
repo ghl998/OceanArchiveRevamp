@@ -50,8 +50,11 @@
     </Content>
     <Content Include="logos\Blog.svg" />
     <Content Include="logos\Facebook.svg" />
+    <Content Include="logos\FacebookF.svg" />
+    <Content Include="logos\Google.svg" />
     <Content Include="logos\Instagram.svg" />
     <Content Include="logos\Twitter.svg" />
+    <Content Include="logos\TwitterWhite.svg" />
     <Content Include="logos\Youtube.svg" />
     <Content Include="package.json" />
     <Content Include="README.md" />

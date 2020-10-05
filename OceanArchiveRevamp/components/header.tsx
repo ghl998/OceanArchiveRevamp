@@ -5,6 +5,9 @@ var React = require('react');
 import { NavLink } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+import GoogleLogo from '../logos/Google.svg';
+import FacebookLogo from '../logos/FacebookF.svg';
+import TwitterLogo from '../logos/TwitterWhite.svg';
 import * as Constant from '../constants';
 
 class Logo extends React.Component {
@@ -101,11 +104,20 @@ class SignUpModal extends React.Component {
                     <ModalBody>
                         <p>With a Social Account</p>
                         <div style={{ display: 'flex' }}>
-                            <Button className='google socialButton'>GOOGLE</Button>
+                            <Button className='google socialButton'>
+                                <GoogleLogo />
+                                <span>GOOGLE</span>
+                            </Button>
                             <div className='fillerBox' />
-                            <Button className='facebook socialButton'>FACEBOOK</Button>
+                            <Button className='facebook socialButton'>
+                                <FacebookLogo />
+                                <span>FACEBOOK</span>
+                            </Button>
                             <div className='fillerBox' />
-                            <Button className='twitter socialButton'>TWITTER</Button>
+                            <Button className='twitter socialButton'>
+                                <TwitterLogo />
+                                <span>TWITTER</span>
+                            </Button>
                         </div>
                         <div className='horizontalLineText'>
                             <p style={{ fontSize: '10pt' }}>or</p>
@@ -173,10 +185,10 @@ class Contribute extends React.Component {
                         <DropdownItem>ITEM</DropdownItem>
                     </NavLink>
                     <NavLink to="/myCollections">
-                    <DropdownItem>COLLECTION</DropdownItem>
+                        <DropdownItem>COLLECTION</DropdownItem>
                     </NavLink>
                     <NavLink to="/myAnnouncements">
-                    <DropdownItem>ANNOUNCEMENT</DropdownItem>
+                        <DropdownItem>ANNOUNCEMENT</DropdownItem>
                     </NavLink>
                 </DropdownMenu>
             </ButtonDropdown>

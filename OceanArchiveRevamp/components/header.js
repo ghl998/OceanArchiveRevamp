@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
+const Google_svg_1 = require("../logos/Google.svg");
+const FacebookF_svg_1 = require("../logos/FacebookF.svg");
+const TwitterWhite_svg_1 = require("../logos/TwitterWhite.svg");
 class Logo extends React.Component {
     constructor(props) {
         super(props);
@@ -71,11 +74,17 @@ class SignUpModal extends React.Component {
                 React.createElement(reactstrap_1.ModalBody, null,
                     React.createElement("p", null, "With a Social Account"),
                     React.createElement("div", { style: { display: 'flex' } },
-                        React.createElement(reactstrap_1.Button, { className: 'google socialButton' }, "GOOGLE"),
+                        React.createElement(reactstrap_1.Button, { className: 'google socialButton' },
+                            React.createElement(Google_svg_1.default, null),
+                            React.createElement("span", null, "GOOGLE")),
                         React.createElement("div", { className: 'fillerBox' }),
-                        React.createElement(reactstrap_1.Button, { className: 'facebook socialButton' }, "FACEBOOK"),
+                        React.createElement(reactstrap_1.Button, { className: 'facebook socialButton' },
+                            React.createElement(FacebookF_svg_1.default, null),
+                            React.createElement("span", null, "FACEBOOK")),
                         React.createElement("div", { className: 'fillerBox' }),
-                        React.createElement(reactstrap_1.Button, { className: 'twitter socialButton' }, "TWITTER")),
+                        React.createElement(reactstrap_1.Button, { className: 'twitter socialButton' },
+                            React.createElement(TwitterWhite_svg_1.default, null),
+                            React.createElement("span", null, "TWITTER"))),
                     React.createElement("div", { className: 'horizontalLineText' },
                         React.createElement("p", { style: { fontSize: '10pt' } }, "or")),
                     React.createElement("form", null,
