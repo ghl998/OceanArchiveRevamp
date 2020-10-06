@@ -17,6 +17,7 @@ const myAnnouncements_1 = require("./components/myAnnouncements");
 const itemCollectionPage_1 = require("./components/itemCollectionPage");
 const createItem_1 = require("./components/createItem");
 const onboardingForm_1 = require("./components/onboardingForm");
+const search_1 = require("./components/search");
 const Constant = require("./constants");
 document.body.style.backgroundColor = Constant.MAIN_COLOUR;
 document.body.style.fontFamily = 'Roboto';
@@ -51,7 +52,8 @@ class Homepage extends React.Component {
                 React.createElement(react_router_dom_1.Route, { path: "/myCollections", component: myCollections_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/myAnnouncements", component: myAnnouncements_1.default }),
                 React.createElement(react_router_dom_1.Route, { path: "/itemPage", component: itemCollectionPage_1.default }),
-                React.createElement(react_router_dom_1.Route, { path: "/createItem", component: createItem_1.default }))));
+                React.createElement(react_router_dom_1.Route, { path: "/createItem", component: createItem_1.default }),
+                React.createElement(react_router_dom_1.Route, { path: "/search", component: search_1.default }))));
     }
 }
 ReactDOM.render(React.createElement(react_router_dom_1.BrowserRouter, null,

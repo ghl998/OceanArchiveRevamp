@@ -20,6 +20,7 @@ import MyAnnouncements from './components/myAnnouncements';
 import ItemCollectionPage from './components/itemCollectionPage';
 import CreateItem from './components/createItem';
 import OnBoardingForm from './components/onboardingForm';
+import Search from './components/search';
 
 import * as Constant from './constants';
 
@@ -66,6 +67,7 @@ class Homepage extends React.Component {
                     <Route path="/myAnnouncements" component={MyAnnouncements} />
                     <Route path="/itemPage" component={ItemCollectionPage} />
                     <Route path="/createItem" component={CreateItem} />
+                    <Route path="/search" component={Search} />
                 </Switch>
             </div>
         );

@@ -239,12 +239,26 @@ class Logout extends React.Component {
 class SeachBar extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            search: ''
+        };
+    }
+
+    searchValue = (e) => {
+        console.log(e.target.value);
+        this.setState({
+            search: e.target.value
+        });
+    }
+
+    goSearch = () => {
+        console.log('search button pressed');
     }
 
     render() {
         return (
-            <form method="post" style={{ display: 'flex' }}>
-                <input type="search" className="searchBar" placeholder="Search..." />
+            <form action='/search' method="get" style={{ display: 'flex' }} onSubmit={this.goSearch}>
+                <input type="search" name='search' className="searchBar" placeholder="Search..." onChange={(e) => this.searchValue(e)}/>
                 <input type="submit" className='searchButton' value='Search' />
             </form>
         );
