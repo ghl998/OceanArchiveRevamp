@@ -7,6 +7,15 @@ var app = express();
 var staticPath = path.join(__dirname, '/');
 app.use(express.static(staticPath));
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+//Handle requests to server
+app.get('/*', function (req, res) {
+    console.log('Things happened');
+    res.render(__dirname + '/');
+});
+
 // Allows you to set port in the project properties.
 app.set('port', process.env.PORT || 3000);
 

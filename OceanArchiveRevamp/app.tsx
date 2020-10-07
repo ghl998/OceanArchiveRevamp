@@ -34,20 +34,38 @@ class Homepage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            onBoarded: false
+            onBoarded: false,
+            loggedIn: false
         }
+    }
+
+    componentDidMount() {
+        const onBoarded = localStorage.getItem('onBoarded') === 'true';
+        const loggedIn = localStorage.getItem('loggedIn') === 'true';
+        this.setState({
+            onBoarded: onBoarded,
+            loggedIn: loggedIn
+        });
     }
 
     onBoard = (isOnBoarded) => {
         this.setState({
             onBoarded: isOnBoarded
         });
+        localStorage.setItem('onBoarded', isOnBoarded);
+    }
+
+    logIn = (loggedIn) => {
+        console.log('before: ', this.state.loggedIn, ' |after: ', loggedIn);
+        this.setState({
+            loggedIn: loggedIn
+        });
+        localStorage.setItem('loggedIn', loggedIn);
     }
 
     render() {
         return (
             <div className="rootPage">
-                {this.state.onBoarded ? < Header /> : <div />}
                 <Switch>
                     <Route path="/" exact
                         render={() => {
@@ -55,19 +73,92 @@ class Homepage extends React.Component {
                                 this.state.onBoarded ?
                                     <Redirect to="/home" /> :
                                     <Redirect to="/onBoard" />
-                                )
+                            )
                         }}
                     />
                     <Route path="/onBoard" render={() => (
                         <OnBoardingForm onBoard={(x) => this.onBoard(x)} />)} />
-                    <Route path="/home" component={Home} />
-                    <Route path="/map" component={Map} />
-                    <Route path="/myItems" component={MyItems} />
-                    <Route path="/myCollections" component={MyCollections} />
-                    <Route path="/myAnnouncements" component={MyAnnouncements} />
-                    <Route path="/itemPage" component={ItemCollectionPage} />
-                    <Route path="/createItem" component={CreateItem} />
-                    <Route path="/search" component={Search} />
+                    <Route path="/home"
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <Home />
+                                </div>
+                            )
+
+                        }}
+                    />
+                    <Route path="/map"
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <Map />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/myItems"
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <MyItems />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/myCollections" 
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <MyCollections />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/myAnnouncements" 
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <MyAnnouncements />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/itemPage" 
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <ItemCollectionPage />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/createItem" 
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <CreateItem />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/search" 
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <Search />
+                                </div>
+                            )
+                        }}
+                    />
                 </Switch>
             </div>
         );

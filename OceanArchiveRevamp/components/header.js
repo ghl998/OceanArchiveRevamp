@@ -198,14 +198,11 @@ class SeachBar extends React.Component {
 class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.login = () => this.setState({
-            loggedIn: true
-        });
-        this.logout = () => this.setState({
-            loggedIn: false
-        });
-        this.state = {
-            loggedIn: false
+        this.login = () => {
+            this.props.logIn(true);
+        };
+        this.logout = () => {
+            this.props.logIn(false);
         };
     }
     render() {
@@ -222,10 +219,10 @@ class Header extends React.Component {
                             React.createElement(HeaderButton, { name: 'TERMS' }),
                             React.createElement(HeaderButton, { name: 'PRIVACY' }),
                             React.createElement("div", { className: 'fillerBox' }),
-                            this.state.loggedIn ? React.createElement(Admin, null) : React.createElement("div", null),
-                            this.state.loggedIn ? React.createElement(Contribute, null) : React.createElement("div", null),
-                            this.state.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(LoginModal, { loginFunc: this.login }),
-                            this.state.loggedIn ? React.createElement(Logout, { logoutFunc: this.logout }) : React.createElement(SignUpModal, null))),
+                            this.props.loggedIn ? React.createElement(Admin, null) : React.createElement("div", null),
+                            this.props.loggedIn ? React.createElement(Contribute, null) : React.createElement("div", null),
+                            this.props.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(LoginModal, { loginFunc: () => this.login() }),
+                            this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(SignUpModal, null))),
                     React.createElement("div", { style: { flex: '1' } },
                         React.createElement(SeachBar, null)))),
             React.createElement(Logo, { name: 'ARCHIVE' })));

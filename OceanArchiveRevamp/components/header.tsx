@@ -258,7 +258,7 @@ class SeachBar extends React.Component {
     render() {
         return (
             <form action='/search' method="get" style={{ display: 'flex' }} onSubmit={this.goSearch}>
-                <input type="search" name='search' className="searchBar" placeholder="Search..." onChange={(e) => this.searchValue(e)}/>
+                <input type="search" name='search' className="searchBar" placeholder="Search..." onChange={(e) => this.searchValue(e)} />
                 <input type="submit" className='searchButton' value='Search' />
             </form>
         );
@@ -268,18 +268,15 @@ class SeachBar extends React.Component {
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            loggedIn: false
-        };
     }
 
-    login = () => this.setState({
-        loggedIn: true
-    });
+    login = () => {
+        this.props.logIn(true);
+    }
 
-    logout = () => this.setState({
-        loggedIn: false
-    });
+    logout = () => {
+        this.props.logIn(false);
+    }
 
     render() {
         return (
@@ -298,10 +295,10 @@ export default class Header extends React.Component {
                                 <HeaderButton name='TERMS' />
                                 <HeaderButton name='PRIVACY' />
                                 <div className='fillerBox' />
-                                {this.state.loggedIn ? <Admin /> : <div />}
-                                {this.state.loggedIn ? <Contribute /> : <div />}
-                                {this.state.loggedIn ? <HeaderButton name='PROFILE' /> : <LoginModal loginFunc={this.login} />}
-                                {this.state.loggedIn ? <Logout logoutFunc={this.logout} /> : <SignUpModal />}
+                                {this.props.loggedIn ? <Admin /> : <div />}
+                                {this.props.loggedIn ? <Contribute /> : <div />}
+                                {this.props.loggedIn ? <HeaderButton name='PROFILE' /> : <LoginModal loginFunc={() => this.login()} />}
+                                {this.props.loggedIn ? <Logout logoutFunc={() => this.logout()} /> : <SignUpModal />}
                             </div>
                         </div>
                         <div style={{ flex: '1' }}>
