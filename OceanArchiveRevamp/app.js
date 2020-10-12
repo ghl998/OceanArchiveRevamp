@@ -34,7 +34,7 @@ class Homepage extends React.Component {
             localStorage.setItem('onBoarded', isOnBoarded);
         };
         this.logIn = (loggedIn) => {
-            console.log('before: ', this.state.loggedIn, ' |after: ', loggedIn);
+            //console.log('before: ', this.state.loggedIn, ' |after: ', loggedIn);
             this.setState({
                 loggedIn: loggedIn
             });

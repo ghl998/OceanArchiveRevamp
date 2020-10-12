@@ -56,7 +56,7 @@ class Homepage extends React.Component {
     }
 
     logIn = (loggedIn) => {
-        console.log('before: ', this.state.loggedIn, ' |after: ', loggedIn);
+        //console.log('before: ', this.state.loggedIn, ' |after: ', loggedIn);
         this.setState({
             loggedIn: loggedIn
         });

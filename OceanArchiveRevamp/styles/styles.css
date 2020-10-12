@@ -146,9 +146,9 @@ hr {
     flex: 0 0 auto;
 }
 
-.headerButton:hover {
-    background-color: #4A74A5;
-}
+    .headerButton:hover {
+        background-color: #4A74A5;
+    }
 
 .searchButton {
     flex: 0;
@@ -319,19 +319,19 @@ hr {
     color: #ffffff;
 }
 
-.facebook > svg {
-    margin-bottom: 5px;
-    margin-right: 5px;
-}
+    .facebook > svg {
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
 
 .twitter {
     background-color: #1DA1F2;
     color: #ffffff;
 }
 
-.twitter > svg {
-    margin-right: 5px;
-}
+    .twitter > svg {
+        margin-right: 5px;
+    }
 
 /*Forms*/
 .inputLabel {
@@ -360,7 +360,7 @@ hr {
     z-index: 100;
 }
 
-.rootPage {
+.rootPage > div {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -1600,19 +1600,19 @@ input.coordInput {
     line-height: 100px;
 }
 
-.onboardButton.right {
-    margin-right: 100px;
-}
+    .onboardButton.right {
+        margin-right: 100px;
+    }
 
-.onboardButton.Yes {
-    background-color: #4A74A5;
-    border-radius: 5px;
-}
+    .onboardButton.Yes {
+        background-color: #4A74A5;
+        border-radius: 5px;
+    }
 
-.onboardButton.Skip {
-    border-radius: 5px;
-    border: 2px solid #ffffff;
-}
+    .onboardButton.Skip {
+        border-radius: 5px;
+        border: 2px solid #ffffff;
+    }
 
 .submitButton {
     flex: 1;
@@ -1642,4 +1642,60 @@ input.coordInput {
 
 .tag.large {
     font-size: 16px;
+}
+
+/*Advanced Search*/
+.advSearchButton {
+    height: 25px;
+    width: 200px;
+    padding: 5px;
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+    line-height: 25px;
+    margin: 10px 100px;
+    text-align: center;
+}
+
+.advSearchButton:hover {
+    background-color: #4A74A5;
+    color: #000000;
+}
+
+.advSearchBody {
+
+}
+
+.advSearchCat {
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 1px solid #D8D8D8;
+    margin-bottom: 10px;
+}
+
+.advSearchFooter {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+}
+
+.advSearchModalButton {
+    flex: 0 0 auto;
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    margin: 5px 25px;
+    text-align: center;
+}
+
+.advSearchModalButton.search {
+    color: #000000;
+    background-color: #3FB39A;
+}
+
+.advSearchModalButton.cancel {
+    background-color: #FF3A3A;
 }
