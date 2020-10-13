@@ -61,6 +61,48 @@ export const mainTags = [
     { value: 'wast', label: 'Waste' }
 ];
 
+export const itemTypes = [
+    { value: 'ap', label: 'Academic Publication' },
+    { value: 'ar', label: 'Article' },
+    { value: 'nw', label: 'News' },
+    { value: 'pp', label: 'Policy Paper' },
+    { value: 'rp', label: 'Report' },
+    { value: 'bk', label: 'Book' },
+    { value: 'ey', label: 'Essay' },
+    { value: 'ht', label: 'Historical Text' },
+    { value: 'ep', label: 'Event Press' },
+    { value: 'tk', label: 'Toolkit' },
+    { value: 'mv', label: 'Movie' },
+    { value: 'dc', label: 'Documentary' },
+    { value: 'rs', label: 'Research' },
+    { value: 'iv', label: 'Interview' },
+    { value: 'nj', label: 'News/Journalism' },
+    { value: 'er', label: 'Event Recording' },
+    { value: 'lr', label: 'Lecture Recording' },
+    { value: 'if', label: 'Informational Video' },
+    { value: 'tr', label: 'Trailer' },
+    { value: 'ad', label: 'Artwork Documentation' },
+    { value: 'rf', label: 'Raw Footage' },
+    { value: 'vd', label: 'Video' },
+    { value: 'ph', label: 'Photograph' },
+    { value: 'da', label: 'Digital Art' },
+    { value: 'gr', label: 'Graphics' },
+    { value: 'mp', label: 'Map' },
+    { value: 'fs', label: 'Film Still' },
+    { value: 'sc', label: 'Sculpture' },
+    { value: 'pt', label: 'Painting' },
+    { value: 'il', label: 'Illustration' },
+    { value: 'dr', label: 'Drawing' },
+    { value: 'fr', label: 'Field Recording' },
+    { value: 'sa', label: 'Sound Art' },
+    { value: 'ms', label: 'Music' },
+    { value: 'pd', label: 'Podcast' },
+    { value: 'lv', label: 'Lecture Video' },
+    { value: 'rd', label: 'Radio' },
+    { value: 'py', label: 'Poetry' },
+    { value: 'ot', label: 'Other' },
+];
+
 //Constants from current Ocean Archive GitHub
 //https://github.com/AcrossTheCloud/TBA21-client/blob/master/src/components/metadata/ItemEditor.tsx
 export const oceans = [

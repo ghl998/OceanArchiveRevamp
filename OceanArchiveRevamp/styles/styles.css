@@ -1656,13 +1656,12 @@ input.coordInput {
     text-align: center;
 }
 
-.advSearchButton:hover {
-    background-color: #4A74A5;
-    color: #000000;
-}
+    .advSearchButton:hover {
+        background-color: #4A74A5;
+        color: #000000;
+    }
 
 .advSearchBody {
-
 }
 
 .advSearchCat {
@@ -1687,15 +1686,46 @@ input.coordInput {
     height: 40px;
     line-height: 40px;
     border-radius: 5px;
-    margin: 5px 25px;
+    margin: 5px;
     text-align: center;
 }
 
-.advSearchModalButton.search {
-    color: #000000;
-    background-color: #3FB39A;
+    .advSearchModalButton.search {
+        color: #000000;
+        background-color: #3FB39A;
+    }
+
+    .advSearchModalButton.cancel {
+        background-color: #FF3A3A;
+    }
+
+.advSearchWrapContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
 }
 
-.advSearchModalButton.cancel {
-    background-color: #FF3A3A;
+.advSearchCheckboxOuter {
+    margin: 5px;
+    width: 30%;
+    min-width: 125px;
+}
+
+    .advSearchCheckboxOuter > .form-check-label {
+        height: 40px;
+        display: flex;
+    }
+
+        .advSearchCheckboxOuter > .form-check-label > span {
+            margin-left: 5px;
+        }
+
+.advSearchCheckbox.form-check-input {
+    width: auto;
+    height: auto;
+}
+
+.advSearchDropdown > div {
+
 }
