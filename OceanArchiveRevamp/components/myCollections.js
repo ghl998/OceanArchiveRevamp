@@ -108,7 +108,7 @@ class MyItems extends React.Component {
                 React.createElement(ListHeader, null),
                 this.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListItem, { key: i, published: true, dateCreated: "01-Oct-2020", title: data }))),
             React.createElement("div", { className: 'footerMenu' },
-                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createAnnouncement" }, "+ Add New"),
+                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "+ Add New"),
                 React.createElement("div", { className: 'fillerBox' }),
                 React.createElement(reactstrap_1.Pagination, null,
                     React.createElement(reactstrap_1.PaginationItem, { disabled: currentPage <= 0 },
