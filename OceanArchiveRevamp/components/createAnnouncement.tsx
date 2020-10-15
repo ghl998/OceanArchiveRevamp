@@ -49,4 +49,16 @@ class DetailsPage extends React.Component {
 
         return pageValid;
     }
+    validateTitle = (e) => {
+        var error = false;
+        if (e.target.value.length <= 0)
+            error = true;
+
+        var errors = this.state.errors;
+        errors.title = error;
+        var values = this.state.values;
+        values.title = e.target.value;
+        this.setState({ errors: errors, values: values });
+    }
+
 }
