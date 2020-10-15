@@ -37,4 +37,16 @@ class DetailsPage extends React.Component {
                }
         };
     }
+    validate = () => {
+        console.log('Validate Details');
+        var pageValid = true;
+        var errors = this.state.errors;
+        if (this.state.values.title.length <= 0)
+            errors.title = true;
+
+        if (errors.title || errors.desc || errors.url)
+            pageValid = false;
+
+        return pageValid;
+    }
 }
