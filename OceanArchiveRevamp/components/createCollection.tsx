@@ -337,7 +337,7 @@ class CoordinateBox extends React.Component {
     render() {
         return (
             <Draggable axis='y' bounds='parent' onStart={this.onStart} onDrag={this.onDrag} onStop={this.onStop} position={this.state.position} cancel='.coordInput'>
-                <div tabIndex='0' className={this.state.isFocused ? 'coordContainer focused' : 'coordContainer'} onFocus={this.inFocus} onBlur={this.outFocus}>
+                <div tabIndex= '0' className={this.state.isFocused ? 'coordContainer focused' : 'coordContainer'} onFocus={this.inFocus} onBlur={this.outFocus}>
                     <FormGroup className='coordFormGroup'>
                         <Label for='lat' className='coordLabel'>LAT</Label>
                         <Input className='coordInput' type='number' maxLength='10' name='lat' onChange={this.updateLat} />
