@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
                 React.createElement(reactstrap_1.DropdownToggle, { className: 'altDropdown', caret: true }, this.state.searchBy),
                 React.createElement(reactstrap_1.DropdownMenu, { className: 'altDropdownMenu' },
                     React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"))),
-            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Items' }),
+            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Collections' }),
             React.createElement("input", { type: 'submit', className: 'altSearchButton', value: 'Search' })));
     }
 }
@@ -102,7 +102,7 @@ class MyItems extends React.Component {
     render() {
         const { currentPage } = this.state;
         return (React.createElement("div", { className: "ICAcontainer" },
-            React.createElement("h1", null, "MY ITEMS"),
+            React.createElement("h1", null, "MY COLLECTIONS"),
             React.createElement(SearchBar, null),
             React.createElement("div", { className: 'listSection' },
                 React.createElement(ListHeader, null),
