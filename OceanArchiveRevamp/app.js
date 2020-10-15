@@ -16,6 +16,7 @@ const myCollections_1 = require("./components/myCollections");
 const myAnnouncements_1 = require("./components/myAnnouncements");
 const itemCollectionPage_1 = require("./components/itemCollectionPage");
 const createItem_1 = require("./components/createItem");
+const createCollection_1 = require("./components/createCollection");
 const onboardingForm_1 = require("./components/onboardingForm");
 const search_1 = require("./components/search");
 const Constant = require("./constants");
@@ -96,6 +97,11 @@ class Homepage extends React.Component {
                         return (React.createElement("div", null,
                             React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
                             React.createElement(createItem_1.default, null)));
+                    } }),
+                React.createElement(react_router_dom_1.Route, { path: "/createCollection", render: () => {
+                        return (React.createElement("div", null,
+                            React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
+                            React.createElement(createCollection_1.default, null)));
                     } }),
                 React.createElement(react_router_dom_1.Route, { path: "/search", render: () => {
                         return (React.createElement("div", null,
