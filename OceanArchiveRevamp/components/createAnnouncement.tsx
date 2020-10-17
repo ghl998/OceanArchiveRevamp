@@ -60,5 +60,25 @@ class DetailsPage extends React.Component {
         values.title = e.target.value;
         this.setState({ errors: errors, values: values });
     }
-
+    render() {
+        return (
+            <div className='createAnnouncementPage'>
+                <FormGroup>
+                    <Label for='title'>Title</Label>
+                    <Input type='text' name='title' id='title' value={this.state.values.title} required invalid={this.state.errors.title} onChange={(e) => this.validateTitle(e)} />
+                    <FormFeedback valid={!this.state.errors.title} >Title Error</FormFeedback>
+                </FormGroup>
+                <FormGroup>
+                    <Label for='desc'>Description</Label>
+                    <Input type='textarea' name='descrption' id='descrption' value={this.state.values.desc} required invalid={this.state.errors.desc} />
+                    <FormFeedback valid={!this.state.errors.desc} >Desc Error</FormFeedback>
+                </FormGroup>
+                <FormGroup>
+                    <Label for='url'>URL (optional)</Label>
+                    <Input type='url' name='url' id='url' value={this.state.values.url} invalid={this.state.errors.url} />
+                    <FormFeedback valid={!this.state.errors.url} >URL Error</FormFeedback>
+                </FormGroup>
+                </div>
+        );
+    }
 }
