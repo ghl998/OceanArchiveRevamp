@@ -20,6 +20,7 @@ import MyAnnouncements from './components/myAnnouncements';
 import ItemCollectionPage from './components/itemCollectionPage';
 import CreateItem from './components/createItem';
 import CreateCollection from './components/createCollection';
+import CreateAnnouncement from './components/createAnnouncement';
 import OnBoardingForm from './components/onboardingForm';
 import Search from './components/search';
 
@@ -156,6 +157,16 @@ class Homepage extends React.Component {
                                 <div>
                                     <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
                                     <CreateCollection />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/createAnnouncement" 
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <createAnnouncement />
                                 </div>
                             )
                         }}

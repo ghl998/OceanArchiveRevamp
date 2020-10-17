@@ -66,7 +66,6 @@ class DetailsPage extends React.Component {
         return (React.createElement(reactstrap_1.Form, { className: 'creationContainer' },
             React.createElement("div", { className: 'creationHeader' },
                 "Create Announcement"),
-            React.createElement(reactstrap_1.Carousel, { pause: false, interval: false, activeIndex: this.state.activeIndex, next: this.next, previous: this.prev }, this.formPages),
             React.createElement("div", { className: 'creationFooter' },
                 React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SAVE DRAFT"),
                 React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT"))));

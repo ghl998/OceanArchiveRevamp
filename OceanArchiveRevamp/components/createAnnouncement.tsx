@@ -44,7 +44,7 @@ class DetailsPage extends React.Component {
         if (this.state.values.title.length <= 0)
             errors.title = true;
 
-        if (errors.title || errors.desc || errors.url)
+        if (errors.title || errors.descrption || errors.url)
             pageValid = false;
 
         return pageValid;
@@ -69,9 +69,9 @@ class DetailsPage extends React.Component {
                     <FormFeedback valid={!this.state.errors.title} >Title Error</FormFeedback>
                 </FormGroup>
                 <FormGroup>
-                    <Label for='desc'>Description</Label>
-                    <Input type='textarea' name='descrption' id='descrption' value={this.state.values.desc} required invalid={this.state.errors.desc} />
-                    <FormFeedback valid={!this.state.errors.desc} >Desc Error</FormFeedback>
+                    <Label for='descrption'>Description</Label>
+                    <Input type='textarea' name='descrption' id='descrption' value={this.state.values.descrption} required invalid={this.state.errors.descrption} />
+                    <FormFeedback valid={!this.state.errors.descrption} >Desc Error</FormFeedback>
                 </FormGroup>
                 <FormGroup>
                     <Label for='url'>URL (optional)</Label>
