@@ -4,10 +4,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 const Constant = require("../constants");
 const reactstrap_1 = require("reactstrap");
-const react_select_1 = require("react-select");
 
 
-class DetailsPage extends React.Component {
+
+class Details extends React.Component {
     constructor(props) {
         super(props);
         this.validate = () => {
@@ -16,7 +16,7 @@ class DetailsPage extends React.Component {
             var errors = this.state.errors;
             if (this.state.values.title.length <= 0)
                 errors.title = true;
-            if (errors.title || errors.descrption || errors.url )
+            if (errors.title || errors.desc || errors.url )
                 pageValid = false;
             return pageValid;
         };
@@ -33,13 +33,13 @@ class DetailsPage extends React.Component {
         this.state = {
             errors: {
                 title: false,
-                descrption: false,
+                desc: false,
                 url: false
                
             },
             values: {
                 title: '',
-                descrption: '',
+                desc: '',
                 url: ''
               
             }
@@ -52,9 +52,9 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.title }, "Title Error")),
             React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'descrption' }, "descrption"),
-                React.createElement(reactstrap_1.Input, { type: 'textarea', name: 'descrption', id: 'descrption', value: this.state.values.descrption, required: true, invalid: this.state.errors.desc }),
-                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.descrption }, "descrption Error")),
+                React.createElement(reactstrap_1.Label, { for: 'desc' }, "desc"),
+                React.createElement(reactstrap_1.Input, { type: 'textarea', name: 'desc', id: 'desc', value: this.state.values.desc, required: true, invalid: this.state.errors.desc }),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.desc }, "descrption Error")),
            
                 React.createElement(reactstrap_1.Label, { for: 'url' }, "URL (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'url', name: 'url', id: 'url', value: this.state.values.url, invalid: this.state.errors.url }),
