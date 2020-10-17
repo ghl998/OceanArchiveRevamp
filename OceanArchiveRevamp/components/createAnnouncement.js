@@ -4,7 +4,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 const Constant = require("../constants");
 const reactstrap_1 = require("reactstrap");
-
+const react_select_1 = require("react-select");
+const google_map_react_1 = require("google-map-react");
+let Draggable = require('react-draggable');
 
 
 class CreateAnnouncement extends React.Component {
@@ -47,7 +49,7 @@ class CreateAnnouncement extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createAnnouncementPage' },
-            
+        React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'title' }, "Title"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.title }, "Title Error")),
@@ -61,7 +63,7 @@ class CreateAnnouncement extends React.Component {
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error")),
             React.createElement("div", { className: 'creationFooter' },
                 React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SAVE DRAFT"),
-                React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT")));
+                React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT"))));
     }
 }
 exports.default = CreateAnnouncement;

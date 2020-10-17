@@ -59,8 +59,9 @@ export default class CreateAnnouncement extends React.Component {
     }
     render() {
         return (
-            <Form className="create">
             <div className='createAnnouncementPage'>
+                CREATE createAnnouncementPage
+                <br />
                 <FormGroup>
                     <Label for='title'>Title</Label>
                     <Input type='text' name='title' id='title' value={this.state.values.title} required invalid={this.state.errors.title} onChange={(e) => this.validateTitle(e)} />
@@ -84,7 +85,7 @@ export default class CreateAnnouncement extends React.Component {
                             </div>
                 
                 </div>
-               </Form>
+               
         );
     }
 }
