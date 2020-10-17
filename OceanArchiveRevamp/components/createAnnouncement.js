@@ -45,4 +45,20 @@ class DetailsPage extends React.Component {
             }
         };
     }
+    render() {
+        return (React.createElement("div", { className: 'createItemPage' },
+            
+                React.createElement(reactstrap_1.Label, { for: 'title' }, "Title"),
+                React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.title }, "Title Error")),
+            React.createElement(reactstrap_1.FormGroup, null,
+                React.createElement(reactstrap_1.Label, { for: 'descrption' }, "descrption"),
+                React.createElement(reactstrap_1.Input, { type: 'textarea', name: 'descrption', id: 'descrption', value: this.state.values.descrption, required: true, invalid: this.state.errors.desc }),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.descrption }, "descrption Error")),
+           
+                React.createElement(reactstrap_1.Label, { for: 'url' }, "URL (optional)"),
+                React.createElement(reactstrap_1.Input, { type: 'url', name: 'url', id: 'url', value: this.state.values.url, invalid: this.state.errors.url }),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error"));
+          
+    }
 }
