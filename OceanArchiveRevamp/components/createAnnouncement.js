@@ -64,4 +64,5 @@ class Details extends React.Component {
                 React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT")));
     }
 }
-exports.default = CreateItem;
+exports.default = createAnnouncement;
+//# sourceMappingURL=createAnnouncement.js.map

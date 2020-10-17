@@ -75,6 +75,13 @@ class Details extends React.Component {
                     <Input type='url' name='url' id='url' value={this.state.values.url} invalid={this.state.errors.url} />
                     <FormFeedback valid={!this.state.errors.url} >URL Error</FormFeedback>
                 </FormGroup>
+                <div className='creationButton' style={{ marginRight: '16px' }}>
+                        SAVE DRAFT
+                            </div>
+                    <div className='creationButton callToAction' onClick={this.next}>
+                        NEXT
+                            </div>
+                
                 </div>
         );
     }

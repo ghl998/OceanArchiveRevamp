@@ -104,7 +104,7 @@ class Homepage extends React.Component {
                             React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
                             React.createElement(createCollection_1.default, null)));
                     } }),
-                    React.createElement(react_router_dom_1.Route, { path: "/createAnnouncement", render: () => {
+                 React.createElement(react_router_dom_1.Route, { path: "/createAnnouncement", render: () => {
                         return (React.createElement("div", null,
                             React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
                             React.createElement(createAnnouncement_1.default, null)));
