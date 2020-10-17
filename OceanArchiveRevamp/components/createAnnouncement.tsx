@@ -59,6 +59,7 @@ export default class CreateAnnouncement extends React.Component {
     }
     render() {
         return (
+            <Form className="create">
             <div className='createAnnouncementPage'>
                 <FormGroup>
                     <Label for='title'>Title</Label>
@@ -74,7 +75,7 @@ export default class CreateAnnouncement extends React.Component {
                     <Label for='url'>URL (optional)</Label>
                     <Input type='url' name='url' id='url' value={this.state.values.url} invalid={this.state.errors.url} />
                     <FormFeedback valid={!this.state.errors.url} >URL Error</FormFeedback>
-                </FormGroup>
+                 </FormGroup>
                 <div className='creationButton' style={{ marginRight: '16px' }}>
                         SAVE DRAFT
                             </div>
@@ -83,6 +84,7 @@ export default class CreateAnnouncement extends React.Component {
                             </div>
                 
                 </div>
+               </Form>
         );
     }
 }
