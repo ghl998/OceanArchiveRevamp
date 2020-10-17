@@ -49,6 +49,8 @@ class CreateAnnouncement extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createAnnouncementPage' },
+        "CREATE ANNOUNCEMENT",
+            React.createElement("br", null),
         React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'title' }, "Title"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
