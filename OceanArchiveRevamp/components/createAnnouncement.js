@@ -55,20 +55,13 @@ class Details extends React.Component {
                 React.createElement(reactstrap_1.Label, { for: 'desc' }, "desc"),
                 React.createElement(reactstrap_1.Input, { type: 'textarea', name: 'desc', id: 'desc', value: this.state.values.desc, required: true, invalid: this.state.errors.desc }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.desc }, "descrption Error")),
-           
+            React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'url' }, "URL (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'url', name: 'url', id: 'url', value: this.state.values.url, invalid: this.state.errors.url }),
-                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error"));
-          
-    }
-    render() {
-        this.mainFocus = this.focusAreas[0];
-        return (React.createElement(reactstrap_1.Form, { className: 'creationContainer' },
-            React.createElement("div", { className: 'creationHeader' },
-                "Create Announcement"),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error")),
             React.createElement("div", { className: 'creationFooter' },
                 React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SAVE DRAFT"),
-                React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT"))));
+                React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT")));
     }
 }
 exports.default = CreateItem;
