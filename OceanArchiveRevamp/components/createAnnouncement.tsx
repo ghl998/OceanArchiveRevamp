@@ -17,8 +17,6 @@ import {
     ButtonGroup,
     Button
 } from 'reactstrap';
-import Select from 'react-select';
-import GoogleMapReact from 'google-map-react';
 
 let Draggable = require('react-draggable');
 class DetailsPage extends React.Component {
