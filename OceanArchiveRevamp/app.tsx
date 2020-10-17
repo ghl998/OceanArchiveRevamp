@@ -166,7 +166,7 @@ class Homepage extends React.Component {
                             return (
                                 <div>
                                     <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
-                                    <createAnnouncement />
+                                    <CreateAnnouncement />
                                 </div>
                             )
                         }}

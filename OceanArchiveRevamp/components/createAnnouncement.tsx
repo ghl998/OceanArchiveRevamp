@@ -18,7 +18,7 @@ import {
     Button
 } from 'reactstrap';
 
-class Details extends React.Component {
+export default class CreateAnnouncement extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

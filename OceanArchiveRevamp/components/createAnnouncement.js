@@ -7,7 +7,7 @@ const reactstrap_1 = require("reactstrap");
 
 
 
-class Details extends React.Component {
+class CreateAnnouncement extends React.Component {
     constructor(props) {
         super(props);
         this.validate = () => {
@@ -46,7 +46,7 @@ class Details extends React.Component {
         };
     }
     render() {
-        return (React.createElement("div", { className: 'createItemPage' },
+        return (React.createElement("div", { className: 'createAnnouncementPage' },
             
                 React.createElement(reactstrap_1.Label, { for: 'title' }, "Title"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
@@ -64,5 +64,5 @@ class Details extends React.Component {
                 React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT")));
     }
 }
-exports.default = createAnnouncement;
+exports.default = CreateAnnouncement;
 //# sourceMappingURL=createAnnouncement.js.map
