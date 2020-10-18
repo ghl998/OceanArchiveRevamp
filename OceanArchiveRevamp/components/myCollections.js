@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
                 React.createElement(reactstrap_1.DropdownToggle, { className: 'altDropdown', caret: true }, this.state.searchBy),
                 React.createElement(reactstrap_1.DropdownMenu, { className: 'altDropdownMenu' },
                     React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"))),
-            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Items' }),
+            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Collections' }),
             React.createElement("input", { type: 'submit', className: 'altSearchButton', value: 'Search' })));
     }
 }
@@ -32,19 +32,19 @@ class ListHeader extends React.Component {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'ListHeaderContainer', style: { fontWeight: 'bold' } },
+        return (React.createElement("div", { className: 'listItemContainer', style: { fontWeight: 'bold' } },
             React.createElement("div", { className: 'listFixedWidth' }, "Published"),
             React.createElement("div", { className: 'listFixedWidth' }, "Created Date"),
             React.createElement("div", { className: 'listVariableWidth' }, "Title"),
             React.createElement("div", { className: 'listFixedWidth' }, "Options")));
     }
 }
-class ListCollection extends React.Component {
+class ListItem extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'ListCollectionContainer' },
+        return (React.createElement("div", { className: 'listItemContainer' },
             React.createElement("div", { className: 'listFixedWidth' }, this.props.published ?
                 React.createElement("svg", { width: '30', height: '30' },
                     React.createElement("polyline", { points: '5,20 10,25 25,5', strokeLinecap: 'round', style: { fill: 'none', stroke: '#05B336', strokeWidth: '5' } }),
@@ -102,13 +102,13 @@ class MyItems extends React.Component {
     render() {
         const { currentPage } = this.state;
         return (React.createElement("div", { className: "ICAcontainer" },
-            React.createElement("h1", null, "MY ITEMS"),
+            React.createElement("h1", null, "MY COLLECTIONS"),
             React.createElement(SearchBar, null),
             React.createElement("div", { className: 'listSection' },
                 React.createElement(ListHeader, null),
-                this.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListHeader, { key: i, published: true, dateCreated: "02-Jun-2020", title: data }))),
+                this.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListItem, { key: i, published: true, dateCreated: "01-Oct-2020", title: data }))),
             React.createElement("div", { className: 'footerMenu' },
-                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createItem" }, "+ Add New"),
+                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "+ Add New"),
                 React.createElement("div", { className: 'fillerBox' }),
                 React.createElement(reactstrap_1.Pagination, null,
                     React.createElement(reactstrap_1.PaginationItem, { disabled: currentPage <= 0 },

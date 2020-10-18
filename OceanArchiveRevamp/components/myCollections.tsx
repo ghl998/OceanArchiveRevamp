@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
                         <DropdownItem onClick={() => this.switchSearch('Title')}>Title</DropdownItem>
                     </DropdownMenu>
                 </ButtonDropdown>
-                <input type='search' className='altSearchBar' placeholder='Search My Items' />
+                <input type='search' className='altSearchBar' placeholder='Search My Collections' />
                 <input type='submit' className='altSearchButton' value='Search' />
             </form>
         );
@@ -155,7 +155,7 @@ export default class MyItems extends React.Component {
         const { currentPage } = this.state;
         return (
             <div className="ICAcontainer">
-                <h1>MY ITEMS</h1>
+                <h1>MY COLLECTIONS</h1>
                 <SearchBar />
                 <div className='listSection'>
                     <ListHeader />
