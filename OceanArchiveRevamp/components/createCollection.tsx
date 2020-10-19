@@ -267,7 +267,99 @@ class RegionAndLegalPage extends React.Component {
         );
     }
 }
+class AddItemPage extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+    validate = () => {
+        console.log('Validate add items');
+        var pageValid = true;
 
+        return pageValid;
+    }
+    render() {
+        return (
+            <div className='createItemPage'>
+                Regions
+                <hr />
+                <FormGroup>
+                    <Label for='oceans'>Ocean Region/s (optional)</Label>
+                    <Select className='react-select-contianer' classNamePrefix='react-select' options={Constant.oceans} isMulti isSearchable />
+                </FormGroup>
+                <FormGroup>
+                    <Label for='countries'>Country/s (optional)</Label>
+                    <Select className='react-select-contianer' classNamePrefix='react-select' options={Constant.countries} value={Constant.countries.value} isMulti isSeachable />
+                </FormGroup>
+                <div style={{ height: '50px' }} />
+                Legal
+                <hr />
+                <FormGroup>
+                    <Label for='license'>License</Label>
+                    <Input type='select' name='license'>
+                        <option>CC BY (Least Restrictive)</option>
+                        <option>CC BY-SA</option>
+                        <option>CC BY-ND</option>
+                        <option>CC BY-NC</option>
+                        <option>CC BY-NC-SA</option>
+                        <option>CC BY-NC-ND (Most Restrictive CC)</option>
+                        <option>Ocean Archive (Most Restrictive)</option>
+                    </Input>
+                </FormGroup>
+                <FormGroup>
+                    <Label for='copyr'>Copyright Owner (optional)</Label>
+                    <Input type='text' name='copyr' />
+                </FormGroup>
+            </div>
+        );
+    }
+}
+
+class AddCollectionPage extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+    validate = () => {
+        console.log('Validate add collections');
+        var pageValid = true;
+
+        return pageValid;
+    }
+    render() {
+        return (
+            <div className='createItemPage'>
+                Regions
+                <hr />
+                <FormGroup>
+                    <Label for='oceans'>Ocean Region/s (optional)</Label>
+                    <Select className='react-select-contianer' classNamePrefix='react-select' options={Constant.oceans} isMulti isSearchable />
+                </FormGroup>
+                <FormGroup>
+                    <Label for='countries'>Country/s (optional)</Label>
+                    <Select className='react-select-contianer' classNamePrefix='react-select' options={Constant.countries} value={Constant.countries.value} isMulti isSeachable />
+                </FormGroup>
+                <div style={{ height: '50px' }} />
+                Legal
+                <hr />
+                <FormGroup>
+                    <Label for='license'>License</Label>
+                    <Input type='select' name='license'>
+                        <option>CC BY (Least Restrictive)</option>
+                        <option>CC BY-SA</option>
+                        <option>CC BY-ND</option>
+                        <option>CC BY-NC</option>
+                        <option>CC BY-NC-SA</option>
+                        <option>CC BY-NC-ND (Most Restrictive CC)</option>
+                        <option>Ocean Archive (Most Restrictive)</option>
+                    </Input>
+                </FormGroup>
+                <FormGroup>
+                    <Label for='copyr'>Copyright Owner (optional)</Label>
+                    <Input type='text' name='copyr' />
+                </FormGroup>
+            </div>
+        );
+    }
+}
 
 class CoordinateBox extends React.Component {
     constructor(props) {
@@ -694,6 +786,8 @@ export default class CreateCollection extends React.Component {
                 { title: "Details", submittable: false },
                 { title: "Category & Tags", submittable: true },
                 { title: "Regions & Legal", submittable: false },
+                { title: "Add Items", submittable: false },
+                { title: "Add Collections", submittable: false },
                 { title: "Location/s", submittable: false }
             ]
         };
@@ -708,9 +802,11 @@ export default class CreateCollection extends React.Component {
         //console.log("mainFocus After: ", this.mainFocus);
     }
 
-    formNumbers = [1, 2, 3, 4];
+    formNumbers = [1, 2, 3, 4, 5, 6];
 
     pageRefs = [
+        React.createRef(),
+        React.createRef(),
         React.createRef(),
         React.createRef(),
         React.createRef(),
@@ -746,12 +842,30 @@ export default class CreateCollection extends React.Component {
                         </div>
                     </CarouselItem>
                 );
-            //Location/s
+            //Add Items
             case 4:
                 return (
                     <CarouselItem className='creationCarouselItem' key='Page4'>
                         <div className='centerCarouselItem'>
-                            <LocationPage ref={this.pageRefs[3]} />
+                            <AddItemPage ref={this.pageRefs[3]} />
+                        </div>
+                    </CarouselItem>
+                );
+            //Add Items
+            case 5:
+                return (
+                    <CarouselItem className='creationCarouselItem' key='Page5'>
+                        <div className='centerCarouselItem'>
+                            <AddCollectionPage ref={this.pageRefs[4]} />
+                        </div>
+                    </CarouselItem>
+                );
+            //Location/s
+            case 6:
+                return (
+                    <CarouselItem className='creationCarouselItem' key='Page6'>
+                        <div className='centerCarouselItem'>
+                            <LocationPage ref={this.pageRefs[5]} />
                         </div>
                     </CarouselItem>
                 );

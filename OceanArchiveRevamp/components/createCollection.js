@@ -3,10 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 var ReactDOM = require('react-dom');
 const Constant = require("../constants");
+const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
 let Draggable = require('react-draggable');
+
 class DetailsPage extends React.Component {
     constructor(props) {
         super(props);
@@ -56,9 +58,9 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.title }, "Title Error")),
             React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'subtitle' }, "Subtitle (optional)"),
+                React.createElement(reactstrap_1.Label, { for: 'subtitle' }, "Subtitle(optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'subtitle', id: 'subtitle', value: this.state.values.subtitle, required: true, invalid: this.state.errors.subtitle }),
-                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.subtitle }, "Subtitle Error")),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.subtitle }, "subtitle Error")),
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'desc' }, "Description"),
                 React.createElement(reactstrap_1.Input, { type: 'textarea', name: 'desc', id: 'desc', value: this.state.values.desc, required: true, invalid: this.state.errors.desc }),
@@ -67,7 +69,7 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.Label, { for: 'creator' }, "Creator(s) / Author(s)"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'creator', id: 'creator', value: this.state.values.creator, required: true, invalid: this.state.errors.creator }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.creator }, "Creator Error")),
-            React.createElement(reactstrap_1.FormGroup, null,
+           React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'url' }, "URL (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'url', name: 'url', id: 'url', value: this.state.values.url, invalid: this.state.errors.url }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error")),
@@ -77,6 +79,7 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.lang }, "Language Error"))));
     }
 }
+
 class CategoryAndTagsPage extends React.Component {
     constructor(props) {
         super(props);
@@ -148,6 +151,7 @@ class CategoryAndTagsPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'select', name: 'keyword' }))));
     }
 }
+
 class RegionAndLegalPage extends React.Component {
     constructor(props) {
         super(props);
@@ -185,6 +189,7 @@ class RegionAndLegalPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
     }
 }
+
 class CoordinateBox extends React.Component {
     constructor(props) {
         super(props);
@@ -477,6 +482,43 @@ class LocationPage extends React.Component {
                         React.createElement("div", { className: 'fillerBox' }))))));
     }
 }
+
+class AddItemPage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.validate = () => {
+            console.log('Validate add items');
+            var pageValid = true;
+            return pageValid;
+        };
+    }
+    render() {
+        return (React.createElement("div", { className: 'createItemPage' },
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/addExistItems" }, "ADD EXISTING ITEM"),
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createItem" }, "ADD NEW ITEM")));
+
+    }
+}
+
+
+
+class AddCollectionPage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.validate = () => {
+            console.log('Validate add collections');
+            var pageValid = true;
+            return pageValid;
+        };
+    }
+    render() {
+        return (React.createElement("div", { className: 'createItemPage' },
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/addExistCollections" }, "ADD EXISTING COLLECTION"),
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "ADD NEW COLLECTION")));
+
+    }
+}
+
 class FormProgressBar extends React.Component {
     constructor(props) {
         super(props);
@@ -501,6 +543,7 @@ class FormProgressBar extends React.Component {
         })));
     }
 }
+
 class CreateCollection extends React.Component {
     constructor(props) {
         super(props);
@@ -510,8 +553,10 @@ class CreateCollection extends React.Component {
             this.mainFocus = this.focusAreas[index];
             //console.log("mainFocus After: ", this.mainFocus);
         };
-        this.formNumbers = [1, 2, 3, 4];
+        this.formNumbers = [1, 2, 3, 4, 5, 6];
         this.pageRefs = [
+            React.createRef(),
+            React.createRef(),
             React.createRef(),
             React.createRef(),
             React.createRef(),
@@ -534,11 +579,21 @@ class CreateCollection extends React.Component {
                     return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page3' },
                         React.createElement("div", { className: 'centerCarouselItem' },
                             React.createElement(RegionAndLegalPage, { ref: this.pageRefs[2] }))));
-                //Location/s
+                //Add items
                 case 4:
                     return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page4' },
                         React.createElement("div", { className: 'centerCarouselItem' },
-                            React.createElement(LocationPage, { ref: this.pageRefs[3] }))));
+                            React.createElement(AddItemPage, { ref: this.pageRefs[3] }))));
+                //Add items
+                case 5:
+                    return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page5' },
+                        React.createElement("div", { className: 'centerCarouselItem' },
+                            React.createElement(AddCollectionPage, { ref: this.pageRefs[4] }))));
+                //Location/s
+                case 6:
+                    return (React.createElement(reactstrap_1.CarouselItem, { className: 'creationCarouselItem', key: 'Page6' },
+                        React.createElement("div", { className: 'centerCarouselItem' },
+                            React.createElement(LocationPage, { ref: this.pageRefs[5] }))));
             }
         });
         this.validatePages = (toPage) => {
@@ -584,6 +639,8 @@ class CreateCollection extends React.Component {
                 { title: "Details", submittable: false },
                 { title: "Category & Tags", submittable: true },
                 { title: "Regions & Legal", submittable: false },
+                { title: "Add Items", submittable: false },
+                { title: "Add Collections", submittable: false },
                 { title: "Location/s", submittable: false }
             ]
         };
