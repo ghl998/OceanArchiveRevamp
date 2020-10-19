@@ -7,7 +7,6 @@ const reactstrap_1 = require("reactstrap");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
 let Draggable = require('react-draggable');
-
 class DetailsPage extends React.Component {
     constructor(props) {
         super(props);
@@ -57,9 +56,9 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'title', id: 'title', value: this.state.values.title, required: true, invalid: this.state.errors.title, onChange: (e) => this.validateTitle(e) }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.title }, "Title Error")),
             React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'subtitle' }, "Subtitle(optional)"),
+                React.createElement(reactstrap_1.Label, { for: 'subtitle' }, "Subtitle (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'subtitle', id: 'subtitle', value: this.state.values.subtitle, required: true, invalid: this.state.errors.subtitle }),
-                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.subtitle }, "subtitle Error")),
+                React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.subtitle }, "Subtitle Error")),
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'desc' }, "Description"),
                 React.createElement(reactstrap_1.Input, { type: 'textarea', name: 'desc', id: 'desc', value: this.state.values.desc, required: true, invalid: this.state.errors.desc }),
@@ -68,7 +67,7 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.Label, { for: 'creator' }, "Creator(s) / Author(s)"),
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'creator', id: 'creator', value: this.state.values.creator, required: true, invalid: this.state.errors.creator }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.creator }, "Creator Error")),
-           React.createElement(reactstrap_1.FormGroup, null,
+            React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'url' }, "URL (optional)"),
                 React.createElement(reactstrap_1.Input, { type: 'url', name: 'url', id: 'url', value: this.state.values.url, invalid: this.state.errors.url }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error")),
@@ -78,8 +77,6 @@ class DetailsPage extends React.Component {
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.lang }, "Language Error"))));
     }
 }
-
-
 class CategoryAndTagsPage extends React.Component {
     constructor(props) {
         super(props);
@@ -151,7 +148,6 @@ class CategoryAndTagsPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'select', name: 'keyword' }))));
     }
 }
-
 class RegionAndLegalPage extends React.Component {
     constructor(props) {
         super(props);
@@ -189,7 +185,6 @@ class RegionAndLegalPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
     }
 }
-
 class CoordinateBox extends React.Component {
     constructor(props) {
         super(props);
@@ -482,8 +477,6 @@ class LocationPage extends React.Component {
                         React.createElement("div", { className: 'fillerBox' }))))));
     }
 }
-
-
 class FormProgressBar extends React.Component {
     constructor(props) {
         super(props);
@@ -508,7 +501,6 @@ class FormProgressBar extends React.Component {
         })));
     }
 }
-
 class CreateCollection extends React.Component {
     constructor(props) {
         super(props);

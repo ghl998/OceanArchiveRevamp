@@ -84,6 +84,8 @@
     <TypeScriptCompile Include="components\contentSection.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="components\createAnnouncement.tsx" />
+    <TypeScriptCompile Include="components\createCollection.tsx" />
     <TypeScriptCompile Include="components\createItem.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>

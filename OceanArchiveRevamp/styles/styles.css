@@ -1652,14 +1652,18 @@ input.coordInput {
     border: solid 1px #ffffff;
     border-radius: 5px;
     line-height: 25px;
-    margin: 10px 100px;
+    margin: 10px 0px;
     text-align: center;
 }
 
     .advSearchButton:hover {
         background-color: #4A74A5;
-        color: #000000;
     }
+
+.advSearchOuter {
+    width: 80vw;
+    margin: 0px auto;
+}
 
 .advSearchBody {
 }
@@ -1699,6 +1703,12 @@ input.coordInput {
         background-color: #FF3A3A;
     }
 
+    .advSearchModalButton.add {
+        color: #000000;
+        background-color: #3FB39A;
+        margin-left: 0px;
+    }
+
 .advSearchWrapContainer {
     display: flex;
     flex-direction: row;
@@ -1715,6 +1725,7 @@ input.coordInput {
     .advSearchCheckboxOuter > .form-check-label {
         height: 40px;
         display: flex;
+        align-items: center;
     }
 
         .advSearchCheckboxOuter > .form-check-label > span {
@@ -1727,5 +1738,109 @@ input.coordInput {
 }
 
 .advSearchDropdown > div {
-
 }
+
+.advSearchFocusGroup {
+    display: flex;
+    height: 40px;
+}
+
+.advSearchFocus {
+    flex: 1 1 0;
+    max-width: 150px;
+    border: 1px solid #ffffff;
+    border-collapse: collapse;
+    line-height: 40px;
+    text-align: center;
+}
+
+    .advSearchFocus.left {
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    .advSearchFocus.right {
+        border-radius: 0px 5px 5px 0px;
+    }
+
+    .advSearchFocus.active {
+        background-color: #4A74A5;
+    }
+
+.advSearchSecKeyword {
+    display: flex;
+    margin: 7px 0px;
+    height: 40px;
+    flex-direction: row;
+}
+
+    .advSearchSecKeyword > div, input {
+        flex: 0 0 auto;
+        max-height: 40px;
+        min-height: 40px;
+    }
+
+    .advSearchSecKeyword > .delete {
+        width: 40px;
+        text-align: center;
+        line-height: 40px;
+        background-color: #FF3A3A;
+        border-radius: 0px 5px 5px 0px;
+    }
+
+    .advSearchSecKeyword > .dropdown > button {
+        background-color: #4A74A5;
+        max-width: 100px;
+        min-width: 100px;
+        max-height: 40px;
+        min-height: 40px;
+        border-radius: 5px 0px 0px 5px;
+    }
+
+    .advSearchSecKeyword > .inputBox {
+        height: 40px;
+        border-radius: 0px;
+        border-style: solid none;
+    }
+
+.searchResults {
+    overflow-y: auto;
+    max-height: calc(100vh - 137px);
+}
+
+.searchResultContainer {
+    display: flex;
+    width: 80vw;
+    margin: 10px auto;
+    height: 100px;
+    border-bottom: 1px solid #D8D8D8;
+    align-items: center;
+}
+
+.searchResultContainer:hover {
+    background-color: #4A74A5;
+}
+
+    .searchResultContainer > img {
+        width: 80px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .searchResultContainer > div {
+        margin-left: 10px;
+    }
+
+        .searchResultContainer > div > .authorsContainer > .authors {
+            margin-right: 10px;
+            color: #CCCCCC;
+            font-size: 12px;
+        }
+
+    .searchResultContainer .tagsContainer {
+        border: 0px solid #ffffff;
+        padding-left: 0px;
+    }
+
+        .searchResultContainer .tagsContainer .tag:first-of-type {
+            margin-left: 0px;
+        }
