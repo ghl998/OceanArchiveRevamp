@@ -133,8 +133,43 @@ hr {
         justify-content: center;
     }
 
+.headerInner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .headerNavBar {
     flex: 1;
+}
+
+    .headerNavBar.mobile {
+        display: flex;
+    }
+
+.headerHomeIcon {
+    width: 50px;
+    height: 50px;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerDropdown.mobile {
+    width: 50px;
+    height: 50px;
+    flex: 0 0 auto;
+}
+
+.headerDropdownToggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 50px;
+    border: 0px none #142636;
+    background-color: #142636;
 }
 
 .headerButton {
@@ -438,6 +473,12 @@ hr {
         margin: 0px;
     }
 
+    .smallContentBoxBar > .itemsAndCollectionsCount {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
 .contentContainer {
     display: flex;
     flex-wrap: wrap;
@@ -525,6 +566,9 @@ hr {
     .largeContentBoxBar > .itemsAndCollectionsCount {
         flex: 0 0 150px;
         border-right: 1px solid #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
         .largeContentBoxBar > .itemsAndCollectionsCount > h1 {
@@ -1816,9 +1860,9 @@ input.coordInput {
     align-items: center;
 }
 
-.searchResultContainer:hover {
-    background-color: #4A74A5;
-}
+    .searchResultContainer:hover {
+        background-color: #4A74A5;
+    }
 
     .searchResultContainer > img {
         width: 80px;

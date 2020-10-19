@@ -64,7 +64,7 @@ export default class SmallContentBox extends React.Component {
                             </g>
                         </g>
                     </svg>
-                    <div>
+                    <div className='itemsAndCollectionsCount'>
                         <h2>{this.props.numCollections} Collections</h2>
                         <h2>{this.props.numItems} Items</h2>
                     </div>

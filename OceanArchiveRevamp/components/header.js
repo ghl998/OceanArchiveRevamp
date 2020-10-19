@@ -3,9 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
+const react_responsive_1 = require("react-responsive");
 const Google_svg_1 = require("../logos/Google.svg");
 const FacebookF_svg_1 = require("../logos/FacebookF.svg");
 const TwitterWhite_svg_1 = require("../logos/TwitterWhite.svg");
+const Constant = require("../constants");
 class Logo extends React.Component {
     constructor(props) {
         super(props);
@@ -173,7 +175,7 @@ class Logout extends React.Component {
         return (React.createElement(HeaderButton, { name: 'LOGOUT', onClick: this.props.logoutFunc }));
     }
 }
-class SeachBar extends React.Component {
+class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.searchValue = (e) => {
@@ -204,28 +206,56 @@ class Header extends React.Component {
         this.logout = () => {
             this.props.logIn(false);
         };
+        this.toggleDropdown = () => {
+            this.setState({
+                isDropdownOpen: !this.state.isDropdownOpen
+            });
+        };
+        this.state = {
+            isDropdownOpen: false
+        };
     }
     render() {
         return (React.createElement("div", { className: "header" },
-            React.createElement(Logo, { name: 'OCEAN' }),
-            React.createElement("div", { style: { flex: '1' } },
-                React.createElement("div", { style: { display: 'flex', flexDirection: 'column' } },
-                    React.createElement("div", { className: 'headerNavBar' },
-                        React.createElement("div", { style: { display: 'flex', flexDirection: 'row' } },
-                            React.createElement(react_router_dom_1.NavLink, { to: "/" },
-                                React.createElement(HeaderButton, { name: 'HOME' })),
-                            React.createElement(react_router_dom_1.NavLink, { to: "/map" },
-                                React.createElement(HeaderButton, { name: 'MAP' })),
-                            React.createElement(HeaderButton, { name: 'TERMS' }),
-                            React.createElement(HeaderButton, { name: 'PRIVACY' }),
-                            React.createElement("div", { className: 'fillerBox' }),
-                            this.props.loggedIn ? React.createElement(Admin, null) : React.createElement("div", null),
-                            this.props.loggedIn ? React.createElement(Contribute, null) : React.createElement("div", null),
-                            this.props.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(LoginModal, { loginFunc: () => this.login() }),
-                            this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(SignUpModal, null))),
+            React.createElement(react_responsive_1.default, { minDeviceWidth: 1224 },
+                React.createElement(Logo, { name: 'OCEAN' }),
+                React.createElement("div", { style: { flex: '1' } },
+                    React.createElement("div", { style: { display: 'flex', flexDirection: 'column' } },
+                        React.createElement("div", { className: 'headerNavBar' },
+                            React.createElement("div", { style: { display: 'flex', flexDirection: 'row' } },
+                                React.createElement(react_router_dom_1.NavLink, { to: "/" },
+                                    React.createElement(HeaderButton, { name: 'HOME' })),
+                                React.createElement(react_router_dom_1.NavLink, { to: "/map" },
+                                    React.createElement(HeaderButton, { name: 'MAP' })),
+                                React.createElement(HeaderButton, { name: 'TERMS' }),
+                                React.createElement(HeaderButton, { name: 'PRIVACY' }),
+                                React.createElement("div", { className: 'fillerBox' }),
+                                this.props.loggedIn ? React.createElement(Admin, null) : React.createElement("div", null),
+                                this.props.loggedIn ? React.createElement(Contribute, null) : React.createElement("div", null),
+                                this.props.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(LoginModal, { loginFunc: () => this.login() }),
+                                this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(SignUpModal, null))),
+                        React.createElement("div", { style: { flex: '1' } },
+                            React.createElement(SearchBar, null)))),
+                React.createElement(Logo, { name: 'ARCHIVE' })),
+            React.createElement(react_responsive_1.default, { maxDeviceWidth: 1223 },
+                React.createElement("div", { className: 'headerInner' },
+                    React.createElement("div", { className: 'headerNavBar mobile' },
+                        React.createElement(react_router_dom_1.NavLink, { to: '/home' },
+                            React.createElement("div", { className: 'headerHomeIcon' },
+                                React.createElement("svg", { width: "25px", height: "23px", viewBox: "0 0 295 233", version: "1.1", xmlns: "http://www.w3.org/2000/svg" },
+                                    React.createElement("g", { id: "Page-1", stroke: "none", strokeWidth: "1", fill: "none", "fill-rule": "evenodd" },
+                                        React.createElement("g", { id: "OA_symbol", fill: "#7E7E7E", fillRule: "nonzero" },
+                                            React.createElement("path", { d: "M187.7,180.2 L241.4,180.2 L241.4,232.6 L187.7,232.6 L101.6,186.7 L66.6,232.6 L0,232.6 L86.1,120 L187.7,180.2 Z M241.3,180.2 L241.3,127.7 L295,127.7 L295,180.2 L241.3,180.2 Z", id: "Combined-Shape" }),
+                                            React.createElement("path", { d: "M283,10.1 L230.1,10.1 C230.8,18.4 229.8,37.6 219,44.7 C210.8,50.1 193.8,47.7 160.6,29.5 C156.1,27 151.6,24.7 147.2,22.6 C103.8,0.6 67.3,-7.5 41.8,9.5 C8.6,31.6 9.5,80.7 10.8,98.2 L63.7,98.2 C63,89.9 63.7,70.8 74.6,63.8 C82.8,58.4 100.8,60.8 133.9,79 C138.4,81.5 142.9,83.8 147.3,85.9 C190.7,107.9 227.1,114.2 252.6,97.2 C285.8,75.1 284.3,27.6 283,10.1", id: "Fill-5" })))))),
+                        React.createElement("div", { className: 'fillerBox' }),
+                        React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerDropdown mobile', toggle: this.toggleDropdown, isOpen: this.state.isDropdownOpen, direction: 'down' },
+                            React.createElement(reactstrap_1.DropdownToggle, { className: 'headerDropdownToggle' },
+                                React.createElement("svg", { width: '50', height: '50' },
+                                    React.createElement("line", { x1: '5', y1: '12', x2: '40', y2: '12', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }),
+                                    React.createElement("line", { x1: '5', y1: '25', x2: '40', y2: '25', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }),
+                                    React.createElement("line", { x1: '5', y1: '38', x2: '40', y2: '38', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }))))),
                     React.createElement("div", { style: { flex: '1' } },
-                        React.createElement(SeachBar, null)))),
-            React.createElement(Logo, { name: 'ARCHIVE' })));
+                        React.createElement(SearchBar, null))))));
     }
 }
 exports.default = Header;

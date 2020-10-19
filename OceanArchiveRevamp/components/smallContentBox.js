@@ -31,7 +31,7 @@ class SmallContentBox extends React.Component {
                             React.createElement("rect", { x: "3", y: "3.5", width: "1", height: "17", transform: "rotate(-45 3 3.5)" })),
                         React.createElement("g", { id: "Line3" },
                             React.createElement("rect", { x: "3", y: "3.5", width: "1", height: "17", transform: "rotate(45 3 3.5)" })))),
-                React.createElement("div", null,
+                React.createElement("div", { className: 'itemsAndCollectionsCount' },
                     React.createElement("h2", null,
                         this.props.numCollections,
                         " Collections"),

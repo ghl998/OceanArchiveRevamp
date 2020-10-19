@@ -4,6 +4,7 @@ var React = require('react');
 
 import { NavLink } from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import MediaQuery from 'react-responsive';
 
 import GoogleLogo from '../logos/Google.svg';
 import FacebookLogo from '../logos/FacebookF.svg';
@@ -236,7 +237,7 @@ class Logout extends React.Component {
     }
 }
 
-class SeachBar extends React.Component {
+class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -268,6 +269,9 @@ class SeachBar extends React.Component {
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isDropdownOpen: false
+        }
     }
 
     login = () => {
@@ -278,36 +282,77 @@ export default class Header extends React.Component {
         this.props.logIn(false);
     }
 
+    toggleDropdown = () => {
+        this.setState({
+            isDropdownOpen: !this.state.isDropdownOpen
+        });
+    }
+
     render() {
         return (
             <div className="header">
-                <Logo name='OCEAN' />
-                <div style={{ flex: '1' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div className='headerNavBar'>
-                            <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <NavLink to="/">
-                                    <HeaderButton name='HOME' />
-                                </NavLink>
-                                <NavLink to="/map">
-                                    <HeaderButton name='MAP' />
-                                </NavLink>
-                                <HeaderButton name='TERMS' />
-                                <HeaderButton name='PRIVACY' />
-                                <div className='fillerBox' />
-                                {this.props.loggedIn ? <Admin /> : <div />}
-                                {this.props.loggedIn ? <Contribute /> : <div />}
-                                {this.props.loggedIn ? <HeaderButton name='PROFILE' /> : <LoginModal loginFunc={() => this.login()} />}
-                                {this.props.loggedIn ? <Logout logoutFunc={() => this.logout()} /> : <SignUpModal />}
+                <MediaQuery minDeviceWidth={1224}>
+                    <Logo name='OCEAN' />
+                    <div style={{ flex: '1' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div className='headerNavBar'>
+                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                    <NavLink to="/">
+                                        <HeaderButton name='HOME' />
+                                    </NavLink>
+                                    <NavLink to="/map">
+                                        <HeaderButton name='MAP' />
+                                    </NavLink>
+                                    <HeaderButton name='TERMS' />
+                                    <HeaderButton name='PRIVACY' />
+                                    <div className='fillerBox' />
+                                    {this.props.loggedIn ? <Admin /> : <div />}
+                                    {this.props.loggedIn ? <Contribute /> : <div />}
+                                    {this.props.loggedIn ? <HeaderButton name='PROFILE' /> : <LoginModal loginFunc={() => this.login()} />}
+                                    {this.props.loggedIn ? <Logout logoutFunc={() => this.logout()} /> : <SignUpModal />}
+                                </div>
+                            </div>
+                            <div style={{ flex: '1' }}>
+                                <SearchBar />
                             </div>
                         </div>
+                    </div>
+                    <Logo name='ARCHIVE' />
+                </MediaQuery>
+                <MediaQuery maxDeviceWidth={1223}>
+                    <div className='headerInner'>
+                        <div className='headerNavBar mobile'>
+                            <NavLink to='/home'>
+                                <div className='headerHomeIcon'>
+                                    <svg width="25px" height="23px" viewBox="0 0 295 233" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd">
+                                            <g id="OA_symbol" fill="#7E7E7E" fillRule="nonzero">
+                                                <path d="M187.7,180.2 L241.4,180.2 L241.4,232.6 L187.7,232.6 L101.6,186.7 L66.6,232.6 L0,232.6 L86.1,120 L187.7,180.2 Z M241.3,180.2 L241.3,127.7 L295,127.7 L295,180.2 L241.3,180.2 Z" id="Combined-Shape">
+                                                </path>
+                                                <path d="M283,10.1 L230.1,10.1 C230.8,18.4 229.8,37.6 219,44.7 C210.8,50.1 193.8,47.7 160.6,29.5 C156.1,27 151.6,24.7 147.2,22.6 C103.8,0.6 67.3,-7.5 41.8,9.5 C8.6,31.6 9.5,80.7 10.8,98.2 L63.7,98.2 C63,89.9 63.7,70.8 74.6,63.8 C82.8,58.4 100.8,60.8 133.9,79 C138.4,81.5 142.9,83.8 147.3,85.9 C190.7,107.9 227.1,114.2 252.6,97.2 C285.8,75.1 284.3,27.6 283,10.1" id="Fill-5">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </NavLink>
+                            <div className='fillerBox' />
+                            <ButtonDropdown className='headerDropdown mobile' toggle={this.toggleDropdown} isOpen={this.state.isDropdownOpen} direction='down'>
+                                <DropdownToggle className='headerDropdownToggle'>
+                                    <svg width='50' height='50'>
+                                        <line x1='5' y1='12' x2='40' y2='12' strokeLinecap='round' style={{ stroke: Constant.GREY_78, strokeWidth: '3' }} />
+                                        <line x1='5' y1='25' x2='40' y2='25' strokeLinecap='round' style={{ stroke: Constant.GREY_78, strokeWidth: '3' }} />
+                                        <line x1='5' y1='38' x2='40' y2='38' strokeLinecap='round' style={{ stroke: Constant.GREY_78, strokeWidth: '3' }} />
+                                    </svg>
+                                </DropdownToggle>
+                            </ButtonDropdown>
+                        </div>
                         <div style={{ flex: '1' }}>
-                            <SeachBar />
+                            <SearchBar />
                         </div>
                     </div>
-                </div>
-                <Logo name='ARCHIVE' />
-            </div>
+                </MediaQuery>
+            </div >
         );
     }
 }
