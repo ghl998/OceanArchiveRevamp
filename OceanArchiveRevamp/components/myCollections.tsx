@@ -167,7 +167,7 @@ export default class MyItems extends React.Component {
                     )}
                 </div>
                 <div className='footerMenu'>
-                    <NavLink className='buttonSmall' to="/createItem">
+                    <NavLink className='buttonSmall' to="/createCollection">
                         + Add New
                     </NavLink>
                     <div className='fillerBox' />
