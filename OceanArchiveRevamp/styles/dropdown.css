@@ -209,6 +209,7 @@
     background-color: transparent;
     border: 0;
     height: 50px;
+    font: 400 12px Roboto;
 }
 
     .dropdown-item:hover, .dropdown-item:focus {
@@ -220,7 +221,7 @@
     .dropdown-item.active, .dropdown-item:active {
         color: #fff;
         text-decoration: none;
-        background-color: #007bff;
+        background-color: #142636;
     }
 
     .dropdown-item.disabled, .dropdown-item:disabled {
@@ -275,6 +276,7 @@
             z-index: 1;
         }
 
+/*Created By William Wood*/
 .altDropdown {
     background-color: #3FB39A;
     width: 150px;
@@ -302,3 +304,35 @@
         .altDropdownMenu > .dropdown-item:hover {
             background-color: #A6FFEC;
         }
+
+
+.dropdown-menu.show.mobile {
+    background-color: #4A74A5;
+}
+
+.dropdown-toggle.btn.btn-secondary.mobile {
+    background-color: transparent;
+    font: 400 12px Roboto;
+    padding: 0.25rem 1.5rem;
+    flex: 1 1 auto;
+    text-align: start;
+}
+
+.mobile.dropleft.btn-group {
+    display: block;
+}
+
+.dropdown-item.mobile {
+    display: flex;
+    align-items: stretch;
+    padding: 0px;
+}
+
+.mobile.dropleft.btn-group {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.dropdown-toggle.btn.btn-secondary:hover {
+    background-color: #4A74A5;
+}

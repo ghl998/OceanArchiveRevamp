@@ -162,11 +162,6 @@ hr {
     flex: 0 0 auto;
 }
 
-.dropdown-menu.show.mobile {
-    transform: translate3d(-111px, 44px, 0px);
-    background-color: #4A74A5;
-}
-
 .headerDropdownToggle {
     display: flex;
     justify-content: center;

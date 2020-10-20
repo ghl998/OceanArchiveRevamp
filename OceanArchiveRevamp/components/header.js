@@ -27,103 +27,87 @@ class HeaderButton extends React.Component {
 class LoginModal extends React.Component {
     constructor(props) {
         super(props);
-        this.toggle = () => this.setState({
-            isOpen: !this.state.isOpen
-        });
-        this.state = {
-            isOpen: false
-        };
     }
     render() {
-        return (React.createElement("div", null,
-            React.createElement(HeaderButton, { name: 'LOGIN', onClick: this.toggle }),
-            React.createElement(reactstrap_1.Modal, { isOpen: this.state.isOpen, toggle: this.toggle },
-                React.createElement(reactstrap_1.ModalHeader, null, "Login"),
-                React.createElement(reactstrap_1.ModalBody, null,
-                    React.createElement("form", null,
-                        React.createElement("p", { className: 'inputLabel' }, "EMAIL"),
-                        React.createElement("input", { className: 'whiteText', type: 'text', id: 'email', name: 'email' }),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("p", { className: 'inputLabel' }, "PASSWORD"),
-                        React.createElement("input", { className: 'whiteText', type: 'password', id: 'passwrd', name: 'password' }))),
-                React.createElement(reactstrap_1.ModalFooter, null,
-                    React.createElement(reactstrap_1.Button, { className: 'modalButton', onClick: this.props.loginFunc }, "LOGIN"),
-                    React.createElement("div", { className: 'modalCenteredLink' },
-                        React.createElement("a", { href: 'https://www.google.com' }, "Forgot password?"))))));
+        return (React.createElement(reactstrap_1.Modal, { isOpen: this.props.isOpen, toggle: this.props.toggle },
+            React.createElement(reactstrap_1.ModalHeader, null, "Login"),
+            React.createElement(reactstrap_1.ModalBody, null,
+                React.createElement("form", null,
+                    React.createElement("p", { className: 'inputLabel' }, "EMAIL"),
+                    React.createElement("input", { className: 'whiteText', type: 'text', id: 'email', name: 'email' }),
+                    React.createElement("div", { style: { height: '20px' } }),
+                    React.createElement("p", { className: 'inputLabel' }, "PASSWORD"),
+                    React.createElement("input", { className: 'whiteText', type: 'password', id: 'passwrd', name: 'password' }))),
+            React.createElement(reactstrap_1.ModalFooter, null,
+                React.createElement(reactstrap_1.Button, { className: 'modalButton', onClick: this.props.loginFunc }, "LOGIN"),
+                React.createElement("div", { className: 'modalCenteredLink' },
+                    React.createElement("a", { href: 'https://www.google.com' }, "Forgot password?")))));
     }
 }
 class SignUpModal extends React.Component {
     constructor(props) {
         super(props);
-        this.toggle = () => this.setState({
-            isOpen: !this.state.isOpen
-        });
         this.disableScroll = () => {
             document.body.style.overflow = 'hidden';
         };
         this.enableScroll = () => {
             document.body.style.overflow = 'auto';
         };
-        this.state = {
-            isOpen: false
-        };
     }
     render() {
-        return (React.createElement("div", null,
-            React.createElement(HeaderButton, { name: 'SIGNUP', onClick: this.toggle }),
-            React.createElement(reactstrap_1.Modal, { isOpen: this.state.isOpen, toggle: this.toggle, onOpened: this.disableScroll, onClosed: this.enableScroll },
-                React.createElement(reactstrap_1.ModalHeader, null, "Sign Up"),
-                React.createElement(reactstrap_1.ModalBody, null,
-                    React.createElement("p", null, "With a Social Account"),
+        return (React.createElement(reactstrap_1.Modal, { isOpen: this.props.isOpen, toggle: this.props.toggle, onOpened: this.disableScroll, onClosed: this.enableScroll },
+            React.createElement(reactstrap_1.ModalHeader, null, "Sign Up"),
+            React.createElement(reactstrap_1.ModalBody, null,
+                React.createElement("p", null, "With a Social Account"),
+                React.createElement("div", { style: { display: 'flex' } },
+                    React.createElement(reactstrap_1.Button, { className: 'google socialButton' },
+                        React.createElement(Google_svg_1.default, null),
+                        React.createElement("span", null, "GOOGLE")),
+                    React.createElement("div", { className: 'fillerBox' }),
+                    React.createElement(reactstrap_1.Button, { className: 'facebook socialButton' },
+                        React.createElement(FacebookF_svg_1.default, null),
+                        React.createElement("span", null, "FACEBOOK")),
+                    React.createElement("div", { className: 'fillerBox' }),
+                    React.createElement(reactstrap_1.Button, { className: 'twitter socialButton' },
+                        React.createElement(TwitterWhite_svg_1.default, null),
+                        React.createElement("span", null, "TWITTER"))),
+                React.createElement("div", { className: 'horizontalLineText' },
+                    React.createElement("p", { style: { fontSize: '10pt' } }, "or")),
+                React.createElement("form", null,
+                    React.createElement("p", { className: 'inputLabel' }, "FIRST NAME"),
+                    React.createElement("input", { className: 'whiteText', type: 'text', id: 'fName', name: 'firstName' }),
+                    React.createElement("div", { style: { height: '20px' } }),
+                    React.createElement("p", { className: 'inputLabel' }, "LAST NAME"),
+                    React.createElement("input", { className: 'whiteText', type: 'text', id: 'lName', name: 'lastName' }),
+                    React.createElement("div", { style: { height: '20px' } }),
+                    React.createElement("p", { className: 'inputLabel' }, "USERNAME"),
+                    React.createElement("input", { className: 'whiteText', type: 'text', id: 'uName', name: 'userName' }),
+                    React.createElement("div", { style: { height: '20px' } }),
+                    React.createElement("p", { className: 'inputLabel' }, "EMAIL"),
+                    React.createElement("input", { className: 'whiteText', type: 'text', id: 'email', name: 'email' }),
+                    React.createElement("div", { style: { height: '20px' } }),
+                    React.createElement("p", { className: 'inputLabel' }, "PASSWORD"),
+                    React.createElement("input", { className: 'whiteText', type: 'password', id: 'passwrd', name: 'password' }),
+                    React.createElement("div", { style: { height: '20px' } }),
                     React.createElement("div", { style: { display: 'flex' } },
-                        React.createElement(reactstrap_1.Button, { className: 'google socialButton' },
-                            React.createElement(Google_svg_1.default, null),
-                            React.createElement("span", null, "GOOGLE")),
-                        React.createElement("div", { className: 'fillerBox' }),
-                        React.createElement(reactstrap_1.Button, { className: 'facebook socialButton' },
-                            React.createElement(FacebookF_svg_1.default, null),
-                            React.createElement("span", null, "FACEBOOK")),
-                        React.createElement("div", { className: 'fillerBox' }),
-                        React.createElement(reactstrap_1.Button, { className: 'twitter socialButton' },
-                            React.createElement(TwitterWhite_svg_1.default, null),
-                            React.createElement("span", null, "TWITTER"))),
-                    React.createElement("div", { className: 'horizontalLineText' },
-                        React.createElement("p", { style: { fontSize: '10pt' } }, "or")),
-                    React.createElement("form", null,
-                        React.createElement("p", { className: 'inputLabel' }, "FIRST NAME"),
-                        React.createElement("input", { className: 'whiteText', type: 'text', id: 'fName', name: 'firstName' }),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("p", { className: 'inputLabel' }, "LAST NAME"),
-                        React.createElement("input", { className: 'whiteText', type: 'text', id: 'lName', name: 'lastName' }),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("p", { className: 'inputLabel' }, "USERNAME"),
-                        React.createElement("input", { className: 'whiteText', type: 'text', id: 'uName', name: 'userName' }),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("p", { className: 'inputLabel' }, "EMAIL"),
-                        React.createElement("input", { className: 'whiteText', type: 'text', id: 'email', name: 'email' }),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("p", { className: 'inputLabel' }, "PASSWORD"),
-                        React.createElement("input", { className: 'whiteText', type: 'password', id: 'passwrd', name: 'password' }),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("div", { style: { display: 'flex' } },
-                            React.createElement("input", { className: 'checkBox', type: 'checkbox', id: 'termsAndConditions', name: 'termsAndConditions', value: 'TAC' }),
-                            React.createElement("label", { className: 'checkBoxLabel', for: 'termsAndConditions' },
-                                "I agree to the ",
-                                React.createElement("a", { href: 'https://www.google.com' }, "Terms and Condtitions"))),
-                        React.createElement("div", { style: { height: '20px' } }),
-                        React.createElement("div", { style: { display: 'flex' } },
-                            React.createElement("input", { className: 'checkBox', type: 'checkbox', id: 'mailList', name: 'mailList', value: 'mList' }),
-                            React.createElement("label", { className: 'checkBoxLabel', for: 'mailList' }, "Join mailing list")),
-                        React.createElement("p", null,
-                            "By joining the mailing list you acknowledge that your information will be transferred to Mailchimp for processing. Learn more about Mailchimp's privacy practices ",
-                            React.createElement("a", { href: 'https://www.google.com' }, "here"),
-                            "."))),
-                React.createElement(reactstrap_1.ModalFooter, null,
-                    React.createElement(reactstrap_1.Button, { className: 'modalButton', onClick: this.toggle }, "SIGN UP"),
-                    React.createElement("div", { className: 'modalCenteredLink' },
-                        React.createElement("p", null,
-                            "Already have an account? ",
-                            React.createElement("a", { href: 'https://www.google.com' }, "Sign In")))))));
+                        React.createElement("input", { className: 'checkBox', type: 'checkbox', id: 'termsAndConditions', name: 'termsAndConditions', value: 'TAC' }),
+                        React.createElement("label", { className: 'checkBoxLabel', for: 'termsAndConditions' },
+                            "I agree to the ",
+                            React.createElement("a", { href: 'https://www.google.com' }, "Terms and Condtitions"))),
+                    React.createElement("div", { style: { height: '20px' } }),
+                    React.createElement("div", { style: { display: 'flex' } },
+                        React.createElement("input", { className: 'checkBox', type: 'checkbox', id: 'mailList', name: 'mailList', value: 'mList' }),
+                        React.createElement("label", { className: 'checkBoxLabel', for: 'mailList' }, "Join mailing list")),
+                    React.createElement("p", null,
+                        "By joining the mailing list you acknowledge that your information will be transferred to Mailchimp for processing. Learn more about Mailchimp's privacy practices ",
+                        React.createElement("a", { href: 'https://www.google.com' }, "here"),
+                        "."))),
+            React.createElement(reactstrap_1.ModalFooter, null,
+                React.createElement(reactstrap_1.Button, { className: 'modalButton', onClick: this.props.toggle }, "SIGN UP"),
+                React.createElement("div", { className: 'modalCenteredLink' },
+                    React.createElement("p", null,
+                        "Already have an account? ",
+                        React.createElement("a", { href: 'https://www.google.com' }, "Sign In"))))));
     }
 }
 class Contribute extends React.Component {
@@ -137,9 +121,9 @@ class Contribute extends React.Component {
         };
     }
     render() {
-        return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', style: { minWidth: '130px' }, isOpen: this.state.isOpen, toggle: this.toggle, direction: this.props.direction },
-            React.createElement(reactstrap_1.DropdownToggle, { caret: true }, "CONTRIBUTE"),
-            React.createElement(reactstrap_1.DropdownMenu, null,
+        return (React.createElement(reactstrap_1.ButtonDropdown, { className: this.props.isMobile ? 'mobile' : 'headerButton', style: { minWidth: '130px' }, isOpen: this.state.isOpen, toggle: this.toggle, direction: this.props.direction },
+            React.createElement(reactstrap_1.DropdownToggle, { className: this.props.isMobile ? 'mobile' : '', caret: true }, "CONTRIBUTE"),
+            React.createElement(reactstrap_1.DropdownMenu, { className: this.props.isMobile ? 'mobile sub' : '' },
                 React.createElement(react_router_dom_1.NavLink, { to: "/myItems" },
                     React.createElement(reactstrap_1.DropdownItem, null, "ITEM")),
                 React.createElement(react_router_dom_1.NavLink, { to: "/myCollections" },
@@ -159,9 +143,9 @@ class Admin extends React.Component {
         };
     }
     render() {
-        return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', isOpen: this.state.isOpen, toggle: this.toggle, direction: this.props.direction },
-            React.createElement(reactstrap_1.DropdownToggle, { caret: true }, "ADMIN"),
-            React.createElement(reactstrap_1.DropdownMenu, null,
+        return (React.createElement(reactstrap_1.ButtonDropdown, { className: this.props.isMobile ? 'mobile' : 'headerButton', isOpen: this.state.isOpen, toggle: this.toggle, direction: this.props.direction },
+            React.createElement(reactstrap_1.DropdownToggle, { className: this.props.isMobile ? 'mobile' : '', caret: true }, "ADMIN"),
+            React.createElement(reactstrap_1.DropdownMenu, { className: this.props.isMobile ? 'mobile sub' : '' },
                 React.createElement(reactstrap_1.DropdownItem, null, "ITEM"),
                 React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION"),
                 React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT"))));
@@ -202,6 +186,9 @@ class Header extends React.Component {
         super(props);
         this.login = () => {
             this.props.logIn(true);
+            this.setState({
+                isLoginModalOpen: false
+            });
         };
         this.logout = () => {
             this.props.logIn(false);
@@ -211,12 +198,26 @@ class Header extends React.Component {
                 isDropdownOpen: !this.state.isDropdownOpen
             });
         };
+        this.toggleLoginModal = () => {
+            this.setState({
+                isLoginModalOpen: !this.state.isLoginModalOpen
+            });
+        };
+        this.toggleSignUpModal = () => {
+            this.setState({
+                isSignUpModalOpen: !this.state.isSignUpModalOpen
+            });
+        };
         this.state = {
-            isDropdownOpen: false
+            isDropdownOpen: false,
+            isLoginModalOpen: false,
+            isSignUpModalOpen: false
         };
     }
     render() {
         return (React.createElement("div", { className: "header" },
+            React.createElement(LoginModal, { isOpen: this.state.isLoginModalOpen, toggle: this.toggleLoginModal, loginFunc: () => this.login() }),
+            React.createElement(SignUpModal, { isOpen: this.state.isSignUpModalOpen, toggle: this.toggleSignUpModal }),
             React.createElement(react_responsive_1.default, { minDeviceWidth: 1224 },
                 React.createElement(Logo, { name: 'OCEAN' }),
                 React.createElement("div", { style: { flex: '1' } },
@@ -230,10 +231,10 @@ class Header extends React.Component {
                                 React.createElement(HeaderButton, { name: 'TERMS' }),
                                 React.createElement(HeaderButton, { name: 'PRIVACY' }),
                                 React.createElement("div", { className: 'fillerBox' }),
-                                this.props.loggedIn ? React.createElement(Admin, { direction: 'down' }) : null,
-                                this.props.loggedIn ? React.createElement(Contribute, { direction: 'down' }) : null,
-                                this.props.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(LoginModal, { loginFunc: () => this.login() }),
-                                this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(SignUpModal, null))),
+                                this.props.loggedIn ? React.createElement(Admin, { isMobile: false, direction: 'down' }) : null,
+                                this.props.loggedIn ? React.createElement(Contribute, { isMobile: false, direction: 'down' }) : null,
+                                this.props.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(HeaderButton, { name: 'LOGIN', onClick: this.toggleLoginModal }),
+                                this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(HeaderButton, { name: 'SIGNUP', onClick: this.toggleSignUpModal }))),
                         React.createElement("div", { style: { flex: '1' } },
                             React.createElement(SearchBar, null)))),
                 React.createElement(Logo, { name: 'ARCHIVE' })),
@@ -254,7 +255,7 @@ class Header extends React.Component {
                                     React.createElement("line", { x1: '5', y1: '12', x2: '40', y2: '12', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }),
                                     React.createElement("line", { x1: '5', y1: '25', x2: '40', y2: '25', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }),
                                     React.createElement("line", { x1: '5', y1: '38', x2: '40', y2: '38', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }))),
-                            React.createElement(reactstrap_1.DropdownMenu, { className: 'mobile' },
+                            React.createElement(reactstrap_1.DropdownMenu, { className: 'mobile main', right: true },
                                 React.createElement(react_router_dom_1.NavLink, { to: '/home' },
                                     React.createElement(reactstrap_1.DropdownItem, null, "HOME")),
                                 React.createElement(reactstrap_1.DropdownItem, null, "ABOUT"),
@@ -263,21 +264,18 @@ class Header extends React.Component {
                                 React.createElement(reactstrap_1.DropdownItem, null, "TERMS"),
                                 React.createElement(reactstrap_1.DropdownItem, null, "PRIVACY"),
                                 this.props.loggedIn ?
-                                    React.createElement(reactstrap_1.DropdownItem, null,
-                                        React.createElement(Admin, { direction: 'left' }))
-                                    : React.createElement(reactstrap_1.DropdownItem, null,
-                                        React.createElement(LoginModal, { loginFunc: () => this.login() })),
+                                    React.createElement(reactstrap_1.DropdownItem, { className: 'mobile', toggle: false },
+                                        React.createElement(Admin, { isMobile: true, direction: 'left' }))
+                                    : React.createElement(reactstrap_1.DropdownItem, { onClick: this.toggleLoginModal }, "LOGIN"),
                                 this.props.loggedIn ?
-                                    React.createElement(reactstrap_1.DropdownItem, null,
-                                        React.createElement(Contribute, { direction: 'left' }))
-                                    : React.createElement(reactstrap_1.DropdownItem, null,
-                                        React.createElement(SignUpModal, null)),
+                                    React.createElement(reactstrap_1.DropdownItem, { className: 'mobile', toggle: false },
+                                        React.createElement(Contribute, { isMobile: true, direction: 'left' }))
+                                    : React.createElement(reactstrap_1.DropdownItem, { onClick: this.toggleSignUpModal }, "SIGNUP"),
                                 this.props.loggedIn ?
                                     React.createElement(reactstrap_1.DropdownItem, null, "PROFILE")
                                     : null,
                                 this.props.loggedIn ?
-                                    React.createElement(reactstrap_1.DropdownItem, null,
-                                        React.createElement(Logout, { logoutFunc: () => this.logout() }))
+                                    React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.logout() }, "SIGNOUT")
                                     : null))),
                     React.createElement("div", { style: { flex: '1' } },
                         React.createElement(SearchBar, null))))));

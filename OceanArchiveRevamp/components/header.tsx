@@ -40,38 +40,28 @@ class HeaderButton extends React.Component {
 class LoginModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isOpen: false
-        };
     }
-
-    toggle = () => this.setState({
-        isOpen: !this.state.isOpen
-    });
 
     render() {
         return (
-            <div>
-                <HeaderButton name='LOGIN' onClick={this.toggle} />
-                <Modal isOpen={this.state.isOpen} toggle={this.toggle}>
-                    <ModalHeader>Login</ModalHeader>
-                    <ModalBody>
-                        <form>
-                            <p className='inputLabel'>EMAIL</p>
-                            <input className='whiteText' type='text' id='email' name='email' />
-                            <div style={{ height: '20px' }} />
-                            <p className='inputLabel'>PASSWORD</p>
-                            <input className='whiteText' type='password' id='passwrd' name='password' />
-                        </form>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button className='modalButton' onClick={this.props.loginFunc}>LOGIN</Button>
-                        <div className='modalCenteredLink'>
-                            <a href='https://www.google.com'>Forgot password?</a>
-                        </div>
-                    </ModalFooter>
-                </Modal>
-            </div>
+            <Modal isOpen={this.props.isOpen} toggle={this.props.toggle}>
+                <ModalHeader>Login</ModalHeader>
+                <ModalBody>
+                    <form>
+                        <p className='inputLabel'>EMAIL</p>
+                        <input className='whiteText' type='text' id='email' name='email' />
+                        <div style={{ height: '20px' }} />
+                        <p className='inputLabel'>PASSWORD</p>
+                        <input className='whiteText' type='password' id='passwrd' name='password' />
+                    </form>
+                </ModalBody>
+                <ModalFooter>
+                    <Button className='modalButton' onClick={this.props.loginFunc}>LOGIN</Button>
+                    <div className='modalCenteredLink'>
+                        <a href='https://www.google.com'>Forgot password?</a>
+                    </div>
+                </ModalFooter>
+            </Modal>
         );
     }
 }
@@ -79,14 +69,7 @@ class LoginModal extends React.Component {
 class SignUpModal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isOpen: false
-        };
     }
-
-    toggle = () => this.setState({
-        isOpen: !this.state.isOpen
-    });
 
     disableScroll = () => {
         document.body.style.overflow = 'hidden';
@@ -98,67 +81,64 @@ class SignUpModal extends React.Component {
 
     render() {
         return (
-            <div>
-                <HeaderButton name='SIGNUP' onClick={this.toggle} />
-                <Modal isOpen={this.state.isOpen} toggle={this.toggle} onOpened={this.disableScroll} onClosed={this.enableScroll}>
-                    <ModalHeader>Sign Up</ModalHeader>
-                    <ModalBody>
-                        <p>With a Social Account</p>
+            <Modal isOpen={this.props.isOpen} toggle={this.props.toggle} onOpened={this.disableScroll} onClosed={this.enableScroll}>
+                <ModalHeader>Sign Up</ModalHeader>
+                <ModalBody>
+                    <p>With a Social Account</p>
+                    <div style={{ display: 'flex' }}>
+                        <Button className='google socialButton'>
+                            <GoogleLogo />
+                            <span>GOOGLE</span>
+                        </Button>
+                        <div className='fillerBox' />
+                        <Button className='facebook socialButton'>
+                            <FacebookLogo />
+                            <span>FACEBOOK</span>
+                        </Button>
+                        <div className='fillerBox' />
+                        <Button className='twitter socialButton'>
+                            <TwitterLogo />
+                            <span>TWITTER</span>
+                        </Button>
+                    </div>
+                    <div className='horizontalLineText'>
+                        <p style={{ fontSize: '10pt' }}>or</p>
+                    </div>
+                    <form>
+                        <p className='inputLabel'>FIRST NAME</p>
+                        <input className='whiteText' type='text' id='fName' name='firstName' />
+                        <div style={{ height: '20px' }} />
+                        <p className='inputLabel'>LAST NAME</p>
+                        <input className='whiteText' type='text' id='lName' name='lastName' />
+                        <div style={{ height: '20px' }} />
+                        <p className='inputLabel'>USERNAME</p>
+                        <input className='whiteText' type='text' id='uName' name='userName' />
+                        <div style={{ height: '20px' }} />
+                        <p className='inputLabel'>EMAIL</p>
+                        <input className='whiteText' type='text' id='email' name='email' />
+                        <div style={{ height: '20px' }} />
+                        <p className='inputLabel'>PASSWORD</p>
+                        <input className='whiteText' type='password' id='passwrd' name='password' />
+                        <div style={{ height: '20px' }} />
                         <div style={{ display: 'flex' }}>
-                            <Button className='google socialButton'>
-                                <GoogleLogo />
-                                <span>GOOGLE</span>
-                            </Button>
-                            <div className='fillerBox' />
-                            <Button className='facebook socialButton'>
-                                <FacebookLogo />
-                                <span>FACEBOOK</span>
-                            </Button>
-                            <div className='fillerBox' />
-                            <Button className='twitter socialButton'>
-                                <TwitterLogo />
-                                <span>TWITTER</span>
-                            </Button>
+                            <input className='checkBox' type='checkbox' id='termsAndConditions' name='termsAndConditions' value='TAC' />
+                            <label className='checkBoxLabel' for='termsAndConditions'>I agree to the <a href='https://www.google.com'>Terms and Condtitions</a></label>
                         </div>
-                        <div className='horizontalLineText'>
-                            <p style={{ fontSize: '10pt' }}>or</p>
+                        <div style={{ height: '20px' }} />
+                        <div style={{ display: 'flex' }}>
+                            <input className='checkBox' type='checkbox' id='mailList' name='mailList' value='mList' />
+                            <label className='checkBoxLabel' for='mailList'>Join mailing list</label>
                         </div>
-                        <form>
-                            <p className='inputLabel'>FIRST NAME</p>
-                            <input className='whiteText' type='text' id='fName' name='firstName' />
-                            <div style={{ height: '20px' }} />
-                            <p className='inputLabel'>LAST NAME</p>
-                            <input className='whiteText' type='text' id='lName' name='lastName' />
-                            <div style={{ height: '20px' }} />
-                            <p className='inputLabel'>USERNAME</p>
-                            <input className='whiteText' type='text' id='uName' name='userName' />
-                            <div style={{ height: '20px' }} />
-                            <p className='inputLabel'>EMAIL</p>
-                            <input className='whiteText' type='text' id='email' name='email' />
-                            <div style={{ height: '20px' }} />
-                            <p className='inputLabel'>PASSWORD</p>
-                            <input className='whiteText' type='password' id='passwrd' name='password' />
-                            <div style={{ height: '20px' }} />
-                            <div style={{ display: 'flex' }}>
-                                <input className='checkBox' type='checkbox' id='termsAndConditions' name='termsAndConditions' value='TAC' />
-                                <label className='checkBoxLabel' for='termsAndConditions'>I agree to the <a href='https://www.google.com'>Terms and Condtitions</a></label>
-                            </div>
-                            <div style={{ height: '20px' }} />
-                            <div style={{ display: 'flex' }}>
-                                <input className='checkBox' type='checkbox' id='mailList' name='mailList' value='mList' />
-                                <label className='checkBoxLabel' for='mailList'>Join mailing list</label>
-                            </div>
-                            <p>By joining the mailing list you acknowledge that your information will be transferred to Mailchimp for processing. Learn more about Mailchimp's privacy practices <a href='https://www.google.com'>here</a>.</p>
-                        </form>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button className='modalButton' onClick={this.toggle}>SIGN UP</Button>
-                        <div className='modalCenteredLink'>
-                            <p>Already have an account? <a href='https://www.google.com'>Sign In</a></p>
-                        </div>
-                    </ModalFooter>
-                </Modal>
-            </div>
+                        <p>By joining the mailing list you acknowledge that your information will be transferred to Mailchimp for processing. Learn more about Mailchimp's privacy practices <a href='https://www.google.com'>here</a>.</p>
+                    </form>
+                </ModalBody>
+                <ModalFooter>
+                    <Button className='modalButton' onClick={this.props.toggle}>SIGN UP</Button>
+                    <div className='modalCenteredLink'>
+                        <p>Already have an account? <a href='https://www.google.com'>Sign In</a></p>
+                    </div>
+                </ModalFooter>
+            </Modal>
         );
     }
 }
@@ -177,11 +157,11 @@ class Contribute extends React.Component {
 
     render() {
         return (
-            <ButtonDropdown className='headerButton' style={{ minWidth: '130px' }} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
-                <DropdownToggle caret>
+            <ButtonDropdown className={this.props.isMobile? 'mobile' : 'headerButton'} style={{ minWidth: '130px' }} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
+                <DropdownToggle className={this.props.isMobile ? 'mobile' : ''} caret>
                     CONTRIBUTE
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className={this.props.isMobile ? 'mobile sub' : ''}>
                     <NavLink to="/myItems">
                         <DropdownItem>ITEM</DropdownItem>
                     </NavLink>
@@ -211,11 +191,11 @@ class Admin extends React.Component {
 
     render() {
         return (
-            <ButtonDropdown className='headerButton' isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
-                <DropdownToggle caret>
+            <ButtonDropdown className={this.props.isMobile ? 'mobile' : 'headerButton'} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
+                <DropdownToggle className={this.props.isMobile? 'mobile' : ''} caret>
                     ADMIN
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className={this.props.isMobile ? 'mobile sub' : ''}>
                     <DropdownItem>ITEM</DropdownItem>
                     <DropdownItem>COLLECTION</DropdownItem>
                     <DropdownItem>ANNOUNCEMENT</DropdownItem>
@@ -270,12 +250,17 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isDropdownOpen: false
+            isDropdownOpen: false,
+            isLoginModalOpen: false,
+            isSignUpModalOpen: false
         }
     }
 
     login = () => {
         this.props.logIn(true);
+        this.setState({
+            isLoginModalOpen: false
+        });
     }
 
     logout = () => {
@@ -288,9 +273,23 @@ export default class Header extends React.Component {
         });
     }
 
+    toggleLoginModal = () => {
+        this.setState({
+            isLoginModalOpen: !this.state.isLoginModalOpen
+        });
+    }
+
+    toggleSignUpModal = () => {
+        this.setState({
+            isSignUpModalOpen: !this.state.isSignUpModalOpen
+        });
+    }
+
     render() {
         return (
             <div className="header">
+                <LoginModal isOpen={this.state.isLoginModalOpen} toggle={this.toggleLoginModal} loginFunc={() => this.login()} />
+                <SignUpModal isOpen={this.state.isSignUpModalOpen} toggle={this.toggleSignUpModal} />
                 <MediaQuery minDeviceWidth={1224}>
                     <Logo name='OCEAN' />
                     <div style={{ flex: '1' }}>
@@ -306,10 +305,10 @@ export default class Header extends React.Component {
                                     <HeaderButton name='TERMS' />
                                     <HeaderButton name='PRIVACY' />
                                     <div className='fillerBox' />
-                                    {this.props.loggedIn ? <Admin direction='down' /> : null}
-                                    {this.props.loggedIn ? <Contribute direction='down' /> : null}
-                                    {this.props.loggedIn ? <HeaderButton name='PROFILE' /> : <LoginModal loginFunc={() => this.login()} />}
-                                    {this.props.loggedIn ? <Logout logoutFunc={() => this.logout()} /> : <SignUpModal />}
+                                    {this.props.loggedIn ? <Admin isMobile={false} direction='down' /> : null}
+                                    {this.props.loggedIn ? <Contribute isMobile={false} direction='down' /> : null}
+                                    {this.props.loggedIn ? <HeaderButton name='PROFILE' /> : <HeaderButton name='LOGIN' onClick={this.toggleLoginModal} />}
+                                    {this.props.loggedIn ? <Logout logoutFunc={() => this.logout()} /> : <HeaderButton name='SIGNUP' onClick={this.toggleSignUpModal} />}
                                 </div>
                             </div>
                             <div style={{ flex: '1' }}>
@@ -345,7 +344,7 @@ export default class Header extends React.Component {
                                         <line x1='5' y1='38' x2='40' y2='38' strokeLinecap='round' style={{ stroke: Constant.GREY_78, strokeWidth: '3' }} />
                                     </svg>
                                 </DropdownToggle>
-                                <DropdownMenu className='mobile'>
+                                <DropdownMenu className='mobile main' right={true}>
                                     <NavLink to='/home'>
                                         <DropdownItem>HOME</DropdownItem>
                                     </NavLink>
@@ -356,19 +355,19 @@ export default class Header extends React.Component {
                                     <DropdownItem>TERMS</DropdownItem>
                                     <DropdownItem>PRIVACY</DropdownItem>
                                     {this.props.loggedIn ?
-                                        <DropdownItem><Admin direction='left' /></DropdownItem>
-                                        : <DropdownItem><LoginModal loginFunc={() => this.login()} /></DropdownItem>
+                                        <DropdownItem className='mobile' toggle={false}><Admin isMobile={true} direction='left' /></DropdownItem>
+                                        : <DropdownItem onClick={this.toggleLoginModal}>LOGIN</DropdownItem>
                                     }
                                     {this.props.loggedIn ?
-                                        <DropdownItem><Contribute direction='left' /></DropdownItem>
-                                        : <DropdownItem><SignUpModal /></DropdownItem>
+                                        <DropdownItem className='mobile' toggle={false}><Contribute isMobile={true} direction='left' /></DropdownItem>
+                                        : <DropdownItem onClick={this.toggleSignUpModal}>SIGNUP</DropdownItem>
                                     }
                                     {this.props.loggedIn ?
                                         <DropdownItem>PROFILE</DropdownItem>
                                         : null
                                     }
                                     {this.props.loggedIn ?
-                                        <DropdownItem><Logout logoutFunc={() => this.logout()} /></DropdownItem>
+                                        <DropdownItem onClick={() => this.logout()}>SIGNOUT</DropdownItem>
                                         : null
                                     }
                                 </DropdownMenu>
