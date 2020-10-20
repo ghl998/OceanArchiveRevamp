@@ -137,7 +137,7 @@ class Contribute extends React.Component {
         };
     }
     render() {
-        return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', style: { minWidth: '130px' }, isOpen: this.state.isOpen, toggle: this.toggle, direction: 'down' },
+        return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', style: { minWidth: '130px' }, isOpen: this.state.isOpen, toggle: this.toggle, direction: this.props.direction },
             React.createElement(reactstrap_1.DropdownToggle, { caret: true }, "CONTRIBUTE"),
             React.createElement(reactstrap_1.DropdownMenu, null,
                 React.createElement(react_router_dom_1.NavLink, { to: "/myItems" },
@@ -159,7 +159,7 @@ class Admin extends React.Component {
         };
     }
     render() {
-        return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', isOpen: this.state.isOpen, toggle: this.toggle, direction: 'down' },
+        return (React.createElement(reactstrap_1.ButtonDropdown, { className: 'headerButton', isOpen: this.state.isOpen, toggle: this.toggle, direction: this.props.direction },
             React.createElement(reactstrap_1.DropdownToggle, { caret: true }, "ADMIN"),
             React.createElement(reactstrap_1.DropdownMenu, null,
                 React.createElement(reactstrap_1.DropdownItem, null, "ITEM"),
@@ -230,8 +230,8 @@ class Header extends React.Component {
                                 React.createElement(HeaderButton, { name: 'TERMS' }),
                                 React.createElement(HeaderButton, { name: 'PRIVACY' }),
                                 React.createElement("div", { className: 'fillerBox' }),
-                                this.props.loggedIn ? React.createElement(Admin, null) : React.createElement("div", null),
-                                this.props.loggedIn ? React.createElement(Contribute, null) : React.createElement("div", null),
+                                this.props.loggedIn ? React.createElement(Admin, { direction: 'down' }) : null,
+                                this.props.loggedIn ? React.createElement(Contribute, { direction: 'down' }) : null,
                                 this.props.loggedIn ? React.createElement(HeaderButton, { name: 'PROFILE' }) : React.createElement(LoginModal, { loginFunc: () => this.login() }),
                                 this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(SignUpModal, null))),
                         React.createElement("div", { style: { flex: '1' } },
@@ -253,7 +253,32 @@ class Header extends React.Component {
                                 React.createElement("svg", { width: '50', height: '50' },
                                     React.createElement("line", { x1: '5', y1: '12', x2: '40', y2: '12', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }),
                                     React.createElement("line", { x1: '5', y1: '25', x2: '40', y2: '25', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }),
-                                    React.createElement("line", { x1: '5', y1: '38', x2: '40', y2: '38', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }))))),
+                                    React.createElement("line", { x1: '5', y1: '38', x2: '40', y2: '38', strokeLinecap: 'round', style: { stroke: Constant.GREY_78, strokeWidth: '3' } }))),
+                            React.createElement(reactstrap_1.DropdownMenu, { className: 'mobile' },
+                                React.createElement(react_router_dom_1.NavLink, { to: '/home' },
+                                    React.createElement(reactstrap_1.DropdownItem, null, "HOME")),
+                                React.createElement(reactstrap_1.DropdownItem, null, "ABOUT"),
+                                React.createElement(react_router_dom_1.NavLink, { to: '/map' },
+                                    React.createElement(reactstrap_1.DropdownItem, null, "MAP")),
+                                React.createElement(reactstrap_1.DropdownItem, null, "TERMS"),
+                                React.createElement(reactstrap_1.DropdownItem, null, "PRIVACY"),
+                                this.props.loggedIn ?
+                                    React.createElement(reactstrap_1.DropdownItem, null,
+                                        React.createElement(Admin, { direction: 'left' }))
+                                    : React.createElement(reactstrap_1.DropdownItem, null,
+                                        React.createElement(LoginModal, { loginFunc: () => this.login() })),
+                                this.props.loggedIn ?
+                                    React.createElement(reactstrap_1.DropdownItem, null,
+                                        React.createElement(Contribute, { direction: 'left' }))
+                                    : React.createElement(reactstrap_1.DropdownItem, null,
+                                        React.createElement(SignUpModal, null)),
+                                this.props.loggedIn ?
+                                    React.createElement(reactstrap_1.DropdownItem, null, "PROFILE")
+                                    : null,
+                                this.props.loggedIn ?
+                                    React.createElement(reactstrap_1.DropdownItem, null,
+                                        React.createElement(Logout, { logoutFunc: () => this.logout() }))
+                                    : null))),
                     React.createElement("div", { style: { flex: '1' } },
                         React.createElement(SearchBar, null))))));
     }

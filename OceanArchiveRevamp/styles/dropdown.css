@@ -293,13 +293,12 @@
     min-width: 150px;
 }
 
-.altDropdownMenu > .dropdown-item {
-    color: #000000;
-    font-size: 12pt;
-    font-family: Roboto;
-}
-
-    .altDropdownMenu > .dropdown-item:hover {
-        background-color: #A6FFEC;
+    .altDropdownMenu > .dropdown-item {
         color: #000000;
+        font-size: 12pt;
+        font-family: Roboto;
     }
+
+        .altDropdownMenu > .dropdown-item:hover {
+            background-color: #A6FFEC;
+        }

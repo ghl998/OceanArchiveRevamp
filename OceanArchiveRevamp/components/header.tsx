@@ -177,7 +177,7 @@ class Contribute extends React.Component {
 
     render() {
         return (
-            <ButtonDropdown className='headerButton' style={{ minWidth: '130px' }} isOpen={this.state.isOpen} toggle={this.toggle} direction='down'>
+            <ButtonDropdown className='headerButton' style={{ minWidth: '130px' }} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
                 <DropdownToggle caret>
                     CONTRIBUTE
                 </DropdownToggle>
@@ -211,7 +211,7 @@ class Admin extends React.Component {
 
     render() {
         return (
-            <ButtonDropdown className='headerButton' isOpen={this.state.isOpen} toggle={this.toggle} direction='down'>
+            <ButtonDropdown className='headerButton' isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
                 <DropdownToggle caret>
                     ADMIN
                 </DropdownToggle>
@@ -306,8 +306,8 @@ export default class Header extends React.Component {
                                     <HeaderButton name='TERMS' />
                                     <HeaderButton name='PRIVACY' />
                                     <div className='fillerBox' />
-                                    {this.props.loggedIn ? <Admin /> : <div />}
-                                    {this.props.loggedIn ? <Contribute /> : <div />}
+                                    {this.props.loggedIn ? <Admin direction='down' /> : null}
+                                    {this.props.loggedIn ? <Contribute direction='down' /> : null}
                                     {this.props.loggedIn ? <HeaderButton name='PROFILE' /> : <LoginModal loginFunc={() => this.login()} />}
                                     {this.props.loggedIn ? <Logout logoutFunc={() => this.logout()} /> : <SignUpModal />}
                                 </div>
@@ -345,6 +345,33 @@ export default class Header extends React.Component {
                                         <line x1='5' y1='38' x2='40' y2='38' strokeLinecap='round' style={{ stroke: Constant.GREY_78, strokeWidth: '3' }} />
                                     </svg>
                                 </DropdownToggle>
+                                <DropdownMenu className='mobile'>
+                                    <NavLink to='/home'>
+                                        <DropdownItem>HOME</DropdownItem>
+                                    </NavLink>
+                                    <DropdownItem>ABOUT</DropdownItem>
+                                    <NavLink to='/map'>
+                                        <DropdownItem>MAP</DropdownItem>
+                                    </NavLink>
+                                    <DropdownItem>TERMS</DropdownItem>
+                                    <DropdownItem>PRIVACY</DropdownItem>
+                                    {this.props.loggedIn ?
+                                        <DropdownItem><Admin direction='left' /></DropdownItem>
+                                        : <DropdownItem><LoginModal loginFunc={() => this.login()} /></DropdownItem>
+                                    }
+                                    {this.props.loggedIn ?
+                                        <DropdownItem><Contribute direction='left' /></DropdownItem>
+                                        : <DropdownItem><SignUpModal /></DropdownItem>
+                                    }
+                                    {this.props.loggedIn ?
+                                        <DropdownItem>PROFILE</DropdownItem>
+                                        : null
+                                    }
+                                    {this.props.loggedIn ?
+                                        <DropdownItem><Logout logoutFunc={() => this.logout()} /></DropdownItem>
+                                        : null
+                                    }
+                                </DropdownMenu>
                             </ButtonDropdown>
                         </div>
                         <div style={{ flex: '1' }}>
