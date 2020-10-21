@@ -16,6 +16,9 @@ export const GREY_D8 = '#D8D8D8';
 export const BLACK = '#000000';
 export const ERROR_COLOUR = '#FF3A3A';
 
+export const LAT_BOUNDS = { MAX: 85, MIN: -85 };
+export const LNG_BOUNDS = { MAX: 180, MIN: -180 };
+
 export const mainTags = [
     { value: 'act', label: 'Activism' },
     { value: 'aas', label: 'Adaption at sea' },

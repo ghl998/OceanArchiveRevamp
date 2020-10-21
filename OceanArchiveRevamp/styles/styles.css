@@ -598,11 +598,19 @@ hr {
     height: 100%;
 }
 
+    .mapSection.mobile {
+        flex-direction: column;
+    }
+
 .mapSideBar {
     flex: 0 0 auto;
     max-width: 610px;
     max-height: calc(100vh - 100px);
 }
+
+    .mapSideBar.mobile {
+        max-width: 100%;
+    }
 
 .mapContainer {
     min-height: 100px;
@@ -610,6 +618,11 @@ hr {
     flex: 3 0 auto;
     position: relative;
 }
+
+    .mapContainer.mobile {
+        min-height: 40vh;
+        max-height: 40vh;
+    }
 
 .goToLocLabels {
     background-color: #4A74A5;
@@ -649,6 +662,10 @@ hr {
     max-width: 590px;
 }
 
+    .mapLocationInfo.mobile {
+        max-width: calc(100vw - 10px);
+    }
+
     .mapLocationInfo:hover {
         background-color: #4A74A5;
     }
@@ -666,6 +683,10 @@ hr {
     max-width: 480px;
 }
 
+    .listTitle.mobile {
+        max-width: calc(100vw - 120px);
+    }
+
 .listDesc {
     margin: 5px;
     flex: 1;
@@ -674,7 +695,13 @@ hr {
     -webkit-line-clamp: 3;
     overflow: hidden;
     max-width: 480px;
+    color: #D8D8D8;
 }
+
+    .listDesc.mobile {
+        max-width: calc(100vw - 120px);
+        -webkit-line-clamp: 2;
+    }
 
 .scrollableList {
     display: flex;
@@ -1817,7 +1844,7 @@ input.coordInput {
     flex-direction: row;
 }
 
-    .advSearchSecKeyword > div, input {
+    .advSearchSecKeyword > div, .advSearchSecKeyword > input {
         flex: 0 0 auto;
         max-height: 40px;
         min-height: 40px;

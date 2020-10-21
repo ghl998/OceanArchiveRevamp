@@ -233,8 +233,8 @@ class AddCollectionPage extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            "Regions"
-            ));
+            "Regions",
+            React.createElement("hr", null)));
     }
 }
 class CoordinateBox extends React.Component {
