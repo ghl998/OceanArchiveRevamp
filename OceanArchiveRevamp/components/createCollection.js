@@ -233,30 +233,8 @@ class AddCollectionPage extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            "Regions",
-            React.createElement("hr", null),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'oceans' }, "Ocean Region/s (optional)"),
-                React.createElement(react_select_1.default, { className: 'react-select-contianer', classNamePrefix: 'react-select', options: Constant.oceans, isMulti: true, isSearchable: true })),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'countries' }, "Country/s (optional)"),
-                React.createElement(react_select_1.default, { className: 'react-select-contianer', classNamePrefix: 'react-select', options: Constant.countries, value: Constant.countries.value, isMulti: true, isSeachable: true })),
-            React.createElement("div", { style: { height: '50px' } }),
-            "Legal",
-            React.createElement("hr", null),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'license' }, "License"),
-                React.createElement(reactstrap_1.Input, { type: 'select', name: 'license' },
-                    React.createElement("option", null, "CC BY (Least Restrictive)"),
-                    React.createElement("option", null, "CC BY-SA"),
-                    React.createElement("option", null, "CC BY-ND"),
-                    React.createElement("option", null, "CC BY-NC"),
-                    React.createElement("option", null, "CC BY-NC-SA"),
-                    React.createElement("option", null, "CC BY-NC-ND (Most Restrictive CC)"),
-                    React.createElement("option", null, "Ocean Archive (Most Restrictive)"))),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'copyr' }, "Copyright Owner (optional)"),
-                React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
+            "Regions"
+            ));
     }
 }
 class CoordinateBox extends React.Component {
