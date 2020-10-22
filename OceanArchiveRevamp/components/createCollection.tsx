@@ -2,7 +2,7 @@ declare var require: any
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-import { NavLink } from 'react-router-dom';
+
 import * as Constant from '../constants';
 import {
     Carousel,
@@ -327,15 +327,8 @@ class AddCollectionPage extends React.Component{
     render() {
         return (
             <div className='createItemPage'>
-                <NavLink className='buttonSmall' to ="/addExistItems">
-                 Add Exiisting Item
-                 </NavLink>
-                 <NavLink className='buttonSmall' to ="/createItem">
-                 Create Item
-                 </NavLink>
-
-               
-               
+                Regions
+                <hr />
             </div>
         );
     }

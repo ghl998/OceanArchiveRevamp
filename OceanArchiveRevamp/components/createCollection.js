@@ -233,8 +233,8 @@ class AddCollectionPage extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-        React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/addExistItems" }, "ADD EXISTING ITEM"),
-        React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createItem" }, "ADD NEW ITEM")));
+            "Regions",
+            React.createElement("hr", null)));
     }
 }
 class CoordinateBox extends React.Component {
