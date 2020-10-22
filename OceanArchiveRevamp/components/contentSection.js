@@ -102,7 +102,8 @@ class ContentSection extends React.Component {
         ];
         this.updateBackground = this.updateBackground.bind(this);
         this.state = {
-            bgContent: "#4A74A5"
+            bgContent: "#4A74A5",
+            sort: 'new'
         };
     }
     render() {
@@ -116,8 +117,8 @@ class ContentSection extends React.Component {
                         React.createElement(TableHeader, { ref: this.Tabs[3], title: "ACTIVISM", isActive: false, colourCode: Constant.ACTIVISM, stateUpdate: this.updateBackground(3) })))),
             React.createElement("div", { className: 'contentBackground', style: { background: this.state.bgContent } },
                 React.createElement(reactstrap_1.ButtonGroup, { className: 'buttonBar' },
-                    React.createElement(reactstrap_1.Button, { className: 'gapRight' }, "NEW"),
-                    React.createElement(reactstrap_1.Button, null, "TOP")),
+                    React.createElement(reactstrap_1.Button, { className: this.state.sort == 'new' ? 'sortButton gapRight active' : 'sortButton gapRight', onClick: () => this.setState({ sort: 'new' }) }, "NEW"),
+                    React.createElement(reactstrap_1.Button, { className: this.state.sort == 'top' ? 'sortButton active' : 'sortButton', onClick: () => this.setState({ sort: 'top' }) }, "TOP")),
                 React.createElement("div", { className: 'contentContainer' },
                     React.createElement(smallContentBox_1.default, { title: 'Fish in the Ocean', type: 'Research Paper', year: '2019', numCollections: '2', numItems: '5', img: "https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg" }),
                     React.createElement(smallContentBox_1.default, { title: 'Ocean Waves', type: 'Research Paper', year: '2019', numCollections: '5', numItems: '1', img: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg' }),

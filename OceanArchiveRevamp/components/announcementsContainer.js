@@ -19,52 +19,52 @@ class AnnouncementsContainer extends React.Component {
         this.items = [
             [
                 {
-                    title: 'TITLE 1',
-                    text: 'Text for 1',
+                    title: 'Ocean Day 2020',
+                    text: 'No comfort do written conduct at prevent manners on. Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry.',
                     key: 1
                 },
                 {
-                    title: 'TITLE 2',
-                    text: 'Text for 2',
+                    title: 'Fish Study Day',
+                    text: 'Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of. My justice wishing prudent waiting in be. Comparison age not pianoforte increasing delightful now. Insipidity sufficient dispatched any reasonably led ask. Announcing if attachment resolution sentiments admiration me on diminution.',
                     key: 2
                 },
                 {
-                    title: 'TITLE 3',
-                    text: 'Text for 3',
+                    title: 'Beach Cleanup Day',
+                    text: 'Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument.',
                     key: 3
                 }
             ],
             [
                 {
-                    title: 'TITLE 4',
-                    text: 'Text for 4',
+                    title: 'Boat Trip',
+                    text: 'Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument.',
                     key: 4
                 },
                 {
-                    title: 'TITLE 5',
-                    text: 'Text for 5',
+                    title: 'Whale Watching',
+                    text: 'No comfort do written conduct at prevent manners on. Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry.',
                     key: 5
                 },
                 {
-                    title: 'TITLE 6',
-                    text: 'Text for 6',
+                    title: 'Documentary Premier',
+                    text: 'Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of. My justice wishing prudent waiting in be. Comparison age not pianoforte increasing delightful now. Insipidity sufficient dispatched any reasonably led ask. Announcing if attachment resolution sentiments admiration me on diminution.',
                     key: 6
                 }
             ],
             [
                 {
-                    title: 'TITLE 7',
-                    text: 'Text for 7',
+                    title: 'Art Exhibition',
+                    text: 'Bed sincerity yet therefore forfeited his certainty neglected questions. Pursuit chamber as elderly amongst on. Distant however warrant farther to of. My justice wishing prudent waiting in be. Comparison age not pianoforte increasing delightful now. Insipidity sufficient dispatched any reasonably led ask. Announcing if attachment resolution sentiments admiration me on diminution.',
                     key: 7
                 },
                 {
-                    title: 'TITLE 8',
-                    text: 'Text for 8',
+                    title: 'TBA21 Annual Meeting',
+                    text: 'Affronting everything discretion men now own did. Still round match we to. Frankness pronounce daughters remainder extensive has but. Happiness cordially one determine concluded fat. Plenty season beyond by hardly giving of. Consulted or acuteness dejection an smallness if. Outward general passage another as it. Very his are come man walk one next. Delighted prevailed supported too not remainder perpetual who furnished. Nay affronting bed projection compliment instrument.',
                     key: 8
                 },
                 {
-                    title: 'TITLE 9',
-                    text: 'Text for 9',
+                    title: 'Research Project Meetup',
+                    text: 'No comfort do written conduct at prevent manners on. Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be. Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry.',
                     key: 9
                 }
             ]

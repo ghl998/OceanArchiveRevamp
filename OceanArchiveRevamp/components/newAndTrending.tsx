@@ -2,8 +2,14 @@
 
 var React = require('react');
 
-import * as Constant from '../constants';
 import { NavLink } from 'react-router-dom';
+
+import AllIconBlack from '../images/All_Icon_Black.png';
+import SciTechIcon from '../images/SciTech_Icon_Black.png';
+import ArtIconBlack from '../images/brushBlack.png';
+import ActivismIcon from '../images/greenBlack.png';
+
+import * as Constant from '../constants';
 
 class LargeContentBox extends React.Component {
     constructor(props) {
@@ -14,7 +20,7 @@ class LargeContentBox extends React.Component {
         return (
             <div className='largeContentBox' style={{ backgroundImage: "url(" + this.props.img + ")", backgroundColor: this.props.bgColour }}>
                 <div className='largeContentBoxBar' style={{ background: this.props.bgColour }}>
-                    <img className='icon' />
+                    <img className='icon' src={this.props.src}/>
                     <div className='titleAndType'>
                         <h1>{this.props.title}</h1>
                         <h2>{this.props.type}</h2>
@@ -84,10 +90,10 @@ export default class NewAndTrending extends React.Component {
                 <h1 style={{ paddingLeft: '10px', flex: '0', minWidth: '200px' }}>New & Trending</h1>
                 <div className='newAndTrendingContainer'>
                     <NavLink to='/itemPage'>
-                        <LargeContentBox bgColour={Constant.ACTIVISM} title='Pacific Ocean Garbage Patch' type='Other' numCollections='2' numItems='1' img='https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' />
+                        <LargeContentBox bgColour={Constant.ACTIVISM} src={ActivismIcon} title='Pacific Ocean Garbage Patch' type='Other' numCollections='2' numItems='1' img='https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' />
                     </NavLink>
-                    <LargeContentBox bgColour={Constant.SCITECH} title='The Various Shark Species' type='Research Paper' numCollections='3' numItems='2' img='https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' />
-                    <LargeContentBox bgColour={Constant.ART} title='Under The Ocean: Life with Turtles' type='Video' numCollections='1' numItems='4' img='https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' />
+                    <LargeContentBox bgColour={Constant.SCITECH} src={SciTechIcon} title='The Various Shark Species' type='Research Paper' numCollections='3' numItems='2' img='https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' />
+                    <LargeContentBox bgColour={Constant.ART} src={ArtIconBlack} title='Under The Ocean: Life with Turtles' type='Video' numCollections='1' numItems='4' img='https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' />
                 </div>
             </div>
         );

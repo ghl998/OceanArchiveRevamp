@@ -56,7 +56,8 @@ export default class ContentSection extends React.Component {
         ];
         this.updateBackground = this.updateBackground.bind(this);
         this.state = {
-            bgContent: "#4A74A5"
+            bgContent: "#4A74A5",
+            sort: 'new'
         };
     }
 
@@ -133,8 +134,8 @@ export default class ContentSection extends React.Component {
                 </table>
                 <div className='contentBackground' style={{ background: this.state.bgContent }}>
                     <ButtonGroup className='buttonBar'>
-                        <Button className='gapRight'>NEW</Button>
-                        <Button>TOP</Button>
+                        <Button className={this.state.sort == 'new' ? 'sortButton gapRight active' : 'sortButton gapRight'} onClick={() => this.setState({sort: 'new'})}>NEW</Button>
+                        <Button className={this.state.sort == 'top' ? 'sortButton active' : 'sortButton'} onClick={() => this.setState({sort: 'top'})}>TOP</Button>
                     </ButtonGroup>
                     <div className='contentContainer'>
                         <SmallContentBox title='Fish in the Ocean' type='Research Paper' year='2019' numCollections='2' numItems='5' img="https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg" />

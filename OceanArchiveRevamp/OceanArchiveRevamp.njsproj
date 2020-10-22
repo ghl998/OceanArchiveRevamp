@@ -45,6 +45,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Content Include="dist\app-bundle.js.map" />
+    <Content Include="images\All_Icon_Black.png" />
+    <Content Include="images\All_Icon_White.png" />
+    <Content Include="images\brushBlack.png" />
+    <Content Include="images\brushWhite.png" />
+    <Content Include="images\greenBlack.png" />
+    <Content Include="images\greenWhite.png" />
+    <Content Include="images\logo-Archive.png" />
+    <Content Include="images\logo-Ocean.png" />
+    <Content Include="images\SciTech_Icon_Black.png" />
+    <Content Include="images\SciTech_Icon_White.png" />
     <Content Include="index.html">
       <SubType>Code</SubType>
     </Content>
@@ -130,6 +140,7 @@
     <Folder Include="dist\" />
     <Folder Include="components\" />
     <Folder Include="logos\" />
+    <Folder Include="images\" />
     <Folder Include="styles\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

@@ -7,13 +7,15 @@ const react_responsive_1 = require("react-responsive");
 const Google_svg_1 = require("../logos/Google.svg");
 const FacebookF_svg_1 = require("../logos/FacebookF.svg");
 const TwitterWhite_svg_1 = require("../logos/TwitterWhite.svg");
+const logo_Ocean_png_1 = require("../images/logo-Ocean.png");
+const logo_Archive_png_1 = require("../images/logo-Archive.png");
 const Constant = require("../constants");
 class Logo extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'logo' }, this.props.name));
+        return (React.createElement("div", { className: 'logo', style: { backgroundImage: 'url(' + this.props.img + ')' } }));
     }
 }
 class HeaderButton extends React.Component {
@@ -219,7 +221,7 @@ class Header extends React.Component {
             React.createElement(LoginModal, { isOpen: this.state.isLoginModalOpen, toggle: this.toggleLoginModal, loginFunc: () => this.login() }),
             React.createElement(SignUpModal, { isOpen: this.state.isSignUpModalOpen, toggle: this.toggleSignUpModal }),
             React.createElement(react_responsive_1.default, { minDeviceWidth: 1224 },
-                React.createElement(Logo, { name: 'OCEAN' }),
+                React.createElement(Logo, { img: logo_Ocean_png_1.default }),
                 React.createElement("div", { style: { flex: '1' } },
                     React.createElement("div", { style: { display: 'flex', flexDirection: 'column' } },
                         React.createElement("div", { className: 'headerNavBar' },
@@ -237,7 +239,7 @@ class Header extends React.Component {
                                 this.props.loggedIn ? React.createElement(Logout, { logoutFunc: () => this.logout() }) : React.createElement(HeaderButton, { name: 'SIGNUP', onClick: this.toggleSignUpModal }))),
                         React.createElement("div", { style: { flex: '1' } },
                             React.createElement(SearchBar, null)))),
-                React.createElement(Logo, { name: 'ARCHIVE' })),
+                React.createElement(Logo, { img: logo_Archive_png_1.default })),
             React.createElement(react_responsive_1.default, { maxDeviceWidth: 1223 },
                 React.createElement("div", { className: 'headerInner' },
                     React.createElement("div", { className: 'headerNavBar mobile' },
