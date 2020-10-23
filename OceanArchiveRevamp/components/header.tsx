@@ -9,6 +9,10 @@ import MediaQuery from 'react-responsive';
 import GoogleLogo from '../logos/Google.svg';
 import FacebookLogo from '../logos/FacebookF.svg';
 import TwitterLogo from '../logos/TwitterWhite.svg';
+
+import Ocean from '../images/logo-Ocean.png';
+import Archive from '../images/logo-Archive.png';
+
 import * as Constant from '../constants';
 
 class Logo extends React.Component {
@@ -18,7 +22,7 @@ class Logo extends React.Component {
 
     render() {
         return (
-            <div className='logo'>{this.props.name}</div>
+            <div className='logo' style={{ backgroundImage: 'url(' + this.props.img + ')'}}/>
         );
     }
 }
@@ -291,7 +295,7 @@ export default class Header extends React.Component {
                 <LoginModal isOpen={this.state.isLoginModalOpen} toggle={this.toggleLoginModal} loginFunc={() => this.login()} />
                 <SignUpModal isOpen={this.state.isSignUpModalOpen} toggle={this.toggleSignUpModal} />
                 <MediaQuery minDeviceWidth={1224}>
-                    <Logo name='OCEAN' />
+                    <Logo img={Ocean} />
                     <div style={{ flex: '1' }}>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <div className='headerNavBar'>
@@ -316,7 +320,7 @@ export default class Header extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <Logo name='ARCHIVE' />
+                    <Logo img={Archive} />
                 </MediaQuery>
                 <MediaQuery maxDeviceWidth={1223}>
                     <div className='headerInner'>

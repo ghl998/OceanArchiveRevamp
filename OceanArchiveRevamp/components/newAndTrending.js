@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
-const Constant = require("../constants");
 const react_router_dom_1 = require("react-router-dom");
+const SciTech_Icon_Black_png_1 = require("../images/SciTech_Icon_Black.png");
+const brushBlack_png_1 = require("../images/brushBlack.png");
+const greenBlack_png_1 = require("../images/greenBlack.png");
+const Constant = require("../constants");
 class LargeContentBox extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +13,7 @@ class LargeContentBox extends React.Component {
     render() {
         return (React.createElement("div", { className: 'largeContentBox', style: { backgroundImage: "url(" + this.props.img + ")", backgroundColor: this.props.bgColour } },
             React.createElement("div", { className: 'largeContentBoxBar', style: { background: this.props.bgColour } },
-                React.createElement("img", { className: 'icon' }),
+                React.createElement("img", { className: 'icon', src: this.props.src }),
                 React.createElement("div", { className: 'titleAndType' },
                     React.createElement("h1", null, this.props.title),
                     React.createElement("h2", null, this.props.type))),
@@ -48,9 +51,9 @@ class NewAndTrending extends React.Component {
             React.createElement("h1", { style: { paddingLeft: '10px', flex: '0', minWidth: '200px' } }, "New & Trending"),
             React.createElement("div", { className: 'newAndTrendingContainer' },
                 React.createElement(react_router_dom_1.NavLink, { to: '/itemPage' },
-                    React.createElement(LargeContentBox, { bgColour: Constant.ACTIVISM, title: 'Pacific Ocean Garbage Patch', type: 'Other', numCollections: '2', numItems: '1', img: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' })),
-                React.createElement(LargeContentBox, { bgColour: Constant.SCITECH, title: 'The Various Shark Species', type: 'Research Paper', numCollections: '3', numItems: '2', img: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' }),
-                React.createElement(LargeContentBox, { bgColour: Constant.ART, title: 'Under The Ocean: Life with Turtles', type: 'Video', numCollections: '1', numItems: '4', img: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' }))));
+                    React.createElement(LargeContentBox, { bgColour: Constant.ACTIVISM, src: greenBlack_png_1.default, title: 'Pacific Ocean Garbage Patch', type: 'Other', numCollections: '2', numItems: '1', img: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' })),
+                React.createElement(LargeContentBox, { bgColour: Constant.SCITECH, src: SciTech_Icon_Black_png_1.default, title: 'The Various Shark Species', type: 'Research Paper', numCollections: '3', numItems: '2', img: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' }),
+                React.createElement(LargeContentBox, { bgColour: Constant.ART, src: brushBlack_png_1.default, title: 'Under The Ocean: Life with Turtles', type: 'Video', numCollections: '1', numItems: '4', img: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' }))));
     }
 }
 exports.default = NewAndTrending;
