@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 var ReactDOM = require('react-dom');
 const Constant = require("../constants");
+const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
@@ -222,21 +223,24 @@ class AddItemPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
     }
 }
-class AddCollectionPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.validate = () => {
-            console.log('Validate add collections');
-            var pageValid = true;
-            return pageValid;
-        };
-    }
-    render() {
+
+class AddCollectionPage extends React.Component {
+        constructor(props) {
+            super(props);
+            this.validate = () => {
+                console.log('Validate add collections');
+                var pageValid = true;
+                return pageValid;
+            };
+        }
+        render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            "Regions",
-            React.createElement("hr", null)));
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createItem" }, "ADD NEW ITEM")));
+
     }
-}
+        
+    }
+
 class CoordinateBox extends React.Component {
     constructor(props) {
         super(props);
