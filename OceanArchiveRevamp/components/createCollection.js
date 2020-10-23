@@ -6,6 +6,7 @@ const Constant = require("../constants");
 const reactstrap_1 = require("reactstrap");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
+const react_router_dom_1 = require("react-router-dom");
 let Draggable = require('react-draggable');
 class DetailsPage extends React.Component {
     constructor(props) {
@@ -233,9 +234,9 @@ class AddCollectionPage extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            "Regions",
-            React.createElement("hr", null)));
+        React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "ADD NEW COLLECTION")));
     }
+    
 }
 class CoordinateBox extends React.Component {
     constructor(props) {
