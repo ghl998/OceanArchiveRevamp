@@ -7,6 +7,7 @@ const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
+const react_router_dom_1 = require("react-router-dom");
 let Draggable = require('react-draggable');
 class DetailsPage extends React.Component {
     constructor(props) {
@@ -236,10 +237,8 @@ class AddCollectionPage extends React.Component {
         render() {
         return (React.createElement("div", { className: 'createItemPage' },
             React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createItem" }, "ADD NEW ITEM")));
-
-    }
-        
-    }
+        }
+}
 
 class CoordinateBox extends React.Component {
     constructor(props) {
