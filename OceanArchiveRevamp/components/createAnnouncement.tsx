@@ -60,7 +60,7 @@ export default class CreateAnnouncement extends React.Component {
     render() {
         return (
             <div className='createAnnouncementPage'>
-                CREATE createAnnouncementPage
+                CREATE Announcement Page
                 <br />
                 <FormGroup>
                     <Label for='title'>Title</Label>
@@ -81,7 +81,7 @@ export default class CreateAnnouncement extends React.Component {
                         SAVE DRAFT
                             </div>
                     <div className='creationButton callToAction' onClick={this.next}>
-                        NEXT
+                        SUBMIT
                             </div>
                 
                 </div>
