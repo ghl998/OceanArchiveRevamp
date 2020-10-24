@@ -782,6 +782,18 @@ hr {
     border-radius: 5px 0px 0px 5px;
 }
 
+.listaddItemWidth {
+    background-color: #3FB39A;
+    color: #ffffff;
+    flex: 0 0 100px;
+}
+
+.listaddditemWidth {
+    background-color: #3FB39A;
+    color: #ffffff;
+    flex: 1 1 0px;
+}
+
 .buttonSmall {
     background-color: #3FB39A;
     color: #000000;
