@@ -783,13 +783,13 @@ hr {
 }
 
 .listaddItemWidth {
-    background-color: #3FB39A;
+    background-color: #4A74A5;
     color: #ffffff;
-    flex: 0 0 100px;
+    flex: 0 0 900px;
 }
 
 .listaddditemWidth {
-    background-color: #3FB39A;
+    background-color: #4A74A5;
     color: #ffffff;
     flex: 1 1 0px;
 }
