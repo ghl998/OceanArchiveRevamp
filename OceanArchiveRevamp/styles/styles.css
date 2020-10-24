@@ -794,13 +794,13 @@ hr {
 
 .buttonBig {
     background-color: #3FB39A;
-    color: #000000;
     flex: 0 0 50px;
     height: 50px;
     font-size: large;
     border-radius: 5px;
     text-align: center;
     line-height: 50px;
+    color: #000000;
 }
 
 .listSection {
