@@ -41,7 +41,7 @@ class CreateAnnouncement extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createAnnouncementPage' },
-            "CREATE createAnnouncementPage",
+            "CREATE Announcement Page",
             React.createElement("br", null),
             React.createElement(reactstrap_1.FormGroup, null,
                 React.createElement(reactstrap_1.Label, { for: 'title' }, "Title"),
@@ -56,7 +56,7 @@ class CreateAnnouncement extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'url', name: 'url', id: 'url', value: this.state.values.url, invalid: this.state.errors.url }),
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error")),
             React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SAVE DRAFT"),
-            React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "NEXT")));
+            React.createElement("div", { className: 'creationButton callToAction', onClick: this.next }, "SUBMIT")));
     }
 }
 exports.default = CreateAnnouncement;
