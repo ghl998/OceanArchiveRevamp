@@ -2,7 +2,7 @@ declare var require: any
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-
+import { NavLink } from 'react-router-dom';
 import * as Constant from '../constants';
 import {
     Carousel,
@@ -60,7 +60,7 @@ export default class CreateAnnouncement extends React.Component {
     render() {
         return (
             <div className='createAnnouncementPage'>
-                CREATE Announcement Page
+                CREATE ANNOUNCEMENT
                 <br />
                 <FormGroup>
                     <Label for='title'>Title</Label>
@@ -77,15 +77,16 @@ export default class CreateAnnouncement extends React.Component {
                     <Input type='url' name='url' id='url' value={this.state.values.url} invalid={this.state.errors.url} />
                     <FormFeedback valid={!this.state.errors.url} >URL Error</FormFeedback>
                  </FormGroup>
+                 <div className='creationFooter'>
                 <div className='creationButton' style={{ marginRight: '16px' }}>
                         SAVE DRAFT
-                            </div>
-                    <div className='creationButton callToAction' onClick={this.next}>
+                        </div>
+                    <div className='creationButton'  style={{ marginRight: '16px' }}>
                         SUBMIT
-                            </div>
+                     </div>
                 
                 </div>
-               
+               </div>
         );
     }
 }

@@ -267,6 +267,9 @@ class ListItem extends React.Component {
 class AddCollectionPage extends React.Component {
         constructor(props) {
             super(props);
+    this.goToLocation = (location) => {
+        this.map.panTo(location);
+    };
             this.validate = () => {
                 console.log('Validate add collections');
                 var pageValid = true;
@@ -275,8 +278,15 @@ class AddCollectionPage extends React.Component {
         }
         render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "ADD NEW ITEM"),
-            React.createElement(react_router_dom_1.NavLink, { className: 'button', to: "/createCollection" }, "ADD NEW ITEM")));
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/" }, "ADD EXISTING COLLECTION"),
+            React.createElement("div", { style: { height: '24px' } }),
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/createCollection" }, "ADD NEW COLLECTION"),
+
+            React.createElement("div", { className: 'listSection' },
+                React.createElement(ListAddItemHeader, null),
+                
+                )
+            ));
         }
 }
 
