@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
-const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
 class SearchBar extends React.Component {
     constructor(props) {
@@ -23,7 +22,7 @@ class SearchBar extends React.Component {
                 React.createElement(reactstrap_1.DropdownToggle, { className: 'altDropdown', caret: true }, this.state.searchBy),
                 React.createElement(reactstrap_1.DropdownMenu, { className: 'altDropdownMenu' },
                     React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"))),
-            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Collections' }),
+            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Announcements' }),
             React.createElement("input", { type: 'submit', className: 'altSearchButton', value: 'Search' })));
     }
 }
@@ -32,20 +31,29 @@ class ListHeader extends React.Component {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'ListHeaderContainer', style: { fontWeight: 'bold' } },
+        return (React.createElement("div", { className: 'listItemContainer', style: { fontWeight: 'bold' } },
             React.createElement("div", { className: 'listFixedWidth' }, "Published"),
+            React.createElement("div", { className: 'listFixedWidth' }, "Visible"),
             React.createElement("div", { className: 'listFixedWidth' }, "Created Date"),
             React.createElement("div", { className: 'listVariableWidth' }, "Title"),
             React.createElement("div", { className: 'listFixedWidth' }, "Options")));
     }
 }
-class ListCollection extends React.Component {
+class ListItem extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'ListCollectionContainer' },
+        return (React.createElement("div", { className: 'listItemContainer' },
             React.createElement("div", { className: 'listFixedWidth' }, this.props.published ?
+                React.createElement("svg", { width: '30', height: '30' },
+                    React.createElement("polyline", { points: '5,20 10,25 25,5', strokeLinecap: 'round', style: { fill: 'none', stroke: '#05B336', strokeWidth: '5' } }),
+                    "Yes")
+                : React.createElement("svg", { width: '30', height: '30' },
+                    React.createElement("g", { fill: 'none', stroke: '#FF3A3A', "stroke-width": '5' },
+                        React.createElement("line", { x1: '5', y1: '5', x2: '25', y2: '25', strokeLinecap: 'round' }),
+                        React.createElement("line", { x1: '25', y1: '5', x2: '5', y2: '25', strokeLinecap: 'round' })))),
+            React.createElement("div", { className: 'listFixedWidth' }, this.props.visible ?
                 React.createElement("svg", { width: '30', height: '30' },
                     React.createElement("polyline", { points: '5,20 10,25 25,5', strokeLinecap: 'round', style: { fill: 'none', stroke: '#05B336', strokeWidth: '5' } }),
                     "Yes")
@@ -55,12 +63,54 @@ class ListCollection extends React.Component {
                         React.createElement("line", { x1: '25', y1: '5', x2: '5', y2: '25', strokeLinecap: 'round' })))),
             React.createElement("div", { className: 'listFixedWidth' }, this.props.dateCreated),
             React.createElement("div", { className: 'listVariableWidth' }, this.props.title),
-            React.createElement("div", { className: 'listFixedWidth' }, "EDIT")));
+            React.createElement("div", { className: 'listFixedWidth' },
+                React.createElement("div", { onClick: this.props.modalOpen }, "EDIT"))));
     }
 }
-class MyItems extends React.Component {
+class EditModal extends React.Component {
     constructor(props) {
         super(props);
+        this.setDelete = (confirmDelete) => {
+            this.setState({
+                confirmDelete: confirmDelete
+            });
+        };
+        this.delete = () => {
+            this.props.deleteItem();
+            this.setDelete(false);
+        };
+        this.state = {
+            data: this.props.data,
+            confirmDelete: false
+        };
+    }
+    render() {
+        if (this.props.data != undefined)
+            return (React.createElement(reactstrap_1.Modal, { isOpen: this.props.isOpen, toggle: this.props.toggle },
+                React.createElement(reactstrap_1.ModalHeader, null,
+                    "Edit - ",
+                    this.props.data.title),
+                this.state.confirmDelete ?
+                    React.createElement("div", { className: 'manageModalOuter' },
+                        React.createElement("div", null, "Delete this item?"),
+                        React.createElement("div", { className: 'manageDeleteButtons' },
+                            React.createElement("div", { className: 'cancelDeleteButton', onClick: () => this.setDelete(false) }, "Cancel"),
+                            React.createElement("div", { className: 'confirmDeleteButton', onClick: () => this.delete() }, "Yes, delete item"))) :
+                    React.createElement("div", { className: 'manageModalOuter' },
+                        React.createElement("div", { className: 'manageModalButton', onClick: () => this.props.hideItem(!this.props.data.visible) }, this.props.data.visible ? 'Hide' : 'Show'),
+                        React.createElement("div", { className: 'manageModalButton', onClick: () => this.setDelete(true) }, "Delete"))));
+        else
+            return (null);
+    }
+}
+class ManageItems extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggleModal = () => {
+            this.setState({
+                modalOpen: !this.state.modalOpen
+            });
+        };
         this.switchPage = (index) => {
             //console.log("Index: ", index, " | PagesCount: ", this.pagesCount)
             if (index >= 0 && index < this.pagesCount)
@@ -83,32 +133,60 @@ class MyItems extends React.Component {
                 return (this.pages.map((i) => React.createElement(reactstrap_1.PaginationItem, { active: i === this.state.currentPage + 1, key: i },
                     React.createElement(reactstrap_1.PaginationLink, { onClick: () => this.switchPage(i - 1), href: '#' }, i))));
         };
+        this.openModal = (i) => {
+            this.setState({
+                modalOpen: true,
+                editingIndex: i
+            });
+        };
+        this.deleteItem = () => {
+            var dataSet = this.state.dataSet;
+            dataSet.splice(this.state.editingIndex, 1);
+            this.setState({
+                dataSet: dataSet,
+                modalOpen: false
+            });
+        };
+        this.hideItem = (visible) => {
+            console.log(visible);
+            if (this.state.dataSet != undefined && this.state.editingIndex >= 0) {
+                var dataSet = this.state.dataSet;
+                dataSet[this.state.editingIndex].visible = visible;
+                this.setState({
+                    dataSet: dataSet,
+                    modalOpen: false
+                });
+            }
+        };
         this.dataSet = new Array(100);
         for (var i = 0; i < this.dataSet.length; i++) {
-            this.dataSet[i] = "Title " + (i + 1);
+            this.dataSet[i] = { title: "Title " + (i + 1), published: Math.random() > 0.5 ? true : false, visible: Math.random() > 0.5 ? true : false };
         }
         //console.log("items: ", this.dataSet);
         this.itemsPerPage = Math.floor((window.innerHeight - 350) / 50);
-        this.pagesCount = Math.ceil(100 / this.itemsPerPage);
+        this.pagesCount = Math.ceil(this.dataSet.length / this.itemsPerPage);
         //console.log("itemsPerPage: ", this.itemsPerPage, " | pagesCount: ", this.pagesCount);
         this.pages = new Array(this.pagesCount);
         for (var i = 0; i < this.pages.length; i++) {
             this.pages[i] = (i + 1);
         }
         this.state = {
-            currentPage: 0
+            currentPage: 0,
+            modalOpen: false,
+            editingIndex: -1,
+            dataSet: this.dataSet
         };
     }
     render() {
         const { currentPage } = this.state;
         return (React.createElement("div", { className: "ICAcontainer" },
-            React.createElement("h1", null, "MY COLLECTIONS"),
+            React.createElement(EditModal, { isOpen: this.state.modalOpen, toggle: () => this.toggleModal(), data: this.state.dataSet[this.state.editingIndex], deleteItem: () => this.deleteItem(), hideItem: (v) => this.hideItem(v) }),
+            React.createElement("h1", null, "MANAGE ITEMS"),
             React.createElement(SearchBar, null),
             React.createElement("div", { className: 'listSection' },
                 React.createElement(ListHeader, null),
-                this.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListHeader, { key: i, published: true, dateCreated: "02-Jun-2020", title: data }))),
+                this.state.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListItem, { key: i, published: data.published, visible: data.visible, dateCreated: "01-Jun-2020", title: data.title, modalOpen: () => this.openModal(i) }))),
             React.createElement("div", { className: 'footerMenu' },
-                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "+ Add New"),
                 React.createElement("div", { className: 'fillerBox' }),
                 React.createElement(reactstrap_1.Pagination, null,
                     React.createElement(reactstrap_1.PaginationItem, { disabled: currentPage <= 0 },
@@ -122,5 +200,5 @@ class MyItems extends React.Component {
                         React.createElement(reactstrap_1.PaginationLink, { onClick: () => this.switchPage(this.pagesCount - 1), last: true, href: '#' }))))));
     }
 }
-exports.default = MyItems;
-//# sourceMappingURL=myCollections.js.map
+exports.default = ManageItems;
+//# sourceMappingURL=manageItems.js.map

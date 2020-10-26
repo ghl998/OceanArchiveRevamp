@@ -978,9 +978,9 @@ hr {
         padding-bottom: 16px;
     }
 
-    .contentContainer.mobile > .smallContentBox > .smallContentBoxBar {
-        background-color: #4A74A5;
-    }
+.contentContainer.mobile > .smallContentBox > .smallContentBoxBar {
+    background-color: #4A74A5;
+}
 
 .itemCollectionTags {
     display: flex;
@@ -1728,21 +1728,18 @@ input.coordInput {
         background-color: #4A74A5;
     }
 
-    /* create announcement */
-    .createAnnouncementPage{
-        display: flex;
-        flex-direction: column;
-       
-        
+/* create announcement */
+.createAnnouncementPage {
+    display: flex;
+    flex-direction: column;
+}
 
-    }
-    .createAnnouncementPage > .announcementDetails{
+    .createAnnouncementPage > .announcementDetails {
         display: flex;
         flex-direction: column;
         align-items: center;
-
     }
-    
+
 
 /*
     Onboarding
@@ -2047,3 +2044,48 @@ input.coordInput {
         .searchResultContainer .tagsContainer .tag:first-of-type {
             margin-left: 0px;
         }
+
+/*Manage Page*/
+.manageModalOuter {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 16px auto;
+}
+
+.manageModalButton {
+    background-color: #FF3A3A;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin: 16px;
+}
+
+.manageDeleteButtons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+}
+
+.cancelDeleteButton {
+    background-color: #142636;
+    flex: 1 1 0px;
+    margin: 0px 16px;
+    border-radius: 5px;
+    border: 1px #ffffff solid;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+
+.confirmDeleteButton {
+    background-color: #FF3A3A;
+    flex: 1 1 0px;
+    margin: 0px 16px;
+    border-radius: 5px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}

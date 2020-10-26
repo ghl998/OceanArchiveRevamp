@@ -14,6 +14,7 @@ const map_1 = require("./components/map");
 const myItems_1 = require("./components/myItems");
 const myCollections_1 = require("./components/myCollections");
 const myAnnouncements_1 = require("./components/myAnnouncements");
+const manageItems_1 = require("./components/manageItems");
 const itemCollectionPage_1 = require("./components/itemCollectionPage");
 const createItem_1 = require("./components/createItem");
 const createCollection_1 = require("./components/createCollection");
@@ -113,6 +114,11 @@ class Homepage extends React.Component {
                         return (React.createElement("div", null,
                             React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
                             React.createElement(search_1.default, null)));
+                    } }),
+                React.createElement(react_router_dom_1.Route, { path: "/manageItems", render: () => {
+                        return (React.createElement("div", null,
+                            React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
+                            React.createElement(manageItems_1.default, null)));
                     } }))));
     }
 }

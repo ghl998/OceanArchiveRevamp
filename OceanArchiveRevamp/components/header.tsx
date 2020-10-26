@@ -22,7 +22,7 @@ class Logo extends React.Component {
 
     render() {
         return (
-            <div className='logo' style={{ backgroundImage: 'url(' + this.props.img + ')'}}/>
+            <div className='logo' style={{ backgroundImage: 'url(' + this.props.img + ')' }} />
         );
     }
 }
@@ -161,7 +161,7 @@ class Contribute extends React.Component {
 
     render() {
         return (
-            <ButtonDropdown className={this.props.isMobile? 'mobile' : 'headerButton'} style={{ minWidth: '130px' }} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
+            <ButtonDropdown className={this.props.isMobile ? 'mobile' : 'headerButton'} style={{ minWidth: '130px' }} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
                 <DropdownToggle className={this.props.isMobile ? 'mobile' : ''} caret>
                     CONTRIBUTE
                 </DropdownToggle>
@@ -196,11 +196,13 @@ class Admin extends React.Component {
     render() {
         return (
             <ButtonDropdown className={this.props.isMobile ? 'mobile' : 'headerButton'} isOpen={this.state.isOpen} toggle={this.toggle} direction={this.props.direction}>
-                <DropdownToggle className={this.props.isMobile? 'mobile' : ''} caret>
+                <DropdownToggle className={this.props.isMobile ? 'mobile' : ''} caret>
                     ADMIN
                 </DropdownToggle>
                 <DropdownMenu className={this.props.isMobile ? 'mobile sub' : ''}>
-                    <DropdownItem>ITEM</DropdownItem>
+                    <NavLink to="/manageItems">
+                        <DropdownItem>ITEM</DropdownItem>
+                    </NavLink>
                     <DropdownItem>COLLECTION</DropdownItem>
                     <DropdownItem>ANNOUNCEMENT</DropdownItem>
                 </DropdownMenu>
