@@ -59,9 +59,11 @@ export default class CreateAnnouncement extends React.Component {
     }
     render() {
         return (
+            
+         
             <div className='createAnnouncementPage'>
-                CREATE ANNOUNCEMENT
-                <br />
+                 Create Announcement
+              <div className='announcementDetails'>
                 <FormGroup>
                     <Label for='title'>Title</Label>
                     <Input type='text' name='title' id='title' value={this.state.values.title} required invalid={this.state.errors.title} onChange={(e) => this.validateTitle(e)} />
@@ -77,6 +79,7 @@ export default class CreateAnnouncement extends React.Component {
                     <Input type='url' name='url' id='url' value={this.state.values.url} invalid={this.state.errors.url} />
                     <FormFeedback valid={!this.state.errors.url} >URL Error</FormFeedback>
                  </FormGroup>
+                 </div>
                  <div className='creationFooter'>
                 <div className='creationButton' style={{ marginRight: '16px' }}>
                         SAVE DRAFT
@@ -85,8 +88,9 @@ export default class CreateAnnouncement extends React.Component {
                         SUBMIT
                      </div>
                 
-                </div>
-               </div>
+                </div> 
+             
+        </div>
         );
     }
 }
