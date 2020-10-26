@@ -79,7 +79,7 @@ export default class CreateAnnouncement extends React.Component {
                     <Input type='url' name='url' id='url' value={this.state.values.url} invalid={this.state.errors.url} />
                     <FormFeedback valid={!this.state.errors.url} >URL Error</FormFeedback>
                  </FormGroup>
-                 </div>
+                
                  <div className='creationFooter'>
                 <div className='creationButton' style={{ marginRight: '16px' }}>
                         SAVE DRAFT
@@ -88,9 +88,10 @@ export default class CreateAnnouncement extends React.Component {
                         SUBMIT
                      </div>
                 
-                </div> 
+                </div>
              
-        </div>
+            </div>
+            </div>
         );
     }
 }

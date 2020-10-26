@@ -1732,25 +1732,17 @@ input.coordInput {
     .createAnnouncementPage{
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 100px);
-        padding: 0px 24px;
+       
+        
 
     }
     .createAnnouncementPage > .announcementDetails{
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 50vw;
-
-    }
-    .createAnnouncementPag > .creationFooter{
-        flex: 0 0 auto;
-        height: 100px;
         display: flex;
+        flex-direction: column;
         align-items: center;
 
     }
+    
 
 /*
     Onboarding
