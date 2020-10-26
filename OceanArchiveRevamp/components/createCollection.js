@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require('react');
 var ReactDOM = require('react-dom');
 const react_router_dom_1 = require("react-router-dom");
-const Constant = require("../constants");
 const reactstrap_1 = require("reactstrap");
+const react_responsive_1 = require("react-responsive");
+const Constant = require("../constants");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
 let Draggable = require('react-draggable');
@@ -186,9 +187,41 @@ class RegionAndLegalPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
     }
 }
+
+class ListAddItemHeader extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (React.createElement("div", { className: 'listItemContainer', style: { fontWeight: 'bold' } },
+            React.createElement("div", { className: 'listaddItemWidth' }, "ITEM"),
+            React.createElement("div", { className: 'listaddditemWidth' }, "FINISHED")));
+    }
+}
+
+const testItem = [
+    { title: 'Pacific Ocean Garbage Patch', desc: 'creator: XXX', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' },
+    { title: 'The Various Shark Species', desc: 'creator: XXX', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' },
+    { title: 'Under The Ocean: Life with Turtles', desc: 'creator: XXX', src: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' },
+    { title: 'Fish in the Ocean', desc: 'creator: XXX', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg' },
+    { title: 'Ocean Waves', desc: 'creator: XXX', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg' },
+    { title: 'Sharks Electromagnetic Sense', desc: 'creator: XXX', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg' },
+    { title: 'Coral Research', desc: 'creator: XXX', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg' },
+    { title: 'Plastic Island', desc: 'creator: XXX', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg' },
+    { title: 'Sunset Shore', desc: 'creator: XXX', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg' },
+    { title: 'Deep Ocean Mining', desc: 'creator: XXX', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg' },
+    { title: 'Oil Pollution', desc: 'creator: XXX', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg' },
+    { title: 'Deep Ocean Life', desc: 'creator: XXX', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg' },
+    { title: 'Whale Spotting', desc: 'creator: XXX', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg' },
+    { title: 'Octopus Learning Habits', desc: 'creator: XXX', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg' }
+];
+
 class AddItemPage extends React.Component {
     constructor(props) {
         super(props);
+        this.goToLocation = (location) => {
+            this.map.panTo(location);
+        };
         this.validate = () => {
             console.log('Validate add items');
             var pageValid = true;
@@ -197,47 +230,56 @@ class AddItemPage extends React.Component {
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            "Regions",
-            React.createElement("hr", null),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'oceans' }, "Ocean Region/s (optional)"),
-                React.createElement(react_select_1.default, { className: 'react-select-contianer', classNamePrefix: 'react-select', options: Constant.oceans, isMulti: true, isSearchable: true })),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'countries' }, "Country/s (optional)"),
-                React.createElement(react_select_1.default, { className: 'react-select-contianer', classNamePrefix: 'react-select', options: Constant.countries, value: Constant.countries.value, isMulti: true, isSeachable: true })),
-            React.createElement("div", { style: { height: '50px' } }),
-            "Legal",
-            React.createElement("hr", null),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'license' }, "License"),
-                React.createElement(reactstrap_1.Input, { type: 'select', name: 'license' },
-                    React.createElement("option", null, "CC BY (Least Restrictive)"),
-                    React.createElement("option", null, "CC BY-SA"),
-                    React.createElement("option", null, "CC BY-ND"),
-                    React.createElement("option", null, "CC BY-NC"),
-                    React.createElement("option", null, "CC BY-NC-SA"),
-                    React.createElement("option", null, "CC BY-NC-ND (Most Restrictive CC)"),
-                    React.createElement("option", null, "Ocean Archive (Most Restrictive)"))),
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(reactstrap_1.Label, { for: 'copyr' }, "Copyright Owner (optional)"),
-                React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/createItem" }, "ADD EXISTING ITEM"),
+            React.createElement("div", { style: { height: '24px' } }),
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/createItem" }, "ADD NEW ITEM"),
+
+            React.createElement("div", { className: 'listSection' },
+                React.createElement(ListAddItemHeader, null),
+                
+                )
+            ));
     }
+    
 }
-class AddCollectionPage extends React.Component {
+
+
+/*
+class ListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.validate = () => {
-            console.log('Validate add collections');
-            var pageValid = true;
-            return pageValid;
-        };
     }
     render() {
-        return (React.createElement("div", { className: 'createItemPage' },
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "Add New Collection"))));
+        return (React.createElement("div", { className:'listItemContainer' },
+            //React.createElement("img", { src: this.props.src, alt: this.props.title + " thumbnail" }),
+            React.createElement("div", { className: 'listaddItemWidth'},
+                React.createElement("div", { style: { display: 'flex', flexDirection: 'column', height: '50px' } },
+                    React.createElement("h2", { className: 'listaddItemWidth' }, this.props.title),
+                    React.createElement("p", { className: 'listaddItemWidth' }, this.props.desc)),
+            React.createElement("div", { className: 'listaddditemWidth' }, "EDIT"))));
     }
 }
+*/
+
+
+
+
+class AddCollectionPage extends React.Component {
+        constructor(props) {
+            super(props);
+            this.validate = () => {
+                console.log('Validate add collections');
+                var pageValid = true;
+                return pageValid;
+            };
+        }
+        render() {
+        return (React.createElement("div", { className: 'createItemPage' },
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection" }, "ADD NEW ITEM"),
+            React.createElement(react_router_dom_1.NavLink, { className: 'button', to: "/createCollection" }, "ADD NEW ITEM")));
+        }
+}
+
 class CoordinateBox extends React.Component {
     constructor(props) {
         super(props);
