@@ -62,7 +62,7 @@ class CreateAnnouncement extends React.Component {
                 React.createElement(reactstrap_1.FormFeedback, { valid: !this.state.errors.url }, "URL Error")),
             React.createElement("div", { className: 'creationFooter' },
             React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SAVE DRAFT"),
-            React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SUBMIT"))));
+            React.createElement("div", { className: 'creationButton', style: { marginRight: '16px' } }, "SUBMIT")))));
     }
 }
 exports.default = CreateAnnouncement;
