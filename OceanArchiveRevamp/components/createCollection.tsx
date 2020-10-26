@@ -329,7 +329,7 @@ class AddCollectionPage extends React.Component{
             <div className='createItemPage'>
                 <FormGroup>
                 
-                 <NavLink className='buttonSmall' to ="/createCollection">
+                 <NavLink className='buttonSmall' to ="/createCollection11">
                  Add New Collection
                  </NavLink>
                  </FormGroup>
