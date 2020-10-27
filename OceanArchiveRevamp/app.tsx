@@ -18,6 +18,7 @@ import MyItems from './components/myItems';
 import MyCollections from './components/myCollections';
 import MyAnnouncements from './components/myAnnouncements';
 import ManageItems from './components/manageItems';
+import ManageAnnouncements from './components/manageAnnouncements';
 import ItemCollectionPage from './components/itemCollectionPage';
 import CreateItem from './components/createItem';
 import CreateCollection from './components/createCollection';
@@ -188,6 +189,16 @@ class Homepage extends React.Component {
                                 <div>
                                     <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
                                     <ManageItems />
+                                </div>
+                            )
+                        }}
+                    />
+                    <Route path="/manageAnnouncements"
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <ManageAnnouncements />
                                 </div>
                             )
                         }}
