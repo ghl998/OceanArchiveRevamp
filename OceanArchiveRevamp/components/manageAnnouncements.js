@@ -21,8 +21,7 @@ class SearchBar extends React.Component {
             React.createElement(reactstrap_1.ButtonDropdown, { className: 'searchDropdown', isOpen: this.state.isOpen, toggle: this.toggle, direction: 'down' },
                 React.createElement(reactstrap_1.DropdownToggle, { className: 'altDropdown', caret: true }, this.state.searchBy),
                 React.createElement(reactstrap_1.DropdownMenu, { className: 'altDropdownMenu' },
-                    React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"),
-                    React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Creator') }, "Creator"))),
+                    React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"))),
             React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Announcements' }),
             React.createElement("input", { type: 'submit', className: 'altSearchButton', value: 'Search' })));
     }
@@ -106,7 +105,7 @@ class EditModal extends React.Component {
             return (null);
     }
 }
-class ManageAnnouncements extends React.Component {
+class ManageItems extends React.Component {
     constructor(props) {
         super(props);
         this.toggleModal = () => {
@@ -184,7 +183,7 @@ class ManageAnnouncements extends React.Component {
         const { currentPage } = this.state;
         return (React.createElement("div", { className: "ICAcontainer" },
             React.createElement(EditModal, { isOpen: this.state.modalOpen, toggle: () => this.toggleModal(), data: this.state.dataSet[this.state.editingIndex], deleteItem: () => this.deleteItem(), hideItem: (v) => this.hideItem(v) }),
-            React.createElement("h1", null, "MANAGE ANNOUNCEMENTS"),
+            React.createElement("h1", null, "MANAGE ITEMS"),
             React.createElement(SearchBar, null),
             React.createElement("div", { className: 'listSection' },
                 React.createElement(ListHeader, null),
@@ -203,5 +202,5 @@ class ManageAnnouncements extends React.Component {
                         React.createElement(reactstrap_1.PaginationLink, { onClick: () => this.switchPage(this.pagesCount - 1), last: true, href: '#' }))))));
     }
 }
-exports.default = ManageAnnouncements;
-//# sourceMappingURL=manageAnnouncement.js.map
+exports.default = ManageItems;
+//# sourceMappingURL=manageAnnouncements.js.map

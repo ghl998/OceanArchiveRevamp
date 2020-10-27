@@ -103,7 +103,7 @@ class EditModal extends React.Component {
             return (null);
     }
 }
-class ManageCollection extends React.Component {
+class ManageItems extends React.Component {
     constructor(props) {
         super(props);
         this.toggleModal = () => {
@@ -200,5 +200,5 @@ class ManageCollection extends React.Component {
                         React.createElement(reactstrap_1.PaginationLink, { onClick: () => this.switchPage(this.pagesCount - 1), last: true, href: '#' }))))));
     }
 }
-exports.default = ManageCollection;
-//# sourceMappingURL=manageItems.js.map
+exports.default = ManageItems;
+//# sourceMappingURL=manageCollection.js.map

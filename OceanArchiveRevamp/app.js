@@ -121,16 +121,16 @@ class Homepage extends React.Component {
                         return (React.createElement("div", null,
                             React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
                             React.createElement(manageItems_1.default, null)));
-                } }),
+                    } }),
                 React.createElement(react_router_dom_1.Route, { path: "/manageCollection", render: () => {
-                    return (React.createElement("div", null,
-                        React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
-                        React.createElement(manageCollection_1.default, null)));
-                } }),
+                        return (React.createElement("div", null,
+                            React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
+                            React.createElement(manageCollection_1.default, null)));
+                    } }),
                 React.createElement(react_router_dom_1.Route, { path: "/manageAnnouncements", render: () => {
-                                return (React.createElement("div", null,
-                                    React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
-                                    React.createElement(manageItems_1.default, null)));
+                        return (React.createElement("div", null,
+                            React.createElement(header_1.default, { logIn: (x) => this.logIn(x), loggedIn: this.state.loggedIn }),
+                            React.createElement(manageAnnouncements_1.default, null)));
                     } }))));
     }
 }

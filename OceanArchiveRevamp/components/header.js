@@ -149,9 +149,9 @@ class Admin extends React.Component {
             React.createElement(reactstrap_1.DropdownToggle, { className: this.props.isMobile ? 'mobile' : '', caret: true }, "ADMIN"),
             React.createElement(reactstrap_1.DropdownMenu, { className: this.props.isMobile ? 'mobile sub' : '' },
                 React.createElement(react_router_dom_1.NavLink, { to: "/manageItems" },
-                    React.createElement(reactstrap_1.DropdownItem, null, "ITEM")), 
-             React.createElement(react_router_dom_1.NavLink, { to: "/manageCollection" },
-             React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION")),
+                    React.createElement(reactstrap_1.DropdownItem, null, "ITEM")),
+                React.createElement(react_router_dom_1.NavLink, { to: "/manageCollection" },
+                    React.createElement(reactstrap_1.DropdownItem, null, "COLLECTION")),
                 React.createElement(react_router_dom_1.NavLink, { to: "/manageAnnouncements" },
                     React.createElement(reactstrap_1.DropdownItem, null, "ANNOUNCEMENT")))));
     }
