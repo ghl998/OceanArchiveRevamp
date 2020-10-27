@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
                 React.createElement(reactstrap_1.DropdownToggle, { className: 'altDropdown', caret: true }, this.state.searchBy),
                 React.createElement(reactstrap_1.DropdownMenu, { className: 'altDropdownMenu' },
                     React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"))),
-            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Items' }),
+            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Collections' }),
             React.createElement("input", { type: 'submit', className: 'altSearchButton', value: 'Search' })));
     }
 }
@@ -181,11 +181,11 @@ class ManageItems extends React.Component {
         const { currentPage } = this.state;
         return (React.createElement("div", { className: "ICAcontainer" },
             React.createElement(EditModal, { isOpen: this.state.modalOpen, toggle: () => this.toggleModal(), data: this.state.dataSet[this.state.editingIndex], deleteItem: () => this.deleteItem(), hideItem: (v) => this.hideItem(v) }),
-            React.createElement("h1", null, "MANAGE ITEMS"),
+            React.createElement("h1", null, "MANAGE COLLECTIONS"),
             React.createElement(SearchBar, null),
             React.createElement("div", { className: 'listSection' },
                 React.createElement(ListHeader, null),
-                this.state.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListItem, { key: i, published: data.published, visible: data.visible, dateCreated: "01-Jun-2020", title: data.title, modalOpen: () => this.openModal(i) }))),
+                this.state.dataSet.slice(currentPage * this.itemsPerPage, (currentPage + 1) * this.itemsPerPage).map((data, i) => React.createElement(ListItem, { key: i, published: data.published, visible: data.visible, dateCreated: "01-JAN-1999", title: data.title, modalOpen: () => this.openModal(i) }))),
             React.createElement("div", { className: 'footerMenu' },
                 React.createElement("div", { className: 'fillerBox' }),
                 React.createElement(reactstrap_1.Pagination, null,

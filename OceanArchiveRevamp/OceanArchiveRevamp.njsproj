@@ -106,6 +106,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="components\manageItems.tsx" />
+    <TypeScriptCompile Include="components\manageCollection.tsx" />
     <TypeScriptCompile Include="components\map.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
