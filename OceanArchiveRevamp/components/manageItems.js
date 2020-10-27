@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
                 React.createElement(reactstrap_1.DropdownToggle, { className: 'altDropdown', caret: true }, this.state.searchBy),
                 React.createElement(reactstrap_1.DropdownMenu, { className: 'altDropdownMenu' },
                     React.createElement(reactstrap_1.DropdownItem, { onClick: () => this.switchSearch('Title') }, "Title"))),
-            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Announcements' }),
+            React.createElement("input", { type: 'search', className: 'altSearchBar', placeholder: 'Search My Items' }),
             React.createElement("input", { type: 'submit', className: 'altSearchButton', value: 'Search' })));
     }
 }
