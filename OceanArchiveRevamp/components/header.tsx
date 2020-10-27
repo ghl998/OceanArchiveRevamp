@@ -203,7 +203,9 @@ class Admin extends React.Component {
                     <NavLink to="/manageItems">
                         <DropdownItem>ITEM</DropdownItem>
                     </NavLink>
-                    <DropdownItem>COLLECTION</DropdownItem>
+                    <NavLink to="/manageCollection">
+                        <DropdownItem>COLLECTION</DropdownItem>
+                    </NavLink>
                     
                     <NavLink to="/manageAnnouncements">
                          <DropdownItem>ANNOUNCEMENT</DropdownItem>
