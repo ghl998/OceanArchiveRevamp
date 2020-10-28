@@ -287,6 +287,41 @@ class ListItemHeader extends React.Component {
         );
     }
 }
+class ListItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.map = null;
+    }
+
+    render() {
+        return (
+            <div className='listItemContainer'>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <h2>{this.props.title}</h2>
+                        <p>{this.props.desc}</p>
+                </div>
+                <div className='listadddItemWidth'>EDIT</div>
+            </div>
+        );
+    }
+}
+
+const testLocations = [
+    { title: 'Pacific Ocean Garbage Patch', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' },
+    { title: 'The Various Shark Species', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg'},
+    { title: 'Under The Ocean: Life with Turtles', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg'},
+    { title: 'Fish in the Ocean', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg' },
+    { title: 'Ocean Waves', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg' },
+    { title: 'Sharks Electromagnetic Sense', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg' },
+    { title: 'Coral Research', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg' },
+    { title: 'Plastic Island', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg' },
+    { title: 'Sunset Shore', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg' },
+    { title: 'Deep Ocean Mining', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg' },
+    { title: 'Oil Pollution', desc: 'Olivia-Mae', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg' },
+    { title: 'Deep Ocean Life', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg' },
+    { title: 'Whale Spotting', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg' },
+    { title: 'Octopus Learning Habits', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg' }
+]
 
 class AddItemPage extends React.Component{
     constructor(props) {
@@ -309,6 +344,16 @@ class AddItemPage extends React.Component{
                     ADD NEW ITEM
                 </NavLink>
                 <ListItemHeader />
+                <div className='listItemPage'>
+                    {testLocations.map((title, i) => {
+                        return (
+                            <ListItem
+                                title={title.title}
+                                desc={title.desc}
+                            />
+                            )
+                    })}
+                </div>
             </div>
         );
     }

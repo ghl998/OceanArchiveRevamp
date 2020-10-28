@@ -822,6 +822,14 @@ hr {
     margin: 10px 0px;
 }
 
+.listItemPage {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    flex: 1 1 auto;
+    margin: 10px 0px;
+}
+
 .footerMenu {
     display: flex;
     flex-direction: row;
