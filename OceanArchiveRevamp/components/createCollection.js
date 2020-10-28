@@ -186,7 +186,16 @@ class RegionAndLegalPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
     }
 }
-
+class ListAddItemHeader extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (React.createElement("div", { className: 'listItemContainer', style: { fontWeight: 'bold' } },
+            React.createElement("div", { className: 'listaddItemWidth' }, "ITEM"),
+            React.createElement("div", { className: 'listaddditemWidth' }, "FINISHED")));
+    }
+}
 const testItem = [
     { title: 'Pacific Ocean Garbage Patch', desc: 'creator: XXX', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' },
     { title: 'The Various Shark Species', desc: 'creator: XXX', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' },
