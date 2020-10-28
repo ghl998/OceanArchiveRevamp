@@ -4,6 +4,7 @@
  * Modified to be used in this project.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Bubble = void 0;
 var React = require('react');
 const $ = require("jquery");
 require("../styles/bubble.css");
