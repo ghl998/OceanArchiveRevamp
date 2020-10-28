@@ -1732,12 +1732,14 @@ input.coordInput {
 .createAnnouncementPage {
     display: flex;
     flex-direction: column;
+
 }
 
     .createAnnouncementPage > .announcementDetails {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        column-width: 200px;
+        align-items: right;
     }
 
 
