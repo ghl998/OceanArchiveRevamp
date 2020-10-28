@@ -47,7 +47,7 @@ class ListHeader extends React.Component {
 
     render() {
         return (
-            <div className='ListHeaderContainer' style={{ fontWeight: 'bold' }}>
+            <div className='listItemContainer' style={{ fontWeight: 'bold' }}>
                 <div className='listFixedWidth'>Published</div>
                 <div className='listFixedWidth'>Created Date</div>
                 <div className='listVariableWidth'>Title</div>
@@ -64,7 +64,7 @@ class ListCollection extends React.Component {
 
     render() {
         return (
-            <div className='ListCollectionContainer'>
+            <div className='listItemContainer'>
                 <div className='listFixedWidth'>{
                     this.props.published ?
                         <svg width='30' height='30'>
@@ -163,7 +163,7 @@ export default class MyItems extends React.Component {
                         currentPage * this.itemsPerPage,
                         (currentPage + 1) * this.itemsPerPage
                     ).map((data, i) =>
-                        <ListHeader key={i} published={true} dateCreated="02-Jun-2020" title={data}  />
+                        <ListCollection key={i} published={true} dateCreated="02-Jun-2020" title={data}  />
                     )}
                 </div>
                 <div className='footerMenu'>
