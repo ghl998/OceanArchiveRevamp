@@ -7,6 +7,7 @@ const react_router_dom_1 = require("react-router-dom");
 const reactstrap_1 = require("reactstrap");
 const react_select_1 = require("react-select");
 const google_map_react_1 = require("google-map-react");
+const react_responsive_1 = require("react-responsive");
 let Draggable = require('react-draggable');
 class DetailsPage extends React.Component {
     constructor(props) {
@@ -186,6 +187,7 @@ class RegionAndLegalPage extends React.Component {
                 React.createElement(reactstrap_1.Input, { type: 'text', name: 'copyr' }))));
     }
 }
+
 class ListAddItemHeader extends React.Component {
     constructor(props) {
         super(props);
@@ -194,6 +196,7 @@ class ListAddItemHeader extends React.Component {
         return (React.createElement("div", { className: 'listItemContainer', style: { fontWeight: 'bold' } },
             React.createElement("div", { className: 'listaddItemWidth' }, "ITEM"),
             React.createElement("div", { className: 'listaddditemWidth' }, "FINISHED")));
+           
     }
 }
 const testItem = [

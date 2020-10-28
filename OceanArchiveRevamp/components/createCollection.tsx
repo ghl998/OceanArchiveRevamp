@@ -267,6 +267,7 @@ class RegionAndLegalPage extends React.Component {
         );
     }
 }
+
 class AddItemPage extends React.Component{
     constructor(props) {
         super(props);
