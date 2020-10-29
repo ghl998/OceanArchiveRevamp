@@ -360,7 +360,22 @@ const testLocations = [
     { title: 'Whale Spotting', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg', finished: Math.random() > 0.5 ? true : false },
     { title: 'Octopus Learning Habits', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg', finished: Math.random() > 0.5 ? true : false }
 ]
-
+const testCollections = [
+    { title: 'Old Wives', desc: 'Createor(s): Daryl-Lee', src: 'https://live.staticflickr.com/3230/2658593006_e2907dc71a_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Weedy Sea Dragon', desc: 'Createor(s): Daryl-Lee', src: 'https://live.staticflickr.com/3146/2655718146_5400a53c7f_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Port Jackson Shark', desc: 'Createor(s): Daryl-Lee', src: 'https://live.staticflickr.com/3134/2655823592_f5bc8d2e32_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Fish in the Ocean', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Ocean Waves', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Sharks Electromagnetic Sense', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Coral Research', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Plastic Island', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Sunset Shore', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Deep Ocean Mining', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Oil Pollution', desc: 'Createor(s): Olivia-Mae', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Deep Ocean Life', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Whale Spotting', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Octopus Learning Habits', desc: 'Createor(s): Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg', finished: Math.random() > 0.5 ? true : false }
+]
 class AddItemModal extends React.Component {
     constructor(props) {
         super(props);
@@ -406,6 +421,82 @@ class AddItemModal extends React.Component {
     reAddItem = (item) => {
         //console.log(testLocations);
         var i = testLocations.indexOf(item);
+        //console.log('i ', i);
+        var items = this.state.items;
+        items.splice(i, 0, item);
+        this.setState({
+            items: items
+        });
+    }
+
+    render() {
+        return (
+            <Modal className='largeModal' isOpen={this.props.isOpen} toggle={this.toggle}>
+                <ModalHeader>Add Existing Item</ModalHeader>
+                <ModalBody className='addExistingItemBody'>
+                    {this.state.items.map((item, i) => {
+                        return (
+                            <div key={'addItem' + i} className={this.state.selectedItem === item ? 'addExistingItem active' : 'addExistingItem'} onClick={() => this.setSelectedItem(item)}>
+                                <img className='addExistingItemImg' src={item.src} />
+                                <div className='addExistingItemTitle'>{item.title}</div>
+                            </div>
+                        );
+                    })}
+                </ModalBody>
+                <ModalFooter className='addExistingItemFooter'>
+                    <div className='addExistingItemButton cancel' onClick={() => this.closeModal()}>CANCEL</div>
+                    <div className='fillerBox' />
+                    <div className='addExistingItemButton add' onClick={() => this.addItem()}>ADD</div>
+                </ModalFooter>
+            </Modal>
+        );
+    }
+}
+class AddCollectionModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: [...testCollections],
+            selectedItem: null
+        };
+    }
+
+    toggle = () => {
+        if (this.props.isOpen)
+            this.props.closeModal();
+    }
+
+    setSelectedItem = (item) => {
+        this.setState({
+            selectedItem: item
+        });
+    }
+
+    closeModal = () => {
+        this.setState({
+            selectedItem: null
+        });
+        this.props.closeModal();
+    }
+
+    addItem = () => {
+        var selectedItem = this.state.selectedItem;
+        var items = this.state.items;
+        var i = items.indexOf(selectedItem);
+        if (i >= 0) {
+            items.splice(i, 1);
+            this.setState({
+                selectedItem: null,
+                items: items
+            });
+            this.props.addItem(selectedItem);
+        } else
+            this.props.addItem(null);
+    }
+
+    reAddItem = (item) => {
+        //console.log(testLocations);
+        var i = testCollections.indexOf(item);
         //console.log('i ', i);
         var items = this.state.items;
         items.splice(i, 0, item);
@@ -576,7 +667,7 @@ class AddCollectionPage extends React.Component {
     render() {
         return (
             <div className='createItemPage'>
-                <AddItemModal ref={this.modalRef} isOpen={this.state.modalOpen} closeModal={() => this.closeModal()} addItem={(i) => this.addItem(i)} />
+                <AddCollectionModal ref={this.modalRef} isOpen={this.state.modalOpen} closeModal={() => this.closeModal()} addItem={(i) => this.addItem(i)} />
                 <div className='buttonBig' onClick={this.openModal}>
                     ADD EXISTING COLLECTION
                 </div>
