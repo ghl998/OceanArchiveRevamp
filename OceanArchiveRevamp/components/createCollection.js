@@ -376,11 +376,54 @@ class AddCollectionPage extends React.Component {
             var pageValid = true;
             return pageValid;
         };
+        this.openModal = () => {
+            this.setState({
+                modalOpen: true
+            });
+        };
+        this.closeModal = () => {
+            this.setState({
+                modalOpen: false
+            });
+        };
+        this.addItem = (item) => {
+            if (item != null) {
+                var items = this.state.items;
+                items.push(item);
+                this.setState({
+                    items: items,
+                    modalOpen: false
+                });
+            }
+        };
+        this.removeItem = (i) => {
+            var items = this.state.items;
+            this.modalRef.current.reAddItem(items[i]);
+            items.splice(i, 1);
+            this.setState({
+                items: items
+            });
+        };
+        this.modalRef = React.createRef();
+        this.state = {
+            items: [],
+            modalOpen: false
+        };
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            React.createElement(reactstrap_1.FormGroup, null,
-                React.createElement(react_router_dom_1.NavLink, { className: 'buttonSmall', to: "/createCollection11" }, "Add New Collection"))));
+            React.createElement(AddItemModal, { ref: this.modalRef, isOpen: this.state.modalOpen, closeModal: () => this.closeModal(), addItem: (i) => this.addItem(i) }),
+            React.createElement("div", { className: 'buttonBig', onClick: this.openModal }, "ADD EXISTING COLLECTION"),
+            React.createElement("div", { style: { height: '24px' } }),
+            React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/createCollection" }, "ADD NEW COLLECTION"),
+            React.createElement(ListItemHeader, null),
+            React.createElement("div", { className: 'listItemPage createCollection' }, this.state.items.length > 0 ?
+                this.state.items.map((item, i) => {
+                    return (React.createElement(ListItem, { src: item.src, title: item.title, desc: item.desc, isFinished: item.finished, key: 'item' + i, remove: () => this.removeItem(i) }));
+                })
+                :
+                    React.createElement("div", { className: 'createCollectionNoItems' },
+                        React.createElement("div", null, "NO COLLECTIONS ADDED")))));
     }
 }
 class CoordinateBox extends React.Component {
@@ -795,7 +838,7 @@ class CreateCollection extends React.Component {
                 { title: "Category & Tags", submittable: true },
                 { title: "Regions & Legal", submittable: false },
                 { title: "Add Items", submittable: false },
-                { title: "Add Collections", submittable: false },
+                { title: "Add Sub-Collections", submittable: false },
                 { title: "Location/s", submittable: false }
             ]
         };

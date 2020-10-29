@@ -1689,7 +1689,7 @@ input.coordInput {
     flex-direction: row;
     flex: 0 0 auto;
     margin: auto;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .progressItem {
