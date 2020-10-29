@@ -15,7 +15,11 @@ import {
     Label,
     Input,
     ButtonGroup,
-    Button
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter
 } from 'reactstrap';
 import Select from 'react-select';
 import GoogleMapReact from 'google-map-react';
@@ -279,87 +283,248 @@ class ListItemHeader extends React.Component {
 
     render() {
         return (
-            <div className='listItemContainer' style={{ fontWeight: 'bold' }}>
-                <div className='listaddItemWidth'>ITEM</div>
-                <div className='listaddditemWidth'>FINISHED</div>
+            <div className='listItemContainer createCollection header'>
+                <div className='createCollectionItemHeader info'>ITEM</div>
+                <div className='createCollectionItemHeader finished'>FINISHED</div>
             </div>
-            
+
         );
     }
 }
 class ListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.map = null;
+        this.state = {
+            inFocus: false
+        }
+    }
+
+    inFocus = () => {
+        this.setState({
+            inFocus: true
+        });
+    }
+
+    outFocus = () => {
+        this.setState({
+            inFocus: false
+        });
     }
 
     render() {
         return (
-            <div className='listItemContainer'>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <h2>{this.props.title}</h2>
-                        <p>{this.props.desc}</p>
+            <div tabIndex='0' className={this.state.inFocus ? 'listItemContainer createCollection focused' : 'listItemContainer createCollection'} onFocus={this.inFocus} onBlur={this.outFocus}>
+                <img className='createCollectionItemImg' src={this.props.src} />
+                <div className='createCollectionItemTitleDesc'>
+                    <h2>{this.props.title}</h2>
+                    <p>{this.props.desc}</p>
                 </div>
-                <div className='listadddItemWidth'>EDIT</div>
+                <div className={this.state.inFocus ? 'createCollectionHidableButtons focused' : 'createCollectionHidableButtons'}>
+                    <div className='createCollectionButton edit'>EDIT</div>
+                    <div className='createCollectionButton delete' onClick={this.props.remove}>X</div>
+                </div>
+                <div className='createCollectionItemFinished'>
+                    {this.props.isFinished ?
+                        <svg width='30' height='30'>
+                            <polyline points='5,20 10,25 25,5'
+                                strokeLinecap='round'
+                                style={{ fill: 'none', stroke: '#05B336', strokeWidth: '5' }} />
+                            Yes
+                        </svg>
+                        : <svg width='30' height='30'>
+                            <g fill='none' stroke='#FF3A3A' stroke-width='5'>
+                                <line x1='5' y1='5' x2='25' y2='25' strokeLinecap='round' />
+                                <line x1='25' y1='5' x2='5' y2='25' strokeLinecap='round' />
+                            </g>
+                        </svg>
+                    }
+                </div>
             </div>
         );
     }
 }
 
 const testLocations = [
-    { title: 'Pacific Ocean Garbage Patch', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' },
-    { title: 'The Various Shark Species', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg'},
-    { title: 'Under The Ocean: Life with Turtles', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg'},
-    { title: 'Fish in the Ocean', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg' },
-    { title: 'Ocean Waves', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg' },
-    { title: 'Sharks Electromagnetic Sense', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg' },
-    { title: 'Coral Research', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg' },
-    { title: 'Plastic Island', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg' },
-    { title: 'Sunset Shore', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg' },
-    { title: 'Deep Ocean Mining', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg' },
-    { title: 'Oil Pollution', desc: 'Olivia-Mae', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg' },
-    { title: 'Deep Ocean Life', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg' },
-    { title: 'Whale Spotting', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg' },
-    { title: 'Octopus Learning Habits', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg' }
+    { title: 'Pacific Ocean Garbage Patch', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'The Various Shark Species', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Under The Ocean: Life with Turtles', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Fish in the Ocean', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Ocean Waves', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Sharks Electromagnetic Sense', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Coral Research', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Plastic Island', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Sunset Shore', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Deep Ocean Mining', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Oil Pollution', desc: 'Olivia-Mae', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Deep Ocean Life', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Whale Spotting', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Octopus Learning Habits', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg', finished: Math.random() > 0.5 ? true : false }
 ]
 
-class AddItemPage extends React.Component{
+class AddItemModal extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            items: [...testLocations],
+            selectedItem: null
+        };
     }
+
+    toggle = () => {
+        if (this.props.isOpen)
+            this.props.closeModal();
+    }
+
+    setSelectedItem = (item) => {
+        this.setState({
+            selectedItem: item
+        });
+    }
+
+    closeModal = () => {
+        this.setState({
+            selectedItem: null
+        });
+        this.props.closeModal();
+    }
+
+    addItem = () => {
+        var selectedItem = this.state.selectedItem;
+        var items = this.state.items;
+        var i = items.indexOf(selectedItem);
+        if (i >= 0) {
+            items.splice(i, 1);
+            this.setState({
+                selectedItem: null,
+                items: items
+            });
+            this.props.addItem(selectedItem);
+        } else
+            this.props.addItem(null);
+    }
+
+    reAddItem = (item) => {
+        //console.log(testLocations);
+        var i = testLocations.indexOf(item);
+        //console.log('i ', i);
+        var items = this.state.items;
+        items.splice(i, 0, item);
+        this.setState({
+            items: items
+        });
+    }
+
+    render() {
+        return (
+            <Modal className='largeModal' isOpen={this.props.isOpen} toggle={this.toggle}>
+                <ModalHeader>Add Existing Item</ModalHeader>
+                <ModalBody className='addExistingItemBody'>
+                    {this.state.items.map((item, i) => {
+                        return (
+                            <div key={'addItem' + i} className={this.state.selectedItem === item ? 'addExistingItem active' : 'addExistingItem'} onClick={() => this.setSelectedItem(item)}>
+                                <img className='addExistingItemImg' src={item.src} />
+                                <div className='addExistingItemTitle'>{item.title}</div>
+                            </div>
+                        );
+                    })}
+                </ModalBody>
+                <ModalFooter className='addExistingItemFooter'>
+                    <div className='addExistingItemButton cancel' onClick={() => this.closeModal()}>CANCEL</div>
+                    <div className='fillerBox' />
+                    <div className='addExistingItemButton add' onClick={() => this.addItem()}>ADD</div>
+                </ModalFooter>
+            </Modal>
+        );
+    }
+}
+
+class AddItemPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.modalRef = React.createRef();
+        this.state = {
+            items: [],
+            modalOpen: false
+        }
+    }
+
     validate = () => {
         console.log('Validate add items');
         var pageValid = true;
 
         return pageValid;
     }
+
+    openModal = () => {
+        this.setState({
+            modalOpen: true
+        });
+    }
+
+    closeModal = () => {
+        this.setState({
+            modalOpen: false
+        });
+    }
+
+    addItem = (item) => {
+        if (item != null) {
+            var items = this.state.items;
+            items.push(item);
+            this.setState({
+                items: items,
+                modalOpen: false
+            });
+        }
+    }
+
+    removeItem = (i) => {
+        var items = this.state.items;
+        this.modalRef.current.reAddItem(items[i]);
+        items.splice(i, 1);
+        this.setState({
+            items: items
+        });
+    }
+
     render() {
         return (
             <div className='createItemPage'>
-                <NavLink className='buttonBig' to="/createItem">
+                <AddItemModal ref={this.modalRef} isOpen={this.state.modalOpen} closeModal={() => this.closeModal()} addItem={(i) => this.addItem(i)} />
+                <div className='buttonBig' onClick={this.openModal}>
                     ADD EXISTING ITEM
-                </NavLink>
+                </div>
                 <div style={{ height: '24px' }} />
                 <NavLink className='buttonBig' to="/createItem">
                     ADD NEW ITEM
                 </NavLink>
                 <ListItemHeader />
-                <div className='listItemPage'>
-                    {testLocations.map((title, i) => {
-                        return (
-                            <ListItem
-                                title={title.title}
-                                desc={title.desc}
-                            />
+                <div className='listItemPage createCollection'>
+                    {this.state.items.length > 0 ?
+                        this.state.items.map((item, i) => {
+                            return (
+                                <ListItem
+                                    src={item.src}
+                                    title={item.title}
+                                    desc={item.desc}
+                                    isFinished={item.finished}
+                                    key={'item' + i}
+                                    remove={() => this.removeItem(i)}
+                                />
                             )
-                    })}
+                        })
+                        :
+                        <div className='createCollectionNoItems'>
+                            <div>NO ITEMS ADDED</div>
+                        </div>
+                    }
                 </div>
             </div>
         );
     }
 }
 
-class AddCollectionPage extends React.Component{
+class AddCollectionPage extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -373,13 +538,13 @@ class AddCollectionPage extends React.Component{
         return (
             <div className='createItemPage'>
                 <FormGroup>
-                
-                 <NavLink className='buttonSmall' to ="/createCollection11">
-                 Add New Collection
+
+                    <NavLink className='buttonSmall' to="/createCollection11">
+                        Add New Collection
                  </NavLink>
-                 </FormGroup>
-                 
-                 </div>
+                </FormGroup>
+
+            </div>
         );
     }
 }
@@ -452,7 +617,7 @@ class CoordinateBox extends React.Component {
     render() {
         return (
             <Draggable axis='y' bounds='parent' onStart={this.onStart} onDrag={this.onDrag} onStop={this.onStop} position={this.state.position} cancel='.coordInput'>
-                <div tabIndex= '0' className={this.state.isFocused ? 'coordContainer focused' : 'coordContainer'} onFocus={this.inFocus} onBlur={this.outFocus}>
+                <div tabIndex='0' className={this.state.isFocused ? 'coordContainer focused' : 'coordContainer'} onFocus={this.inFocus} onBlur={this.outFocus}>
                     <FormGroup className='coordFormGroup'>
                         <Label for='lat' className='coordLabel'>LAT</Label>
                         <Input className='coordInput' type='number' maxLength='10' name='lat' onChange={this.updateLat} />

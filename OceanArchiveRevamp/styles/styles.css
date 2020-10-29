@@ -788,12 +788,6 @@ hr {
     flex: 0 0 900px;
 }
 
-.listaddditemWidth {
-    background-color: #4A74A5;
-    color: #ffffff;
-    flex: 1 1 0px;
-}
-
 .buttonSmall {
     background-color: #3FB39A;
     color: #000000;
@@ -2097,3 +2091,162 @@ input.coordInput {
     height: 40px;
     line-height: 40px;
 }
+
+/*Create Collection*/
+.listItemPage.createCollection {
+    height: calc(100vh - 520px);
+    margin-top: 0px;
+}
+
+.listItemContainer.createCollection.header {
+    margin: 16px 0px 0px 0px;
+    height: 50px;
+}
+
+.listItemContainer > .createCollectionItemHeader {
+    background-color: #4A74A5;
+}
+
+.createCollectionItemHeader.info {
+    flex: 1 1 auto;
+    text-align: start;
+}
+
+.createCollectionItemHeader.finished {
+    flex: 0 0 85px;
+}
+
+.createCollectionNoItems {
+    border: 1px #ffffff solid;
+    flex: 1 1 auto;
+    display: flex;
+}
+
+    .createCollectionNoItems > div {
+        margin: auto;
+    }
+
+.listItemContainer.createCollection {
+    height: 75px;
+    max-height: 75px;
+    background-color: transparent;
+}
+
+    .listItemContainer.createCollection.focused {
+        background-color: #4A74A5;
+        margin: 0px;
+        padding: 0px;
+        vertical-align: initial;
+    }
+
+.createCollectionItemImg {
+    height: 75px;
+    width: 75px;
+    flex: 0 0 auto;
+    border: 1px #ffffff solid;
+    border-collapse: collapse;
+}
+
+.createCollectionItemTitleDesc {
+    flex: 1 1 auto;
+    text-align: start;
+}
+
+    .createCollectionItemTitleDesc > h2 {
+        margin: 0px;
+    }
+
+    .createCollectionItemTitleDesc > p {
+        margin: 0px;
+    }
+
+.createCollectionItemFinished {
+    flex: 0 0 auto;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listItemContainer > .createCollectionHidableButtons {
+    flex: 0 1 auto;
+    overflow: hidden;
+    max-width: 0px;
+    display: flex;
+    padding: 0px;
+    border: 0px;
+}
+
+.createCollectionHidableButtons.focused {
+    flex: 1 0 auto;
+    max-width: 150px;
+}
+
+.createCollectionButton {
+    width: 75px;
+    line-height: 75px;
+}
+
+    .createCollectionButton.edit {
+        background-color: #3FB39A;
+        color: #000000;
+    }
+
+    .createCollectionButton.delete {
+        background-color: #FF3A3A;
+    }
+
+.largeModal {
+    width: 80vw;
+    max-width: 80vw;
+}
+
+.addExistingItemBody {
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.addExistingItem {
+    background-color: transparent;
+    display: flex;
+    width: 100%;
+    height: 75px;
+    border: 1px #ffffff solid;
+    border-collapse: collapse;
+}
+
+    .addExistingItem.active {
+        background-color: #4A74A5;
+    }
+
+.addExistingItemImg {
+    width: 75px;
+    height: 75px;
+}
+
+.addExistingItemTitle {
+    flex: 1 1 auto;
+    padding-left: 16px;
+    line-height: 75px;
+}
+
+.addExistingItemFooter {
+    display: flex;
+    height: 50px;
+}
+
+.addExistingItemButton {
+    flex: 0 0 150px;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 50px;
+}
+
+    .addExistingItemButton.add {
+        background-color: #3FB39A;
+        color: #000000;
+    }
+
+    .addExistingItemButton.cancel {
+        background-color: #4A74A5;
+    }

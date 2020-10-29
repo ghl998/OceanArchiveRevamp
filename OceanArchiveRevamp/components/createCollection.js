@@ -191,40 +191,125 @@ class ListItemHeader extends React.Component {
         super(props);
     }
     render() {
-        return (React.createElement("div", { className: 'listItemContainer', style: { fontWeight: 'bold' } },
-            React.createElement("div", { className: 'listaddItemWidth' }, "ITEM"),
-            React.createElement("div", { className: 'listaddditemWidth' }, "FINISHED")));
+        return (React.createElement("div", { className: 'listItemContainer createCollection header' },
+            React.createElement("div", { className: 'createCollectionItemHeader info' }, "ITEM"),
+            React.createElement("div", { className: 'createCollectionItemHeader finished' }, "FINISHED")));
     }
 }
 class ListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.map = null;
+        this.inFocus = () => {
+            this.setState({
+                inFocus: true
+            });
+        };
+        this.outFocus = () => {
+            this.setState({
+                inFocus: false
+            });
+        };
+        this.state = {
+            inFocus: false
+        };
     }
     render() {
-        return (React.createElement("div", { className: 'listItemContainer' },
-            React.createElement("div", { style: { display: 'flex', flexDirection: 'column' } },
+        return (React.createElement("div", { tabIndex: '0', className: this.state.inFocus ? 'listItemContainer createCollection focused' : 'listItemContainer createCollection', onFocus: this.inFocus, onBlur: this.outFocus },
+            React.createElement("img", { className: 'createCollectionItemImg', src: this.props.src }),
+            React.createElement("div", { className: 'createCollectionItemTitleDesc' },
                 React.createElement("h2", null, this.props.title),
                 React.createElement("p", null, this.props.desc)),
-            React.createElement("div", { className: 'listadddItemWidth' }, "EDIT")));
+            React.createElement("div", { className: this.state.inFocus ? 'createCollectionHidableButtons focused' : 'createCollectionHidableButtons' },
+                React.createElement("div", { className: 'createCollectionButton edit' }, "EDIT"),
+                React.createElement("div", { className: 'createCollectionButton delete', onClick: this.props.remove }, "X")),
+            React.createElement("div", { className: 'createCollectionItemFinished' }, this.props.isFinished ?
+                React.createElement("svg", { width: '30', height: '30' },
+                    React.createElement("polyline", { points: '5,20 10,25 25,5', strokeLinecap: 'round', style: { fill: 'none', stroke: '#05B336', strokeWidth: '5' } }),
+                    "Yes")
+                : React.createElement("svg", { width: '30', height: '30' },
+                    React.createElement("g", { fill: 'none', stroke: '#FF3A3A', "stroke-width": '5' },
+                        React.createElement("line", { x1: '5', y1: '5', x2: '25', y2: '25', strokeLinecap: 'round' }),
+                        React.createElement("line", { x1: '25', y1: '5', x2: '5', y2: '25', strokeLinecap: 'round' }))))));
     }
 }
 const testLocations = [
-    { title: 'Pacific Ocean Garbage Patch', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg' },
-    { title: 'The Various Shark Species', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg' },
-    { title: 'Under The Ocean: Life with Turtles', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg' },
-    { title: 'Fish in the Ocean', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg' },
-    { title: 'Ocean Waves', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg' },
-    { title: 'Sharks Electromagnetic Sense', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg' },
-    { title: 'Coral Research', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg' },
-    { title: 'Plastic Island', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg' },
-    { title: 'Sunset Shore', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg' },
-    { title: 'Deep Ocean Mining', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg' },
-    { title: 'Oil Pollution', desc: 'Olivia-Mae', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg' },
-    { title: 'Deep Ocean Life', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg' },
-    { title: 'Whale Spotting', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg' },
-    { title: 'Octopus Learning Habits', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg' }
+    { title: 'Pacific Ocean Garbage Patch', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2490/4214811049_1264c95738_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'The Various Shark Species', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/194/463483080_828f04aba3_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Under The Ocean: Life with Turtles', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2534/32899940111_6d3f8956d7_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Fish in the Ocean', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/2736/4098744853_0c65ccb710_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Ocean Waves', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/7309/9787099472_f24d4766e5_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Sharks Electromagnetic Sense', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6018/5951373622_3146ed0aab_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Coral Research', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/1688/26104103086_766619aeb8_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Plastic Island', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3182/2785503884_8b0b76f781_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Sunset Shore', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/65535/49112821866_f88763e374_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Deep Ocean Mining', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/6178/6207340169_32c7846a32_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Oil Pollution', desc: 'Olivia-Mae', src: 'https://farm9.staticflickr.com/8746/17022954452_3c3fefafe0_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Deep Ocean Life', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/5463/8880188144_f2e22d06c1.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Whale Spotting', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/32/49470279_74b8873c7c_b.jpg', finished: Math.random() > 0.5 ? true : false },
+    { title: 'Octopus Learning Habits', desc: 'Olivia-Mae', src: 'https://live.staticflickr.com/3463/3306513983_f8269902ee_b.jpg', finished: Math.random() > 0.5 ? true : false }
 ];
+class AddItemModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.toggle = () => {
+            if (this.props.isOpen)
+                this.props.closeModal();
+        };
+        this.setSelectedItem = (item) => {
+            this.setState({
+                selectedItem: item
+            });
+        };
+        this.closeModal = () => {
+            this.setState({
+                selectedItem: null
+            });
+            this.props.closeModal();
+        };
+        this.addItem = () => {
+            var selectedItem = this.state.selectedItem;
+            var items = this.state.items;
+            var i = items.indexOf(selectedItem);
+            if (i >= 0) {
+                items.splice(i, 1);
+                this.setState({
+                    selectedItem: null,
+                    items: items
+                });
+                this.props.addItem(selectedItem);
+            }
+            else
+                this.props.addItem(null);
+        };
+        this.reAddItem = (item) => {
+            console.log(testLocations);
+            var i = testLocations.indexOf(item);
+            console.log('i ', i);
+            var items = this.state.items;
+            items.splice(i, 0, item);
+            this.setState({
+                items: items
+            });
+        };
+        this.state = {
+            items: [...testLocations],
+            selectedItem: null
+        };
+    }
+    render() {
+        return (React.createElement(reactstrap_1.Modal, { className: 'largeModal', isOpen: this.props.isOpen, toggle: this.toggle },
+            React.createElement(reactstrap_1.ModalHeader, null, "Add Existing Item"),
+            React.createElement(reactstrap_1.ModalBody, { className: 'addExistingItemBody' }, this.state.items.map((item, i) => {
+                return (React.createElement("div", { key: 'addItem' + i, className: this.state.selectedItem === item ? 'addExistingItem active' : 'addExistingItem', onClick: () => this.setSelectedItem(item) },
+                    React.createElement("img", { className: 'addExistingItemImg', src: item.src }),
+                    React.createElement("div", { className: 'addExistingItemTitle' }, item.title)));
+            })),
+            React.createElement(reactstrap_1.ModalFooter, { className: 'addExistingItemFooter' },
+                React.createElement("div", { className: 'addExistingItemButton cancel', onClick: () => this.closeModal() }, "CANCEL"),
+                React.createElement("div", { className: 'fillerBox' }),
+                React.createElement("div", { className: 'addExistingItemButton add', onClick: () => this.addItem() }, "ADD"))));
+    }
+}
 class AddItemPage extends React.Component {
     constructor(props) {
         super(props);
@@ -233,16 +318,54 @@ class AddItemPage extends React.Component {
             var pageValid = true;
             return pageValid;
         };
+        this.openModal = () => {
+            this.setState({
+                modalOpen: true
+            });
+        };
+        this.closeModal = () => {
+            this.setState({
+                modalOpen: false
+            });
+        };
+        this.addItem = (item) => {
+            if (item != null) {
+                var items = this.state.items;
+                items.push(item);
+                this.setState({
+                    items: items,
+                    modalOpen: false
+                });
+            }
+        };
+        this.removeItem = (i) => {
+            var items = this.state.items;
+            this.modalRef.current.reAddItem(items[i]);
+            items.splice(i, 1);
+            this.setState({
+                items: items
+            });
+        };
+        this.modalRef = React.createRef();
+        this.state = {
+            items: [],
+            modalOpen: false
+        };
     }
     render() {
         return (React.createElement("div", { className: 'createItemPage' },
-            React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/createItem" }, "ADD EXISTING ITEM"),
+            React.createElement(AddItemModal, { ref: this.modalRef, isOpen: this.state.modalOpen, closeModal: () => this.closeModal(), addItem: (i) => this.addItem(i) }),
+            React.createElement("div", { className: 'buttonBig', onClick: this.openModal }, "ADD EXISTING ITEM"),
             React.createElement("div", { style: { height: '24px' } }),
             React.createElement(react_router_dom_1.NavLink, { className: 'buttonBig', to: "/createItem" }, "ADD NEW ITEM"),
             React.createElement(ListItemHeader, null),
-            React.createElement("div", { className: 'listItemPage' }, testLocations.map((title, i) => {
-                return (React.createElement(ListItem, { title: title.title, desc: title.desc }));
-            }))));
+            React.createElement("div", { className: 'listItemPage createCollection' }, this.state.items.length > 0 ?
+                this.state.items.map((item, i) => {
+                    return (React.createElement(ListItem, { src: item.src, title: item.title, desc: item.desc, isFinished: item.finished, key: 'item' + i, remove: () => this.removeItem(i) }));
+                })
+                :
+                    React.createElement("div", { className: 'createCollectionNoItems' },
+                        React.createElement("div", null, "NO ITEMS ADDED")))));
     }
 }
 class AddCollectionPage extends React.Component {

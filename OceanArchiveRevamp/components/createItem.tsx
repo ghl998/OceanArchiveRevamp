@@ -697,10 +697,10 @@ export default class CreateItem extends React.Component {
             activeIndex: 0,
             animating: false,
             progressData: [
-                { title: "Details", submittable: false },
+                { title: "Details", submittable: true },
                 { title: "Category & Tags", submittable: true },
-                { title: "Regions & Legal", submittable: false },
-                { title: "Location/s", submittable: false }
+                { title: "Regions & Legal", submittable: true },
+                { title: "Location/s", submittable: true }
             ]
         };
         this.mainFocus = 'sci';
