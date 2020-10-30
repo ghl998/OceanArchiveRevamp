@@ -25,7 +25,9 @@ import CreateItem from './components/createItem';
 import CreateCollection from './components/createCollection';
 import CreateAnnouncement from './components/createAnnouncement';
 import OnBoardingForm from './components/onboardingForm';
+import Profile from './components/Profile';
 import Search from './components/search';
+
 
 import * as Constant from './constants';
 
@@ -214,6 +216,17 @@ class Homepage extends React.Component {
                             )
                         }}
                     />
+                    <Route path="/Profile"
+                        render={() => {
+                            return (
+                                <div>
+                                    <Header logIn={(x) => this.logIn(x)} loggedIn={this.state.loggedIn} />
+                                    <Profile />
+                                </div>
+                            )
+                        }}
+                    />
+
                 </Switch>
             </div>
         );
